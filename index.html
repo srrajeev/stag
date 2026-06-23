@@ -139,14 +139,15 @@ body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var
 .plan-cat { font-size:10px; padding:2px 6px; border-radius:4px; background:var(--border); color:var(--muted); text-transform:uppercase; }
 
 /* Weather */
-.weather-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
-.weather-city { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; }
-.weather-city h3 { font-size:15px; font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
-.forecast-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.weather-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+.weather-city { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; }
+.weather-city h3 { font-size:14px; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.forecast-row { display:grid; grid-template-columns:36px 60px 1fr 50px 50px; gap:6px; align-items:center; padding:5px 0; border-bottom:1px solid var(--border); font-size:12px; }
 .forecast-row:last-child { border-bottom:none; }
-.forecast-date { font-weight:600; min-width:60px; }
-.forecast-temp { color:var(--muted); }
-.forecast-rain { font-weight:600; }
+.forecast-date { font-weight:600; }
+.forecast-temp { color:var(--muted); font-size:11px; }
+.forecast-cond { font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.forecast-rain { font-weight:600; text-align:right; font-size:11px; }
 
 /* Budget */
 .budget-bar { height:24px; border-radius:6px; background:var(--border); overflow:hidden; display:flex; margin:12px 0; }
@@ -739,18 +740,22 @@ async function loadWeather() {
     const forecasts = city.forecasts || [];
     const rows = forecasts.map(f => {
       const riskClass = f.risk === 'high' ? 'risk-high' : f.risk === 'medium' ? 'risk-medium' : 'risk-low';
-      const riskBadge = f.risk !== 'low' ? `<span class="scam-risk ${riskClass}">${f.risk}</span>` : '';
+      const riskBadge = f.risk !== 'low' ? `<span class="scam-risk ${riskClass}" style="font-size:9px;">${f.risk}</span>` : '<span style="font-size:10px;color:var(--accent);">✓</span>';
+      const rainColor = f.rain_prob>60?'var(--danger)':f.rain_prob>40?'var(--warn)':'var(--accent)';
       return `<div class="forecast-row">
         <span class="forecast-date">${f.day}</span>
-        <span class="forecast-temp">${f.high||'--'}°/${f.low||'--'}°C</span>
-        <span>${f.condition}</span>
-        <span class="forecast-rain" style="color:${f.rain_prob>60?'var(--danger)':f.rain_prob>40?'var(--warn)':'var(--accent)'}">🌧️ ${f.rain_prob}%</span>
-        ${riskBadge}
+        <span class="forecast-temp">${f.high||'--'}°/${f.low||'--'}°</span>
+        <span class="forecast-cond">${f.condition}</span>
+        <span class="forecast-rain" style="color:${rainColor};">🌧️ ${f.rain_prob}%</span>
+        <span style="text-align:center;">${riskBadge}</span>
       </div>`;
     }).join('');
     return `<div class="weather-city">
-      <h3>📍 ${key}</h3>
-      ${rows || '<div style="color:var(--muted)">No forecast data</div>'}
+      <h3>📍 ${key} <span style="font-size:10px;color:var(--muted);margin-left:auto;">${forecasts.length} days</span></h3>
+      <div class="forecast-row" style="border-bottom:2px solid var(--border);font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;">
+        <span>Day</span><span>Temp</span><span>Condition</span><span style="text-align:right;">Rain</span><span style="text-align:center;">Risk</span>
+      </div>
+      ${rows || '<div style="color:var(--muted);padding:10px;">No forecast data</div>'}
     </div>`;
   }).join('');
 

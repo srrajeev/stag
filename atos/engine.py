@@ -834,6 +834,22 @@ def agent_backup():
                   "why": "Mountain town like Sapa but DRIER in July. French colonial architecture. Waterfalls, flower gardens, crazy house. Pine forests. Cool weather (18-22°C).",
                   "highlights": ["Crazy House (₹70)", "Datanla Waterfall + alpine coaster (₹280)", "Flower Park (₹35)", "Pongour Falls (₹35)", "Night market (FREE)"],
                   "budget_per_day": "₹800-1,500", "flight_from_hcmc": "50min, ₹1,500-2,000"},
+        "Quy Nhon": {"name": "Quy Nhon", "lat": 13.7820, "lon": 109.2194, "region": "Central South",
+                     "why": "Hidden gem beach city. No crowds. Cheap seafood. Ky Co Beach (most beautiful in Vietnam). Eo Gio cliff walk. Half the price of Nha Trang.",
+                     "highlights": ["Ky Co Beach (₹350 boat) — pristine, turquoise", "Eo Gio cliff walk (FREE)", "Queen Beach (FREE)", "Fresh seafood (₹200-400)", "No tourist traps — authentic"],
+                     "budget_per_day": "₹600-1,200", "flight_from_hcmc": "1hr, ₹1,500-2,000"},
+        "Con Dao": {"name": "Con Dao", "lat": 8.7260, "lon": 106.6260, "region": "South Islands",
+                    "why": "Paradise islands. Pristine beaches, no crowds. Sea turtle nesting (July!). Snorkeling + diving. French prison history. Most beautiful beaches in Vietnam.",
+                    "highlights": ["Dat Doc Beach (FREE, 6km pristine)", "Snorkeling tour (₹1,200)", "Con Dao Prison (₹70)", "Sea turtle watching (July season!)", "Devastatingly beautiful sunsets"],
+                    "budget_per_day": "₹2,000-3,500", "flight_from_hcmc": "45min, ₹2,500-4,000"},
+        "Mui Ne": {"name": "Mui Ne", "lat": 10.9350, "lon": 108.2650, "region": "South Coast",
+                   "why": "Desert + beach combo. Red sand dunes (sunset). White sand dunes (jeep tour). Kite surfing capital of Asia. Fishing village. Cheapest seafood.",
+                   "highlights": ["White Sand Dunes jeep tour (₹1,200)", "Red Sand Dunes sunset (FREE)", "Fairy Stream (FREE)", "Kite surfing (₹1,500/2hr lesson)", "Fishing village + seafood (₹200-400)"],
+                   "budget_per_day": "₹800-1,500", "flight_from_hcmc": "4hr bus, ₹500"},
+        "Ha Giang": {"name": "Ha Giang", "lat": 23.2781, "lon": 105.0128, "region": "North",
+                     "why": "Most spectacular scenery in Vietnam. Mountain loop motorbike ride. Ma Pi Leng Pass (best view in SE Asia). Less fog than Sapa. Authentic minority villages.",
+                     "highlights": ["Ha Giang Loop (3-day motorbike, ₹2,000)", "Ma Pi Leng Pass (best view in Vietnam)", "Dong Van Karst Plateau (UNESCO)", "Lung Cu Flag Tower (northernmost point)", "Authentic Hmong villages — no tourist crowds"],
+                     "budget_per_day": "₹500-1,000", "flight_from_hanoi": "6hr bus from Hanoi, ₹600"},
     }
     
     # Fetch weather for alternative cities

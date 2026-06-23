@@ -1,6 +1,6 @@
 {
   "agent": "Backup Plan Intelligence",
-  "timestamp": "2026-06-23T19:50:59Z",
+  "timestamp": "2026-06-23T19:56:15Z",
   "day_backups": [
     {
       "day": 0,
@@ -814,6 +814,30 @@
       }
     },
     {
+      "city": "Quy Nhon",
+      "type": "alternative",
+      "avg_rain": 58,
+      "high_risk_days": 7,
+      "weather_score": 32,
+      "verdict": "ALSO RAINY",
+      "info": {
+        "name": "Quy Nhon",
+        "lat": 13.782,
+        "lon": 109.2194,
+        "region": "Central South",
+        "why": "Hidden gem beach city. No crowds. Cheap seafood. Ky Co Beach (most beautiful in Vietnam). Eo Gio cliff walk. Half the price of Nha Trang.",
+        "highlights": [
+          "Ky Co Beach (₹350 boat) — pristine, turquoise",
+          "Eo Gio cliff walk (FREE)",
+          "Queen Beach (FREE)",
+          "Fresh seafood (₹200-400)",
+          "No tourist traps — authentic"
+        ],
+        "budget_per_day": "₹600-1,200",
+        "flight_from_hcmc": "1hr, ₹1,500-2,000"
+      }
+    },
+    {
       "city": "Da Nang",
       "type": "alternative",
       "avg_rain": 65,
@@ -886,6 +910,30 @@
       }
     },
     {
+      "city": "Mui Ne",
+      "type": "alternative",
+      "avg_rain": 77,
+      "high_risk_days": 10,
+      "weather_score": 12,
+      "verdict": "ALSO RAINY",
+      "info": {
+        "name": "Mui Ne",
+        "lat": 10.935,
+        "lon": 108.265,
+        "region": "South Coast",
+        "why": "Desert + beach combo. Red sand dunes (sunset). White sand dunes (jeep tour). Kite surfing capital of Asia. Fishing village. Cheapest seafood.",
+        "highlights": [
+          "White Sand Dunes jeep tour (₹1,200)",
+          "Red Sand Dunes sunset (FREE)",
+          "Fairy Stream (FREE)",
+          "Kite surfing (₹1,500/2hr lesson)",
+          "Fishing village + seafood (₹200-400)"
+        ],
+        "budget_per_day": "₹800-1,500",
+        "flight_from_hcmc": "4hr bus, ₹500"
+      }
+    },
+    {
       "city": "Nha Trang",
       "type": "alternative",
       "avg_rain": 78,
@@ -931,6 +979,54 @@
         ],
         "budget_per_day": "₹800-1,500",
         "flight_from_hcmc": "50min, ₹1,500-2,000"
+      }
+    },
+    {
+      "city": "Con Dao",
+      "type": "alternative",
+      "avg_rain": 77,
+      "high_risk_days": 12,
+      "weather_score": 4,
+      "verdict": "ALSO RAINY",
+      "info": {
+        "name": "Con Dao",
+        "lat": 8.726,
+        "lon": 106.626,
+        "region": "South Islands",
+        "why": "Paradise islands. Pristine beaches, no crowds. Sea turtle nesting (July!). Snorkeling + diving. French prison history. Most beautiful beaches in Vietnam.",
+        "highlights": [
+          "Dat Doc Beach (FREE, 6km pristine)",
+          "Snorkeling tour (₹1,200)",
+          "Con Dao Prison (₹70)",
+          "Sea turtle watching (July season!)",
+          "Devastatingly beautiful sunsets"
+        ],
+        "budget_per_day": "₹2,000-3,500",
+        "flight_from_hcmc": "45min, ₹2,500-4,000"
+      }
+    },
+    {
+      "city": "Ha Giang",
+      "type": "alternative",
+      "avg_rain": 84,
+      "high_risk_days": 12,
+      "weather_score": 4,
+      "verdict": "ALSO RAINY",
+      "info": {
+        "name": "Ha Giang",
+        "lat": 23.2781,
+        "lon": 105.0128,
+        "region": "North",
+        "why": "Most spectacular scenery in Vietnam. Mountain loop motorbike ride. Ma Pi Leng Pass (best view in SE Asia). Less fog than Sapa. Authentic minority villages.",
+        "highlights": [
+          "Ha Giang Loop (3-day motorbike, ₹2,000)",
+          "Ma Pi Leng Pass (best view in Vietnam)",
+          "Dong Van Karst Plateau (UNESCO)",
+          "Lung Cu Flag Tower (northernmost point)",
+          "Authentic Hmong villages — no tourist crowds"
+        ],
+        "budget_per_day": "₹500-1,000",
+        "flight_from_hanoi": "6hr bus from Hanoi, ₹600"
       }
     }
   ],
@@ -1522,6 +1618,378 @@
       "low_risk_days": 0,
       "total_days": 12,
       "weather_score": 4
+    },
+    "Quy Nhon": {
+      "forecasts": [
+        {
+          "date": "2026-06-28",
+          "rain_prob": 78,
+          "high": 36,
+          "condition": "Storm + hail",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-29",
+          "rain_prob": 73,
+          "high": 35,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-30",
+          "rain_prob": 71,
+          "high": 33,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-01",
+          "rain_prob": 71,
+          "high": 31,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-02",
+          "rain_prob": 63,
+          "high": 34,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-03",
+          "rain_prob": 69,
+          "high": 35,
+          "condition": "Storm + hail",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-04",
+          "rain_prob": 71,
+          "high": 30,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-05",
+          "rain_prob": 51,
+          "high": 31,
+          "condition": "Overcast",
+          "risk": "medium"
+        },
+        {
+          "date": "2026-07-06",
+          "rain_prob": 41,
+          "high": 28,
+          "condition": "Heavy drizzle",
+          "risk": "medium"
+        },
+        {
+          "date": "2026-07-07",
+          "rain_prob": 35,
+          "high": 31,
+          "condition": "Overcast",
+          "risk": "low"
+        },
+        {
+          "date": "2026-07-08",
+          "rain_prob": 42,
+          "high": 32,
+          "condition": "Overcast",
+          "risk": "medium"
+        },
+        {
+          "date": "2026-07-09",
+          "rain_prob": 34,
+          "high": null,
+          "condition": "Unknown",
+          "risk": "low"
+        }
+      ],
+      "avg_rain_prob": 58,
+      "high_risk_days": 7,
+      "low_risk_days": 2,
+      "total_days": 12,
+      "weather_score": 32
+    },
+    "Con Dao": {
+      "forecasts": [
+        {
+          "date": "2026-06-28",
+          "rain_prob": 73,
+          "high": 29,
+          "condition": "Storm + hail",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-29",
+          "rain_prob": 91,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-30",
+          "rain_prob": 79,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-01",
+          "rain_prob": 91,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-02",
+          "rain_prob": 89,
+          "high": 28,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-03",
+          "rain_prob": 75,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-04",
+          "rain_prob": 71,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-05",
+          "rain_prob": 72,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-06",
+          "rain_prob": 74,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-07",
+          "rain_prob": 67,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-08",
+          "rain_prob": 74,
+          "high": 29,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-09",
+          "rain_prob": 72,
+          "high": null,
+          "condition": "Unknown",
+          "risk": "high"
+        }
+      ],
+      "avg_rain_prob": 77,
+      "high_risk_days": 12,
+      "low_risk_days": 0,
+      "total_days": 12,
+      "weather_score": 4
+    },
+    "Mui Ne": {
+      "forecasts": [
+        {
+          "date": "2026-06-28",
+          "rain_prob": 78,
+          "high": 33,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-29",
+          "rain_prob": 79,
+          "high": 31,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-30",
+          "rain_prob": 59,
+          "high": 33,
+          "condition": "Thunderstorm",
+          "risk": "medium"
+        },
+        {
+          "date": "2026-07-01",
+          "rain_prob": 80,
+          "high": 28,
+          "condition": "Heavy drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-02",
+          "rain_prob": 97,
+          "high": 31,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-03",
+          "rain_prob": 83,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-04",
+          "rain_prob": 86,
+          "high": 30,
+          "condition": "Heavy drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-05",
+          "rain_prob": 76,
+          "high": 29,
+          "condition": "Drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-06",
+          "rain_prob": 86,
+          "high": 30,
+          "condition": "Drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-07",
+          "rain_prob": 78,
+          "high": 29,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-08",
+          "rain_prob": 71,
+          "high": 31,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-09",
+          "rain_prob": 54,
+          "high": null,
+          "condition": "Unknown",
+          "risk": "medium"
+        }
+      ],
+      "avg_rain_prob": 77,
+      "high_risk_days": 10,
+      "low_risk_days": 0,
+      "total_days": 12,
+      "weather_score": 12
+    },
+    "Ha Giang": {
+      "forecasts": [
+        {
+          "date": "2026-06-28",
+          "rain_prob": 90,
+          "high": 28,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-29",
+          "rain_prob": 90,
+          "high": 29,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-06-30",
+          "rain_prob": 85,
+          "high": 26,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-01",
+          "rain_prob": 77,
+          "high": 29,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-02",
+          "rain_prob": 73,
+          "high": 28,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-03",
+          "rain_prob": 78,
+          "high": 26,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-04",
+          "rain_prob": 83,
+          "high": 23,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-05",
+          "rain_prob": 84,
+          "high": 25,
+          "condition": "Drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-06",
+          "rain_prob": 86,
+          "high": 29,
+          "condition": "Drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-07",
+          "rain_prob": 86,
+          "high": 30,
+          "condition": "Thunderstorm",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-08",
+          "rain_prob": 90,
+          "high": 26,
+          "condition": "Light drizzle",
+          "risk": "high"
+        },
+        {
+          "date": "2026-07-09",
+          "rain_prob": 87,
+          "high": null,
+          "condition": "Unknown",
+          "risk": "high"
+        }
+      ],
+      "avg_rain_prob": 84,
+      "high_risk_days": 12,
+      "low_risk_days": 0,
+      "total_days": 12,
+      "weather_score": 4
     }
   },
   "alt_cities_info": {
@@ -1601,12 +2069,64 @@
       "budget_per_day": "₹800-1,500",
       "transport": "50min, ₹1,500-2,000",
       "region": "Central Highlands"
+    },
+    "Quy Nhon": {
+      "why": "Hidden gem beach city. No crowds. Cheap seafood. Ky Co Beach (most beautiful in Vietnam). Eo Gio cliff walk. Half the price of Nha Trang.",
+      "highlights": [
+        "Ky Co Beach (₹350 boat) — pristine, turquoise",
+        "Eo Gio cliff walk (FREE)",
+        "Queen Beach (FREE)",
+        "Fresh seafood (₹200-400)",
+        "No tourist traps — authentic"
+      ],
+      "budget_per_day": "₹600-1,200",
+      "transport": "1hr, ₹1,500-2,000",
+      "region": "Central South"
+    },
+    "Con Dao": {
+      "why": "Paradise islands. Pristine beaches, no crowds. Sea turtle nesting (July!). Snorkeling + diving. French prison history. Most beautiful beaches in Vietnam.",
+      "highlights": [
+        "Dat Doc Beach (FREE, 6km pristine)",
+        "Snorkeling tour (₹1,200)",
+        "Con Dao Prison (₹70)",
+        "Sea turtle watching (July season!)",
+        "Devastatingly beautiful sunsets"
+      ],
+      "budget_per_day": "₹2,000-3,500",
+      "transport": "45min, ₹2,500-4,000",
+      "region": "South Islands"
+    },
+    "Mui Ne": {
+      "why": "Desert + beach combo. Red sand dunes (sunset). White sand dunes (jeep tour). Kite surfing capital of Asia. Fishing village. Cheapest seafood.",
+      "highlights": [
+        "White Sand Dunes jeep tour (₹1,200)",
+        "Red Sand Dunes sunset (FREE)",
+        "Fairy Stream (FREE)",
+        "Kite surfing (₹1,500/2hr lesson)",
+        "Fishing village + seafood (₹200-400)"
+      ],
+      "budget_per_day": "₹800-1,500",
+      "transport": "4hr bus, ₹500",
+      "region": "South Coast"
+    },
+    "Ha Giang": {
+      "why": "Most spectacular scenery in Vietnam. Mountain loop motorbike ride. Ma Pi Leng Pass (best view in SE Asia). Less fog than Sapa. Authentic minority villages.",
+      "highlights": [
+        "Ha Giang Loop (3-day motorbike, ₹2,000)",
+        "Ma Pi Leng Pass (best view in Vietnam)",
+        "Dong Van Karst Plateau (UNESCO)",
+        "Lung Cu Flag Tower (northernmost point)",
+        "Authentic Hmong villages — no tourist crowds"
+      ],
+      "budget_per_day": "₹500-1,000",
+      "transport": "6hr bus from Hanoi, ₹600",
+      "region": "North"
     }
   },
   "high_risk_days": 12,
   "swap_needed": 8,
   "city_swaps_available": 1,
-  "summary": "12 high-risk days, 1 city swaps suggested, 11 cities compared",
+  "summary": "12 high-risk days, 1 city swaps suggested, 15 cities compared",
   "indoor_alternatives_count": 33,
   "source": "Weather forecast analysis + alternative city weather comparison"
 }
