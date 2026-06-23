@@ -302,6 +302,7 @@ a:hover { text-decoration: underline; }
   <h1>🇻🇳 Vietnam Solo Adventure</h1>
   <div class="dates">June 28 – July 10, 2026</div>
   <div class="route">Delhi → HCMC → Phu Quoc → Hanoi → Sapa → Hanoi → Delhi</div>
+  <div id="countdown" style="margin-top:12px;font-size:16px;font-weight:700;background:rgba(255,255,255,0.15);display:inline-block;padding:6px 16px;border-radius:100px;"></div>
 </div>
 
 <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌓</button>
@@ -312,6 +313,7 @@ a:hover { text-decoration: underline; }
   <button class="nav-tab" onclick="switchCity('phuquoc')"><span class="emoji">🏝️</span>Phu Quoc</button>
   <button class="nav-tab" onclick="switchCity('hanoi')"><span class="emoji">🍜</span>Hanoi</button>
   <button class="nav-tab" onclick="switchCity('overview')"><span class="emoji">🗺️</span>Overview</button>
+  <input id="searchBox" type="text" placeholder="🔍 Search any place..." oninput="doSearch()" style="margin-left:auto;padding:8px 14px;border-radius:100px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px;width:160px;transition:width 0.3s;" onfocus="this.style.width='220px'" onblur="this.style.width='160px'">
 </nav>
 
 <main class="container">
@@ -810,7 +812,80 @@ function addQuickSpend(){
 // ═══ INIT ═══
 renderChecklist();
 updateBudget();
-updateBudget(); // double call intentional for bonus
+updateBudget();
+
+// ═══ COUNTDOWN ═══
+(function tick(){
+  const trip = new Date('2026-06-28T00:00:00+05:30');
+  const now = new Date();
+  const diff = trip - now;
+  if(diff <= 0){ document.getElementById('countdown').textContent = '🎉 TRIP STARTED! Enjoy Vietnam!'; return; }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  document.getElementById('countdown').textContent = `⏳ ${d}d ${h}h ${m}m until Vietnam! 🇻🇳`;
+  setTimeout(tick,60000);
+})();
+
+// ═══ SEARCH ═══
+function doSearch(){
+  const q = document.getElementById('searchBox').value.toLowerCase().trim();
+  document.querySelectorAll('.city-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  if(!q) return;
+  // Show all panels and highlight matches
+  document.querySelectorAll('.city-panel').forEach(p=>{
+    p.classList.add('active');
+    const matches = p.textContent.toLowerCase().includes(q);
+    p.style.opacity = matches ? '1' : '0.3';
+  });
+  document.querySelectorAll('.time-entry,.day-card,.cafe-card,.hidden-gem').forEach(el=>{
+    const txt = el.textContent.toLowerCase();
+    if(txt.includes(q)){
+      el.style.background = 'rgba(251,191,36,0.15)';
+      el.style.borderRadius = '12px';
+      el.style.transition = '0.3s';
+      setTimeout(()=>{ el.style.background = ''; }, 2000);
+    }
+  });
+  // Scroll to first match
+  const first = document.querySelector('.time-entry[style*="background"],.cafe-card[style*="background"],.hidden-gem[style*="background"]');
+  if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ═══ ACCORDION ═══
+document.querySelectorAll('.day-card').forEach(card=>{
+  const header = card.querySelector('.day-header');
+  if(!header) return;
+  header.style.cursor = 'pointer';
+  header.addEventListener('click',function(){
+    card.classList.toggle('collapsed');
+  });
+  // Add collapse indicator
+  const indicator = document.createElement('span');
+  indicator.textContent = ' ▼';
+  indicator.style.fontSize = '12px';
+  indicator.style.color = 'var(--text-secondary)';
+  header.appendChild(indicator);
+});
+
+// Accordion CSS injection
+const accStyle = document.createElement('style');
+accStyle.textContent = `
+.day-card.collapsed .time-entry { display:none; }
+.day-card.collapsed .day-header span:last-child { transform:rotate(-90deg); display:inline-block; transition:0.2s; }
+.day-header span:last-child { transition:0.2s; }
+`;
+document.head.appendChild(accStyle);
+
+// Reset search when switching cities
+const origSwitch = switchCity;
+switchCity = function(city){
+  document.getElementById('searchBox').value = '';
+  document.querySelectorAll('.city-panel').forEach(p=>{ p.style.opacity = '1'; });
+  document.querySelectorAll('.time-entry,.day-card,.cafe-card,.hidden-gem').forEach(el=>{ el.style.background = ''; });
+  origSwitch(city);
+};
 </script>
 
 </body>
