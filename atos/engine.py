@@ -802,9 +802,231 @@ def agent_emergency():
 # AGENT 12: BACKUP PLAN (WEATHER-BASED ALTERNATIVES)
 # ═══════════════════════════════════════════
 def agent_backup():
-    """Generate weather-based backup plans for every day. Does NOT change the main plan — just prepares alternatives."""
-    print("[Backup Agent] Generating weather-based backup plans...")
+    """Generate weather-based backup plans + city swap/reorder recommendations."""
+    print("[Backup Agent] Generating weather-based backup plans + city swaps...")
     weather = _load("weather")
+    
+    # ═══════════════════════════════════════
+    # ALTERNATIVE CITIES — fetch real weather for comparison
+    # ═══════════════════════════════════════
+    alt_cities = {
+        "Da Nang": {"name": "Da Nang", "lat": 16.0544, "lon": 108.2022, "region": "Central",
+                    "why": "Central Vietnam's best beach city. My Khe Beach (Forbes top 10). Marble Mountains. Ba Na Hills (French village + cable car). Dragon Bridge breathes fire Sat/Sun.",
+                    "highlights": ["My Khe Beach (FREE, Forbes top 10)", "Ba Na Hills + Golden Bridge (₹1,400)", "Marble Mountains (₹105)", "Hoi An 30 min away", "Dragon Bridge fire show"],
+                    "budget_per_day": "₹1,500-2,500", "flight_from_hcmc": "1hr, ₹1,500-2,500"},
+        "Hoi An": {"name": "Hoi An", "lat": 15.8801, "lon": 108.3380, "region": "Central",
+                   "why": "UNESCO ancient town. Lantern-lit streets. Tailor-made clothes (24hr). Best food in Vietnam per many chefs. An Bang beach. Cooking classes.",
+                   "highlights": ["Ancient Town (FREE to walk, ₹280 ticket for 5 sites)", "Lantern night (every night)", "Cao Lau noodles (only in Hoi An)", "An Bang beach (FREE)", "Tailor suits 24hr (₹3,000-5,000)"],
+                   "budget_per_day": "₹1,000-2,000", "flight_from_hcmc": "1hr to Da Nang + 45min taxi"},
+        "Nha Trang": {"name": "Nha Trang", "lat": 12.2388, "lon": 109.1967, "region": "Central South",
+                      "why": "Beach resort city. VinWonders Nha Trang (bigger than Phu Quoc). Mud baths. Snorkeling islands. Cheapest beer in Vietnam. Great nightlife.",
+                      "highlights": ["VinWonders Nha Trang (₹2,800)", "Mud baths (₹350)", "Island snorkeling tour (₹1,200)", "6km beach (FREE)", "Sailing Club nightlife"],
+                      "budget_per_day": "₹1,200-2,200", "flight_from_hcmc": "1hr, ₹1,500-2,500"},
+        "Hue": {"name": "Hue", "lat": 16.4637, "lon": 107.5909, "region": "Central",
+                "why": "Imperial city. Citadel + Forbidden City. Royal tombs. Perfume River. Cheapest city in Vietnam for food. Rich history.",
+                "highlights": ["Imperial Citadel (₹175)", "Khai Dinh Tomb (₹105)", "Perfume River boat (₹350)", "Royal cuisine (Bun Bo Hue ₹100)", "Thien Mu Pagoda (FREE)"],
+                "budget_per_day": "₹800-1,500", "flight_from_hcmc": "1.5hr to Da Nang + 2hr train"},
+        "Phong Nha": {"name": "Phong Nha", "lat": 17.4689, "lon": 106.2960, "region": "Central North",
+                      "why": "World's largest cave systems. UNESCO national park. Paradise Cave (31km long). Dark Cave zip + mud bath. PERFECT rain backup — caves are INDOORS.",
+                      "highlights": ["Paradise Cave (₹700) — wood walkway, dry, stunning", "Dark Cave adventure (₹1,400) — zip + mud bath", "Phong Nha Cave boat (₹525)", "All weather-proof — caves are underground!"],
+                      "budget_per_day": "₹1,000-1,800", "flight_from_hanoi": "1hr to Dong Hoi + 45min taxi"},
+        "Dalat": {"name": "Dalat", "lat": 11.9404, "lon": 108.4583, "region": "Central Highlands",
+                  "why": "Mountain town like Sapa but DRIER in July. French colonial architecture. Waterfalls, flower gardens, crazy house. Pine forests. Cool weather (18-22°C).",
+                  "highlights": ["Crazy House (₹70)", "Datanla Waterfall + alpine coaster (₹280)", "Flower Park (₹35)", "Pongour Falls (₹35)", "Night market (FREE)"],
+                  "budget_per_day": "₹800-1,500", "flight_from_hcmc": "50min, ₹1,500-2,000"},
+    }
+    
+    # Fetch weather for alternative cities
+    print("[Backup Agent] Fetching weather for alternative cities...")
+    alt_weather = {}
+    trip_start_date = "2026-06-28"
+    trip_end_date = "2026-07-10"
+    
+    for city_key, city_info in alt_cities.items():
+        lat, lon = city_info["lat"], city_info["lon"]
+        url = (f"https://api.open-meteo.com/v1/forecast?"
+               f"latitude={lat}&longitude={lon}&"
+               f"daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&"
+               f"timezone=Asia/Ho_Chi_Minh&forecast_days=16")
+        data = fetch_json(url, timeout=15)
+        
+        if "error" in data:
+            alt_weather[city_key] = {"error": data["error"]}
+            continue
+        
+        daily = data.get("daily", {})
+        dates = daily.get("time", [])
+        precip = daily.get("precipitation_probability_max", [])
+        max_temps = daily.get("temperature_2m_max", [])
+        wcode = daily.get("weather_code", [])
+        
+        trip_forecast = []
+        for i, d in enumerate(dates):
+            if trip_start_date <= d <= trip_end_date:
+                rp = precip[i] if i < len(precip) and precip[i] is not None else 0
+                risk = "low"
+                if rp > 60: risk = "high"
+                elif rp > 40: risk = "medium"
+                trip_forecast.append({
+                    "date": d,
+                    "rain_prob": rp,
+                    "high": round(max_temps[i]) if i < len(max_temps) and max_temps[i] is not None else None,
+                    "condition": _wmo_to_text(wcode[i]) if i < len(wcode) and wcode[i] is not None else "Unknown",
+                    "risk": risk,
+                })
+        
+        avg_rain = sum(f["rain_prob"] for f in trip_forecast) / len(trip_forecast) if trip_forecast else 100
+        high_days = sum(1 for f in trip_forecast if f["risk"] == "high")
+        low_days = sum(1 for f in trip_forecast if f["risk"] == "low")
+        
+        alt_weather[city_key] = {
+            "forecasts": trip_forecast,
+            "avg_rain_prob": round(avg_rain),
+            "high_risk_days": high_days,
+            "low_risk_days": low_days,
+            "total_days": len(trip_forecast),
+            "weather_score": max(0, 100 - high_days * 8 - (len(trip_forecast) - high_days - low_days) * 4),
+        }
+    
+    # ═══════════════════════════════════════
+    # Compare original cities vs alternatives
+    # ═══════════════════════════════════════
+    original_avg_rain = {}
+    if weather and "cities" in weather:
+        for ck, cv in weather["cities"].items():
+            forecasts = cv.get("forecasts", [])
+            if forecasts:
+                original_avg_rain[ck] = round(sum(f["rain_prob"] for f in forecasts) / len(forecasts))
+    
+    # Build comparison table
+    city_comparison = []
+    
+    # Add original cities
+    for city, avg_rain in sorted(original_avg_rain.items(), key=lambda x: x[1]):
+        high_days = 0
+        if weather and "cities" in weather:
+            for f in weather["cities"].get(city, {}).get("forecasts", []):
+                if f.get("risk") == "high":
+                    high_days += 1
+        city_comparison.append({
+            "city": city,
+            "type": "original",
+            "avg_rain": avg_rain,
+            "high_risk_days": high_days,
+            "weather_score": max(0, 100 - high_days * 8),
+            "verdict": "KEEP" if avg_rain < 50 else ("MONITOR" if avg_rain < 70 else "SWAP"),
+        })
+    
+    # Add alternative cities
+    for city, w in sorted(alt_weather.items(), key=lambda x: x[1].get("weather_score", 0), reverse=True):
+        if "error" in w:
+            continue
+        city_comparison.append({
+            "city": city,
+            "type": "alternative",
+            "avg_rain": w["avg_rain_prob"],
+            "high_risk_days": w["high_risk_days"],
+            "weather_score": w["weather_score"],
+            "verdict": "BEST ALTERNATIVE" if w["weather_score"] > 60 else ("GOOD OPTION" if w["weather_score"] > 40 else "ALSO RAINY"),
+            "info": alt_cities[city],
+        })
+    
+    # ═══════════════════════════════════════
+    # City swap/reorder recommendations
+    # ═══════════════════════════════════════
+    swap_recommendations = []
+    
+    # Find worst original cities
+    worst_cities = [(c, r) for c, r in original_avg_rain.items() if r > 60]
+    worst_cities.sort(key=lambda x: x[1], reverse=True)
+    
+    # Find best alternative cities
+    best_alts = [(c, w) for c, w in alt_weather.items() 
+                 if "error" not in w and w["weather_score"] > 40]
+    best_alts.sort(key=lambda x: x[1]["weather_score"], reverse=True)
+    
+    def _get_transport(city_key):
+        """Get transport info for any city."""
+        c = alt_cities.get(city_key, {})
+        return c.get("flight_from_hcmc", c.get("flight_from_hanoi", c.get("flight_from_hanoi", "Flight available")))
+    
+    # Sapa swap
+    if "Sapa" in original_avg_rain and original_avg_rain["Sapa"] > 50:
+        sapa_avg = original_avg_rain["Sapa"]
+        for alt_city, alt_w in best_alts:
+            if alt_w["avg_rain_prob"] < sapa_avg - 15:
+                swap_recommendations.append({
+                    "original_city": "Sapa",
+                    "original_rain": sapa_avg,
+                    "alternative_city": alt_city,
+                    "alternative_rain": alt_w["avg_rain_prob"],
+                    "alternative_score": alt_w["weather_score"],
+                    "cost_impact": f"Flight to {alt_city} instead of Sapa bus. Similar cost ₹1,500-2,500.",
+                    "reasoning": f"Sapa avg rain: {sapa_avg}%. {alt_city} avg rain: {alt_w['avg_rain_prob']}%. {alt_city} is {sapa_avg - alt_w['avg_rain_prob']}% drier during your trip.",
+                    "what_you_get": alt_cities[alt_city]["why"],
+                    "highlights": alt_cities[alt_city]["highlights"],
+                    "how_to_get_there": _get_transport(alt_city),
+                    "budget": alt_cities[alt_city]["budget_per_day"],
+                    "urgency": "HIGH" if sapa_avg > 80 else "MEDIUM",
+                })
+                break  # One recommendation per city
+    
+    # Phu Quoc swap
+    if "Phu Quoc" in original_avg_rain and original_avg_rain["Phu Quoc"] > 60:
+        pq_avg = original_avg_rain["Phu Quoc"]
+        for alt_city, alt_w in best_alts:
+            if alt_w["avg_rain_prob"] < pq_avg - 15 and alt_city not in [s["alternative_city"] for s in swap_recommendations]:
+                swap_recommendations.append({
+                    "original_city": "Phu Quoc",
+                    "original_rain": pq_avg,
+                    "alternative_city": alt_city,
+                    "alternative_rain": alt_w["avg_rain_prob"],
+                    "alternative_score": alt_w["weather_score"],
+                    "cost_impact": f"Flight to {alt_city} instead of Phu Quoc. Similar cost ₹1,500-2,500.",
+                    "reasoning": f"Phu Quoc avg rain: {pq_avg}%. {alt_city} avg rain: {alt_w['avg_rain_prob']}%. {alt_city} is {pq_avg - alt_w['avg_rain_prob']}% drier.",
+                    "what_you_get": alt_cities[alt_city]["why"],
+                    "highlights": alt_cities[alt_city]["highlights"],
+                    "how_to_get_there": _get_transport(alt_city),
+                    "budget": alt_cities[alt_city]["budget_per_day"],
+                    "urgency": "HIGH" if pq_avg > 80 else "MEDIUM",
+                })
+                break
+    
+    # HCMC swap (only if really bad)
+    if "HCMC" in original_avg_rain and original_avg_rain["HCMC"] > 70:
+        hcmc_avg = original_avg_rain["HCMC"]
+        for alt_city, alt_w in best_alts:
+            if alt_w["avg_rain_prob"] < hcmc_avg - 20 and alt_city not in [s["alternative_city"] for s in swap_recommendations]:
+                swap_recommendations.append({
+                    "original_city": "HCMC",
+                    "original_rain": hcmc_avg,
+                    "alternative_city": alt_city,
+                    "alternative_rain": alt_w["avg_rain_prob"],
+                    "alternative_score": alt_w["weather_score"],
+                    "cost_impact": f"Fly to {alt_city} instead of staying in HCMC. ₹1,500-2,500.",
+                    "reasoning": f"HCMC avg rain: {hcmc_avg}%. {alt_city}: {alt_w['avg_rain_prob']}%. {hcmc_avg - alt_w['avg_rain_prob']}% drier.",
+                    "what_you_get": alt_cities[alt_city]["why"],
+                    "highlights": alt_cities[alt_city]["highlights"],
+                    "how_to_get_there": _get_transport(alt_city),
+                    "budget": alt_cities[alt_city]["budget_per_day"],
+                    "urgency": "MEDIUM",
+                })
+                break
+    
+    # Itinerary reorder suggestion — go to driest cities first
+    all_cities_ranked = sorted(city_comparison, key=lambda x: x.get("weather_score", 0), reverse=True)
+    driest_originals = [c for c in all_cities_ranked if c["type"] == "original"][:2]
+    wettest_originals = [c for c in all_cities_ranked if c["type"] == "original"][-2:]
+    
+    reorder_suggestion = {
+        "current_order": "HCMC → Phu Quoc → Hanoi → Sapa → Hanoi",
+        "issue": "Both Phu Quoc (monsoon) and Sapa (fog season) are in the WETTEST period. Central Vietnam is drier in July.",
+        "suggested_reorder": "HCMC (2 days) → Da Nang/Hoi An (3 days, DRIEST) → Hanoi (2 days) → Sapa (2 days) → Hanoi departure",
+        "why": "Central Vietnam (Da Nang/Hoi An) has the BEST weather in July. By going there during Jun 30-Jul 3 (instead of Phu Quoc), you get the driest window.",
+        "cost_impact": "Same number of flights. Da Nang flights ₹1,500-2,500 (same as Phu Quoc). Hoi An is cheaper than Phu Quoc (₹1,000/day vs ₹1,500/day).",
+        "what_you_lose": "VinWonders Phu Quoc, 4-island tour, cable car",
+        "what_you_gain": "Ba Na Hills Golden Bridge, Hoi An ancient town, My Khe Beach, Cao Lau noodles, tailor shopping — ALL in better weather",
+    }
     
     # Indoor/rain-proof alternatives per city
     indoor_alternatives = {
@@ -970,11 +1192,17 @@ def agent_backup():
         "timestamp": now_iso(),
         "day_backups": day_backups,
         "city_swaps": city_swaps,
+        "city_comparison": city_comparison,
+        "swap_recommendations": swap_recommendations,
+        "reorder_suggestion": reorder_suggestion,
+        "alt_city_weather": alt_weather,
+        "alt_cities_info": {k: {"why": v["why"], "highlights": v["highlights"], "budget_per_day": v["budget_per_day"], "transport": v.get("flight_from_hcmc", v.get("flight_from_hanoi", "Flight available")), "region": v["region"]} for k, v in alt_cities.items()},
         "high_risk_days": high_risk_days,
         "swap_needed": swap_needed,
-        "summary": f"{high_risk_days} days need backup plans, {swap_needed} may need city swaps",
+        "city_swaps_available": len(swap_recommendations),
+        "summary": f"{high_risk_days} high-risk days, {len(swap_recommendations)} city swaps suggested, {len(city_comparison)} cities compared",
         "indoor_alternatives_count": sum(len(v) for v in indoor_alternatives.values()),
-        "source": "Weather forecast analysis + indoor venue research",
+        "source": "Weather forecast analysis + alternative city weather comparison",
     }
     write_data("backup", output)
     print(f"[Backup Agent] {high_risk_days} high-risk days, {swap_needed} swap suggestions")

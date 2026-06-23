@@ -335,12 +335,20 @@ a:hover { text-decoration:underline; }
 
   <!-- BACKUP PLANS -->
   <div class="tab-content" id="tab-backup">
-    <div class="section-title"><span class="icon">🔄</span> Weather Backup Plans</div>
-    <div class="tip-box">Original plan is NEVER changed. These are backup alternatives if weather turns bad. Check the best time window before heading out.</div>
+    <div class="section-title"><span class="icon">🔄</span> Weather Backup Plans + City Swaps</div>
+    <div class="tip-box">Original plan is NEVER changed. These are automatic alternatives based on real weather data. Open to traveling anywhere in Vietnam.</div>
     <div class="stats-grid" id="backupStats"></div>
-    <div class="section-title"><span class="icon">🏙️</span> City Swap Suggestions</div>
-    <div id="citySwaps"></div>
-    <div class="section-title"><span class="icon">📋</span> Day-by-Day Backup Plans</div>
+    
+    <div class="section-title"><span class="icon">🔀</span> City Swap Recommendations (Real Weather Comparison)</div>
+    <div id="swapRecs"></div>
+    
+    <div class="section-title"><span class="icon">📊</span> City Weather Comparison</div>
+    <div id="cityComparison"></div>
+    
+    <div class="section-title"><span class="icon">🔄</span> Itinerary Reorder Suggestion</div>
+    <div id="reorderSuggestion"></div>
+    
+    <div class="section-title"><span class="icon">📋</span> Day-by-Day Indoor Backup Plans</div>
     <div id="backupList"></div>
   </div>
 
@@ -1117,26 +1125,107 @@ async function loadBackup() {
   if (!b) return;
 
   document.getElementById('backupStats').innerHTML = `
-    <div class="stat danger"><div class="label">High Risk Days</div><div class="value">${b.high_risk_days}</div><div class="sub">Need backup plan</div></div>
-    <div class="stat warn"><div class="label">City Swaps</div><div class="value">${b.swap_needed}</div><div class="sub">May need alt city</div></div>
-    <div class="stat accent"><div class="label">Indoor Alternatives</div><div class="value">${b.indoor_alternatives_count}</div><div class="sub">Rain-proof options</div></div>
-    <div class="stat"><div class="label">Summary</div><div class="value" style="font-size:14px;">${b.summary}</div></div>
+    <div class="stat danger"><div class="label">High Risk Days</div><div class="value">${b.high_risk_days}</div></div>
+    <div class="stat warn"><div class="label">City Swaps</div><div class="value">${b.city_swaps_available || 0}</div></div>
+    <div class="stat accent"><div class="label">Cities Compared</div><div class="value">${(b.city_comparison||[]).length}</div></div>
+    <div class="stat"><div class="label">Indoor Alts</div><div class="value">${b.indoor_alternatives_count}</div></div>
   `;
 
-  // City swaps
-  const swaps = b.city_swaps || {};
-  document.getElementById('citySwaps').innerHTML = Object.entries(swaps).map(([city, s]) => 
-    `<div class="card" style="border-left:4px solid var(--warn);">
-      <div class="card-title">🔄 ${city} — Swap Option</div>
-      <div style="font-size:13px;line-height:1.8;">
-        <div>⚠️ <strong>Problem:</strong> ${s.problem}</div>
-        <div>📍 <strong>Alternative 1:</strong> ${s.alternative}</div>
-        <div>📍 <strong>Alternative 2:</strong> ${s.alternative2}</div>
-        <div>💰 <strong>Cost impact:</strong> ${s.cost_impact}</div>
-        <div class="tip-box accent" style="margin-top:6px;">📋 <strong>Verdict:</strong> ${s.verdict}</div>
-      </div>
-    </div>`
-  ).join('');
+  // City swap recommendations — the big new feature
+  const swaps = b.swap_recommendations || [];
+  if (swaps.length) {
+    document.getElementById('swapRecs').innerHTML = swaps.map(s => {
+      const urgencyColor = s.urgency === 'HIGH' ? 'var(--danger)' : 'var(--warn)';
+      const urgencyBg = s.urgency === 'HIGH' ? 'var(--danger-dim)' : 'var(--warn-dim)';
+      return `<div class="card" style="border-left:4px solid ${urgencyColor};margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+          <div style="font-size:16px;font-weight:800;">
+            ${s.original_city} <span style="color:var(--muted);">(${s.original_rain}% rain)</span>
+            → ${s.alternative_city} <span style="color:var(--accent);">(${s.alternative_rain}% rain)</span>
+          </div>
+          <span style="background:${urgencyBg};color:${urgencyColor};padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;">${s.urgency} PRIORITY</span>
+        </div>
+        <div style="margin-top:8px;font-size:13px;line-height:1.6;">
+          <div style="color:var(--accent);font-weight:600;">📊 ${s.reasoning}</div>
+          <div style="margin-top:6px;">📍 ${s.what_you_get}</div>
+          <div style="margin-top:6px;font-size:12px;color:var(--muted);">🎯 Top highlights:</div>
+          <ul style="font-size:12px;color:var(--text);margin:4px 0 6px 20px;line-height:1.8;">
+            ${(s.highlights||[]).map(h => `<li>${h}</li>`).join('')}
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+            <span class="badge badge-accent">✈️ ${s.how_to_get_there}</span>
+            <span class="badge badge-warn">💰 ${s.budget}</span>
+            <span class="badge badge-danger">💵 ${s.cost_impact}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    document.getElementById('swapRecs').innerHTML = '<div class="card"><div style="color:var(--accent);font-size:13px;">✅ No city swaps needed — current cities have acceptable weather.</div></div>';
+  }
+
+  // City comparison table
+  const comparison = b.city_comparison || [];
+  if (comparison.length) {
+    document.getElementById('cityComparison').innerHTML = `
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);">
+              <th style="padding:10px;text-align:left;">City</th>
+              <th style="padding:10px;text-align:center;">Type</th>
+              <th style="padding:10px;text-align:center;">Avg Rain</th>
+              <th style="padding:10px;text-align:center;">High Risk Days</th>
+              <th style="padding:10px;text-align:center;">Weather Score</th>
+              <th style="padding:10px;text-align:center;">Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${comparison.map(c => {
+              const scoreColor = c.weather_score > 60 ? 'var(--accent)' : c.weather_score > 40 ? 'var(--warn)' : 'var(--danger)';
+              const rainColor = c.avg_rain < 40 ? 'var(--accent)' : c.avg_rain < 70 ? 'var(--warn)' : 'var(--danger)';
+              const verdictBg = c.verdict.includes('KEEP') || c.verdict.includes('BEST') ? 'var(--accent-dim)' :
+                               c.verdict.includes('MONITOR') || c.verdict.includes('GOOD') ? 'var(--warn-dim)' : 'var(--danger-dim)';
+              const verdictColor = c.verdict.includes('KEEP') || c.verdict.includes('BEST') ? 'var(--accent)' :
+                                   c.verdict.includes('MONITOR') || c.verdict.includes('GOOD') ? 'var(--warn)' : 'var(--danger)';
+              return `<tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:8px 10px;font-weight:600;">${c.city}</td>
+                <td style="padding:8px 10px;text-align:center;font-size:10px;color:var(--muted);">${c.type}</td>
+                <td style="padding:8px 10px;text-align:center;color:${rainColor};font-weight:700;">${c.avg_rain}%</td>
+                <td style="padding:8px 10px;text-align:center;">${c.high_risk_days}</td>
+                <td style="padding:8px 10px;text-align:center;color:${scoreColor};font-weight:700;">${c.weather_score}/100</td>
+                <td style="padding:8px 10px;text-align:center;"><span style="background:${verdictBg};color:${verdictColor};padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;">${c.verdict}</span></td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }
+
+  // Reorder suggestion
+  const rs = b.reorder_suggestion;
+  if (rs) {
+    document.getElementById('reorderSuggestion').innerHTML = `
+      <div class="card" style="border-left:4px solid var(--blue);">
+        <div style="font-size:14px;font-weight:700;margin-bottom:8px;">🔄 Suggested Itinerary Reorder</div>
+        <div style="font-size:13px;line-height:1.8;">
+          <div><strong style="color:var(--danger);">Current:</strong> ${rs.current_order}</div>
+          <div><strong style="color:var(--accent);">Suggested:</strong> ${rs.suggested_reorder}</div>
+        </div>
+        <div style="margin-top:8px;padding:8px;background:var(--bg2);border-radius:8px;font-size:12px;color:var(--warn);">⚠️ ${rs.issue}</div>
+        <div style="margin-top:6px;font-size:12px;color:var(--muted);line-height:1.5;">💡 ${rs.why}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
+          <span class="badge badge-accent">💰 ${rs.cost_impact}</span>
+        </div>
+        <div style="margin-top:8px;font-size:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:var(--danger-dim);padding:8px;border-radius:6px;"><strong style="color:var(--danger);">❌ Lose:</strong> ${rs.what_you_lose}</div>
+          <div style="background:var(--accent-dim);padding:8px;border-radius:6px;"><strong style="color:var(--accent);">✅ Gain:</strong> ${rs.what_you_gain}</div>
+        </div>
+      </div>`;
+  }
+
+  // Old city swaps (keep for backward compat)
+  document.getElementById('citySwaps') ? document.getElementById('citySwaps').innerHTML = '' : null;
 
   // Day-by-day backups
   document.getElementById('backupList').innerHTML = (b.day_backups || []).map(d => {
@@ -1146,12 +1235,11 @@ async function loadBackup() {
     let backupHtml = '';
     if (d.backup_plan && d.backup_plan.length) {
       backupHtml = `<div style="margin-top:8px;">
-        <div style="font-size:12px;font-weight:700;color:var(--warn);margin-bottom:6px;">🏠 Indoor Alternatives (if weather turns bad):</div>
-        ${d.backup_plan.map(a => `<div class="card" style="padding:10px;margin-bottom:6px;">
-          <div style="font-size:13px;font-weight:600;">${a.name}</div>
-          <div style="font-size:11px;color:var(--muted);">${a.duration} • ${a.cost}</div>
-          ${a.note ? `<div style="font-size:11px;color:var(--accent);margin-top:2px;">${a.note}</div>` : ''}
-          ${a.maps ? `<a href="${a.maps}" target="_blank" style="font-size:11px;">📍 Maps</a>` : ''}
+        <div style="font-size:12px;font-weight:700;color:var(--warn);margin-bottom:6px;">🏠 Indoor Alternatives:</div>
+        ${d.backup_plan.map(a => `<div class="card" style="padding:8px;margin-bottom:4px;">
+          <div style="font-size:12px;font-weight:600;">${a.name}</div>
+          <div style="font-size:10px;color:var(--muted);">${a.duration} · ${a.cost}</div>
+          ${a.note ? `<div style="font-size:10px;color:var(--accent);margin-top:2px;">${a.note}</div>` : ''}
         </div>`).join('')}
       </div>`;
     }
@@ -1160,38 +1248,29 @@ async function loadBackup() {
     if (d.swap_suggestion) {
       const s = d.swap_suggestion;
       swapHtml = `<div class="card" style="border-left:4px solid var(--danger);margin-top:8px;">
-        <div style="font-size:13px;font-weight:700;color:var(--danger);">🔄 CITY SWAP RECOMMENDED</div>
-        <div style="font-size:12px;margin-top:4px;">${s.alternative}</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">💰 ${s.cost_impact}</div>
+        <div style="font-size:12px;font-weight:700;color:var(--danger);">🔄 CITY SWAP</div>
+        <div style="font-size:11px;margin-top:2px;">${s.alternative}</div>
       </div>`;
     }
 
     const window = d.best_window || {};
     let windowHtml = '';
     if (window.start) {
-      windowHtml = `<div style="font-size:12px;margin-top:4px;">
-        🌤️ <strong>Best outdoor window:</strong> ${window.start}–${window.end} (${window.hours}h clear)
-        ${window.note ? `<br><span style="color:var(--warn)">⚠️ ${window.note}</span>` : ''}
-      </div>`;
+      windowHtml = `<div style="font-size:11px;margin-top:4px;">🌤️ Best window: ${window.start}–${window.end} (${window.hours}h)</div>`;
     }
 
-    return `<div class="day-card" style="margin-bottom:8px;">
+    return `<div class="day-card" style="margin-bottom:6px;">
       <div class="day-header" onclick="this.nextElementSibling.classList.toggle('open')" style="cursor:pointer;">
-        <div class="day-num">Day ${d.day+1}</div>
+        <div class="day-num" style="font-size:14px;">D${d.day+1}</div>
         <div class="day-info">
           <div class="day-city">${d.date} ${d.dow} — ${d.city}</div>
           <div class="day-label">${d.label}</div>
         </div>
-        <div class="day-meta">
-          ${riskBadge}
-          <span style="font-size:11px;color:var(--muted);">🌧️ ${d.rain_prob}%</span>
-        </div>
+        <div class="day-meta">${riskBadge}<span style="font-size:10px;color:var(--muted);">🌧️ ${d.rain_prob}%</span></div>
       </div>
       <div class="day-body open">
-        <div class="${d.main_risk === 'high' ? 'tip-box' : 'tip-box accent'}">${d.recommendation}</div>
-        ${windowHtml}
-        ${swapHtml}
-        ${backupHtml}
+        <div class="${d.main_risk === 'high' ? 'tip-box' : 'tip-box accent'}" style="font-size:11px;padding:6px 10px;">${d.recommendation}</div>
+        ${windowHtml}${swapHtml}${backupHtml}
       </div>
     </div>`;
   }).join('');
