@@ -241,6 +241,22 @@ body {
   color: var(--teal); padding: 10px 16px; border-radius: 12px;
   font-size: 13px; font-weight: 500; margin: 8px 0;
 }
+/* Priority badges */
+.badge-must { 
+  display:inline-block; background:#c2410c; color:#fff; 
+  padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700;
+  margin-left:6px; vertical-align:middle;
+}
+.badge-rec { 
+  display:inline-block; background:#d4a574; color:#222; 
+  padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700;
+  margin-left:6px; vertical-align:middle;
+}
+.badge-opt { 
+  display:inline-block; background:var(--border); color:var(--text-secondary); 
+  padding:2px 8px; border-radius:4px; font-size:10px; font-weight:600;
+  margin-left:6px; vertical-align:middle;
+}
 
 a { color: var(--teal); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -336,7 +352,7 @@ a:hover { text-decoration: underline; }
   </div>
   <div class="time-entry"><div class="time-stamp">5:30 AM</div><div class="time-content"><strong>⏰ Wake up — EARLY!</strong></div></div>
   <div class="time-entry"><div class="time-stamp">6:05 AM</div><div class="time-content"><strong>🍳 VIETTREKKING COFFEE — Breakfast</strong><div class="detail">📍 <a href="https://maps.google.com/?q=22.3342,103.8399" target="_blank">🗺️ Maps</a> | ⭐4.3 | Opens 6AM<br>🥩 Braised Pork Belly (₹358) + "Sapa White Cloud" coffee (₹183-217)<br>🌄 "Café in the Clouds" — Muong Hoa funicular passes by!</div></div></div>
-  <div class="time-entry"><div class="time-stamp">7:30 AM</div><div class="time-content"><strong>🚡 FANSIPAN CABLE CAR — 10 MIN QUEUE!</strong><div class="detail">📍 <a href="https://maps.google.com/?q=22.3343,103.8404" target="_blank">🗺️ Maps</a><br>💰 Combo ₹2,805 | Klook e-ticket skips counter queue<br>🚂 Muong Hoa Funicular → 🚡 Cable Car (15 min, Guinness 6,292m!) → 600 steps → 🏔️ SUMMIT 3,143m!</div></div></div>
+  <div class="time-entry"><div class="time-stamp">7:30 AM</div><div class="time-content"><strong>🚡 FANSIPAN CABLE CAR — 10 MIN QUEUE!</strong> <span class="badge-must">MUST</span><div class="detail">📍 <a href="https://maps.google.com/?q=22.3343,103.8404" target="_blank">🗺️ Maps</a><br>💰 Combo ₹2,805 | Klook e-ticket skips counter queue<br>🚂 Muong Hoa Funicular → 🚡 Cable Car (15 min, Guinness 6,292m!) → 600 steps → 🏔️ SUMMIT 3,143m!</div></div></div>
   <div class="time-entry"><div class="time-stamp">12:30 PM</div><div class="time-content"><strong>🚌 BUS TO HANOI</strong><div class="detail">VIP sleeper ₹800 | 6 hours | Arrive Hanoi 7PM</div></div></div>
 </div>
 
@@ -456,7 +472,7 @@ a:hover { text-decoration: underline; }
 
   <div class="time-entry"><div class="time-stamp">7:30 AM</div><div class="time-content"><strong>🍜 PHASE 1 — Pho + Bus Tour</strong><div class="detail">⭐ Pho Minh (63/6 Pasteur, D3) | <a href="https://maps.google.com/?q=63+Pasteur+District+3+HCMC" target="_blank">🗺️ Maps</a> — hidden gem since 1940s! ₹246-316<br>8:15AM: 🚌 Klook Bus Tour — Opera House start, ₹509, ⭐4.4 | <a href="https://maps.google.com/?q=Saigon+Opera+House+HCMC" target="_blank">🗺️ Maps</a><br>9:30AM: 🚶 Nguyen Hue Walking St — FREE, 800m promenade | <a href="https://maps.google.com/?q=Nguyen+Hue+Walking+Street+HCMC" target="_blank">🗺️ Maps</a></div></div></div>
   
-  <div class="time-entry"><div class="time-stamp">10:45 AM</div><div class="time-content"><strong>🍜 PHASE 2 — MICHELIN Bib Gourmand!</strong><div class="detail">🦀 BANH CANH CUA BA BA — 84/6 Nguyen Bieu, D5 | <a href="https://maps.google.com/?q=84/6+Nguyen+Bieu+District+5+HCMC" target="_blank">🗺️ Maps</a><br>💰 ₹158-351 | ⭐4.3 | MICHELIN Bib Gourmand 2026!<br>"Silky broth filled with crab leg meat & egg ribbons" — MICHELIN Guide<br>⚠️ Hidden in alley! SELLS OUT BY 1PM!</div></div></div>
+  <div class="time-entry"><div class="time-stamp">10:45 AM</div><div class="time-content"><strong>🍜 PHASE 2 — MICHELIN Bib Gourmand!</strong> <span class="badge-must">MUST</span><div class="detail">🦀 BANH CANH CUA BA BA — 84/6 Nguyen Bieu, D5 | <a href="https://maps.google.com/?q=84/6+Nguyen+Bieu+District+5+HCMC" target="_blank">🗺️ Maps</a><br>💰 ₹158-351 | ⭐4.3 | MICHELIN Bib Gourmand 2026!<br>"Silky broth filled with crab leg meat & egg ribbons" — MICHELIN Guide<br>⚠️ Hidden in alley! SELLS OUT BY 1PM!</div></div></div>
 
   <div class="time-entry"><div class="time-stamp">12:45 PM</div><div class="time-content"><strong>🎨 PHASE 3 — Thu Duc Cluster</strong><div class="detail">🎨 Van Gogh METASHOW — 4F Thiso Mall Sala | <a href="https://maps.google.com/?q=Thiso+Mall+Sala+Thu+Duc+HCMC" target="_blank">🗺️ Maps</a> | ₹878 | ⭐4.6<br>☕ Noong Oi Cafe (Mini Sapa) — ⭐4.8 (4,661 reviews!) + 🚶 15 min walk → Chuyen Cua Tung</div></div></div>
 
@@ -469,7 +485,7 @@ a:hover { text-decoration: underline; }
   <div class="day-header"><div><div class="day-title">📅 June 30 (Mon) — DEPARTURE MORNING</div><div class="day-date">💰 ~₹500</div></div></div>
   <div class="time-entry"><div class="time-stamp">7:00 AM</div><div class="time-content"><strong>🍜 Pho Le — local secret!</strong><div class="detail">📍 413-415 Nguyen Trai, D5 | <a href="https://maps.google.com/?q=413+Nguyen+Trai+District+5+HCMC" target="_blank">🗺️ Maps</a><br>Tourists go to Pho 2000 — locals come here! 70K-100K VND</div></div></div>
   <div class="time-entry"><div class="time-stamp">8:00 AM</div><div class="time-content"><strong>🚶 Nguyen Hue — peaceful morning photos</strong><div class="detail">Golden light, zero crowds! <a href="https://maps.google.com/?q=Nguyen+Hue+Walking+Street+HCMC" target="_blank">🗺️ Maps</a></div></div></div>
-  <div class="time-entry"><div class="time-stamp">9:00 AM</div><div class="time-content"><strong>☕ Mien Thao Moc Cafe (optional)</strong><div class="detail">D11 garden zen | ⭐4.8 (3,898 reviews). OR skip, enjoy D1 cafes</div></div></div>
+  <div class="time-entry"><div class="time-stamp">9:00 AM</div><div class="time-content"><strong>☕ Mien Thao Moc Cafe (optional)</strong> <span class="badge-opt">OPTIONAL</span><div class="detail">D11 garden zen | ⭐4.8 (3,898 reviews). OR skip, enjoy D1 cafes</div></div></div>
   <div class="time-entry"><div class="time-stamp">11:00 AM</div><div class="time-content"><strong>🚕 Tan Son Nhat Airport → Fly Phu Quoc!</strong><div class="detail">Grab ₹350-500, ~30 min</div></div></div>
 </div>
 
@@ -497,7 +513,7 @@ a:hover { text-decoration: underline; }
 
 <div class="day-card">
   <div class="day-header"><div><div class="day-title">📅 July 1 (Monday) — 4 ISLANDS + SEA WALKING</div><div class="day-date">💰 ~₹5,000 (book locally!)</div></div></div>
-  <div class="time-entry"><div class="time-stamp">7AM-5:30PM</div><div class="time-content"><strong>🚢 4 Island Tour + Sea Walking</strong><div class="detail">📍 Depart: An Thoi Port | <a href="https://maps.google.com/?q=An+Thoi+Port+Phu+Quoc" target="_blank">🗺️ Maps</a><br>💰 ₹4,200-5,250 LOCAL booking (NOT ₹8,250 online!)<br>🏝️ Hon Thom, May Rut, Gam Ghi, Mong Tay<br>🚡 World's longest oversea cable car included<br>🤿 Sea Walking — "standing on ocean floor with fish circling"<br>⚠️ July: rough seas 2-5 days/month, larger boats safer!</div></div></div>
+  <div class="time-entry"><div class="time-stamp">7AM-5:30PM</div><div class="time-content"><strong>🚢 4 Island Tour + Sea Walking</strong> <span class="badge-must">MUST</span><div class="detail">📍 Depart: An Thoi Port | <a href="https://maps.google.com/?q=An+Thoi+Port+Phu+Quoc" target="_blank">🗺️ Maps</a><br>💰 ₹4,200-5,250 LOCAL booking (NOT ₹8,250 online!)<br>🏝️ Hon Thom, May Rut, Gam Ghi, Mong Tay<br>🚡 World's longest oversea cable car included<br>🤿 Sea Walking — "standing on ocean floor with fish circling"<br>⚠️ July: rough seas 2-5 days/month, larger boats safer!</div></div></div>
   <div class="time-entry"><div class="time-stamp">5:30PM</div><div class="time-content"><strong>🌅 SUNSET TOWN + KISS BRIDGE</strong><div class="detail"><a href="https://maps.google.com/?q=Sunset+Town+Phu+Quoc" target="_blank">🗺️ Maps</a> | FREE with cable car ticket | Clock Tower, Pompeii Ruins, Dragon Stairs</div></div></div>
   <div class="time-entry"><div class="time-stamp">Night</div><div class="time-content"><strong>🏮 DUONG DONG NIGHT MARKET</strong><div class="detail"><a href="https://maps.google.com/?q=Duong+Dong+Night+Market+Phu+Quoc" target="_blank">🗺️ Maps</a> | 150+ stalls, seafood, souvenirs | ⭐5/5 for solo travelers<br>⚠️ Avoid stalls with English menus — 2-3x price!</div></div></div>
 </div>
@@ -542,7 +558,7 @@ a:hover { text-decoration: underline; }
 <div class="day-card">
   <div class="day-header"><div><div class="day-title">📅 July 4 (Fri) — MORNING BLITZ (before Sapa bus)</div><div class="day-date">💰 ~₹500</div></div></div>
   <div class="time-entry"><div class="time-stamp">6:00 AM</div><div class="time-content"><strong>🌅 Hoan Kiem Lake — sunrise + Tai Chi</strong><div class="detail"><a href="https://maps.google.com/?q=Hoan+Kiem+Lake+Hanoi" target="_blank">🗺️ Maps</a> | Best photos — zero tourists! Golden light on Turtle Tower.</div></div></div>
-  <div class="time-entry"><div class="time-stamp">6:45 AM</div><div class="time-content"><strong>🍜 PHỞ THÌN 13 LÒ ĐÚC — #1 Hanoi Pho!</strong><div class="detail"><a href="https://maps.google.com/?q=13+Lo+Duc+Hai+Ba+Trung+Hanoi" target="_blank">🗺️ Maps</a> | 💰 ₹246-316 | 🔥 GARLIC STIR-FRIED BEEF — unique!</div></div></div>
+  <div class="time-entry"><div class="time-stamp">6:45 AM</div><div class="time-content"><strong>🍜 PHỞ THÌN 13 LÒ ĐÚC — #1 Hanoi Pho!</strong> <span class="badge-must">MUST</span><div class="detail"><a href="https://maps.google.com/?q=13+Lo+Duc+Hai+Ba+Trung+Hanoi" target="_blank">🗺️ Maps</a> | 💰 ₹246-316 | 🔥 GARLIC STIR-FRIED BEEF — unique!</div></div></div>
   <div class="time-entry"><div class="time-stamp">7:30 AM</div><div class="time-content"><strong>☕ GIANG CAFE — Birthplace of Egg Coffee (1946)</strong><div class="detail"><a href="https://maps.google.com/?q=39+Nguyen+Huu+Huan+Hoan+Kiem+Hanoi" target="_blank">🗺️ Maps</a> | 💰 ₹123-158 | ⭐4.8 (22K reviews!)<br>"Down a small alleyway... surrounded by locals on miniature chairs" — TripAdvisor</div></div></div>
   <div class="time-entry"><div class="time-stamp">8:15 AM</div><div class="time-content"><strong>🥖 BANH MI 25 — grab for bus!</strong><div class="detail"><a href="https://maps.google.com/?q=25+Hang+Ca+Hoan+Kiem+Hanoi" target="_blank">🗺️ Maps</a> | 👨‍🎤 Justin Bieber ate here! 💰 ₹88-158 | ⭐4.7 (5,769 reviews)</div></div></div>
   <div class="time-entry"><div class="time-stamp">9:30 AM</div><div class="time-content"><strong>🚌 Sapa bus pickup</strong><div class="detail">Free hotel pickup by all bus operators. 6hr to Sapa.</div></div></div>
@@ -558,7 +574,7 @@ a:hover { text-decoration: underline; }
   <div class="day-header"><div><div class="day-title">📅 July 8 (Tue) — FULL HANOI MAXIMUM DAY</div><div class="day-date">💰 ~₹2,000</div></div></div>
   <div class="time-entry"><div class="time-stamp">7:30 AM</div><div class="time-content"><strong>🍜 Pho Bat Dan — most traditional</strong><div class="detail">📍 49 Bat Dan | Self-service, no-frills local vibe</div></div></div>
   <div class="time-entry"><div class="time-stamp">9:00 AM</div><div class="time-content"><strong>🏛️ Temple of Literature (1070 AD)</strong><div class="detail"><a href="https://maps.google.com/?q=Temple+of+Literature+Hanoi" target="_blank">🗺️ Maps</a> | Vietnam's first university | ₹246 | ⭐4.5</div></div></div>
-  <div class="time-entry"><div class="time-stamp">11:00 AM</div><div class="time-content"><strong>🚂 TRAIN STREET CAFE — 11:50 AM TRAIN!</strong><div class="detail"><a href="https://maps.google.com/?q=Train+Street+Phung+Hung+Hanoi" target="_blank">🗺️ Maps</a> | 💰 Coffee ₹105-228<br>✅ OPEN 2026! 🚂 Train at 11:50 AM!</div></div></div>
+  <div class="time-entry"><div class="time-stamp">11:00 AM</div><div class="time-content"><strong>🚂 TRAIN STREET CAFE — 11:50 AM TRAIN!</strong> <span class="badge-must">MUST</span><div class="detail"><a href="https://maps.google.com/?q=Train+Street+Phung+Hung+Hanoi" target="_blank">🗺️ Maps</a> | 💰 Coffee ₹105-228<br>✅ OPEN 2026! 🚂 Train at 11:50 AM!</div></div></div>
   <div class="time-entry"><div class="time-stamp">2:00 PM</div><div class="time-content"><strong>🎨 X SPACE IMMERSIVE</strong><div class="detail"><a href="https://maps.google.com/?q=X+Space+Immersive+Vincom+Royal+City+Hanoi" target="_blank">🗺️ Maps</a> | 💰 ₹878-1,050 | ⭐4.8<br>⚠️ B2 floor, hard to find — ask mall staff!</div></div></div>
   <div class="time-entry"><div class="time-stamp">7:30 PM</div><div class="time-content"><strong>🚂 TRAIN STREET — 7:50 PM BEST TRAIN!</strong><div class="detail">★ SUNSET SLOT: lanterns + train headlight through dusk</div></div></div>
   <div class="time-entry"><div class="time-stamp">8:30 PM</div><div class="time-content"><strong>🐟 Chả Cá Thăng Long (SKIP Cha Ca La Vong!)</strong><div class="detail"><a href="https://maps.google.com/?q=21+Duong+Thanh+Hoan+Kiem+Hanoi" target="_blank">🗺️ Maps</a> | ⭐4.5 | 120K-180K VND — what locals prefer!</div></div></div>
