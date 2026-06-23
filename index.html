@@ -6,953 +6,1172 @@
 <title>🇻🇳 Vietnam 2026 — Solo Adventure</title>
 <style>
 :root{
-  --bg:#080c12; --card:rgba(18,25,35,0.85); --border:rgba(255,255,255,0.06);
-  --text:#aab5c0; --head:#e8ecf1; --accent:#5dade2; --accent2:#48c9b0;
-  --green:#52c999; --orange:#f0a04b; --red:#e5535b; --rain:#7ec8e3;
-  --glow:0 0 30px rgba(93,173,226,0.08);
+  --bg:#080c12;--card:rgba(16,22,32,0.9);--border:rgba(255,255,255,0.06);
+  --text:#a3aeb9;--head:#e4e9f0;--accent:#5dade2;--accent2:#48c9b0;
+  --green:#52c999;--orange:#f0a04b;--red:#e5535b;--rain:#7ec8e3;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  font-family:'Inter','Segoe UI',system-ui,sans-serif;
   background:var(--bg);
-  background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(93,173,226,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(72,201,176,0.04) 0%, transparent 60%);
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(93,173,226,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(72,201,176,0.04) 0%,transparent 60%);
   color:var(--text);line-height:1.6;min-height:100vh;
 }
-.container{max-width:1100px;margin:0 auto;padding:0 16px 40px}
+.container{max-width:1100px;margin:0 auto;padding:0 16px 60px}
 
-/* ── HERO ── */
 .hero{
   position:relative;border-radius:0 0 24px 24px;overflow:hidden;
-  margin:0 -16px 24px;padding:60px 24px 40px;text-align:center;
+  margin:0 -16px 24px;padding:50px 24px 35px;text-align:center;
   background:linear-gradient(135deg,#0d1b2a 0%,#1b2838 40%,#0a1628 100%);
   border-bottom:1px solid var(--border);
 }
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=70') center/cover;
-  opacity:0.15;
-}
-.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);color:#fff;position:relative;font-weight:800;letter-spacing:-0.5px}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=70') center/cover;opacity:0.12}
+.hero h1{font-size:clamp(1.8rem,5vw,2.6rem);color:#fff;position:relative;font-weight:800}
 .hero .sub{color:var(--accent);font-size:1rem;position:relative;margin-top:6px}
-.hero .dates{color:var(--text);font-size:.85rem;position:relative;margin-top:4px;opacity:.7}
-.countdown{
-  display:inline-block;margin-top:16px;padding:10px 24px;
-  background:rgba(93,173,226,0.1);border:1px solid rgba(93,173,226,0.2);
-  border-radius:30px;color:var(--accent);font-size:.9rem;position:relative;
-  backdrop-filter:blur(10px);
-}
+.hero .meta{color:var(--text);font-size:.8rem;position:relative;margin-top:4px;opacity:.7}
+.countdown{display:inline-block;margin-top:14px;padding:10px 24px;background:rgba(93,173,226,0.1);border:1px solid rgba(93,173,226,0.2);border-radius:30px;color:var(--accent);font-size:.9rem;position:relative}
 
-/* ── CITY OVERVIEW ── */
-.overview-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:12px;margin:20px 0;
-}
-.ov-card{
-  background:var(--card);border:1px solid var(--border);border-radius:14px;
-  padding:18px 14px;text-align:center;cursor:pointer;transition:all .25s;
-  position:relative;overflow:hidden;backdrop-filter:blur(12px);
-}
-.ov-card:hover{transform:translateY(-3px);border-color:rgba(93,173,226,0.3);box-shadow:var(--glow)}
-.ov-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+/* Overview */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:18px 0}
+.ov-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.ov-card:hover{transform:translateY(-3px);border-color:rgba(93,173,226,0.3)}
+.ov-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .ov-card:nth-child(1)::before{background:linear-gradient(90deg,#e5535b,#f0a04b)}
 .ov-card:nth-child(2)::before{background:linear-gradient(90deg,#48c9b0,#5dade2)}
 .ov-card:nth-child(3)::before{background:linear-gradient(90deg,#f0a04b,#e5535b)}
 .ov-card:nth-child(4)::before{background:linear-gradient(90deg,#5dade2,#48c9b0)}
 .ov-card:nth-child(5)::before{background:linear-gradient(90deg,#e5535b,#f0a04b)}
-.ov-emoji{font-size:2.2rem;margin-bottom:6px}
-.ov-city{font-size:.9rem;font-weight:700;color:var(--head);letter-spacing:.3px}
-.ov-dates{font-size:.7rem;color:var(--accent);margin:3px 0;text-transform:uppercase;letter-spacing:1px}
-.ov-stats{display:flex;gap:5px;justify-content:center;margin:8px 0;flex-wrap:wrap}
-.ov-stat{font-size:.65rem;padding:3px 9px;border-radius:12px;background:rgba(255,255,255,0.04);color:var(--text);white-space:nowrap}
-.ov-warn{font-size:.65rem;color:var(--orange);margin-top:6px;font-weight:500}
-.ov-card.active-overview{border-color:var(--accent);box-shadow:0 0 24px rgba(93,173,226,0.2)}
+.ov-emoji{font-size:2rem;margin-bottom:4px}
+.ov-city{font-size:.85rem;font-weight:700;color:var(--head)}
+.ov-dates{font-size:.68rem;color:var(--accent);margin:2px 0;text-transform:uppercase;letter-spacing:.5px}
+.ov-warn{font-size:.62rem;color:var(--orange);margin-top:4px;font-weight:500}
+.ov-card.active-overview{border-color:var(--accent);box-shadow:0 0 20px rgba(93,173,226,0.15)}
 
-/* ── TABS ── */
-.tabs{
-  display:flex;gap:5px;flex-wrap:wrap;margin:18px 0;
-  position:sticky;top:8px;z-index:100;padding:6px;
-  background:rgba(8,12,18,0.9);backdrop-filter:blur(12px);
-  border-radius:14px;border:1px solid var(--border);
-}
-.tab{
-  padding:8px 14px;border-radius:10px;border:1px solid transparent;
-  background:transparent;color:var(--text);cursor:pointer;
-  font-size:.82rem;transition:.2s;white-space:nowrap;font-weight:500;
-}
+/* Tabs */
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin:16px 0;position:sticky;top:8px;z-index:100;padding:5px;background:rgba(8,12,18,0.9);backdrop-filter:blur(12px);border-radius:12px;border:1px solid var(--border)}
+.tab{padding:7px 12px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--text);cursor:pointer;font-size:.8rem;transition:.2s;white-space:nowrap;font-weight:500}
 .tab:hover{background:rgba(255,255,255,0.03)}
 .tab.active{background:rgba(93,173,226,0.12);border-color:rgba(93,173,226,0.3);color:#fff}
+.search-bar{width:100%;padding:12px 18px;border-radius:12px;border:1px solid var(--border);background:rgba(16,22,32,0.6);color:var(--text);font-size:.9rem;margin-bottom:14px;backdrop-filter:blur(8px)}
+.search-bar:focus{outline:none;border-color:var(--accent)}
 
-/* ── SEARCH ── */
-.search-bar{
-  width:100%;padding:12px 18px;border-radius:12px;
-  border:1px solid var(--border);background:rgba(18,25,35,0.6);
-  color:var(--text);font-size:.9rem;margin-bottom:16px;
-  backdrop-filter:blur(8px);transition:.2s;
-}
-.search-bar:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(93,173,226,0.1)}
-
-/* ── DAY CARDS ── */
-.day-grid{display:grid;gap:16px}
-.day-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;transition:.25s;
-  backdrop-filter:blur(12px);
-}
-.day-card:hover{border-color:rgba(93,173,226,0.25);box-shadow:var(--glow)}
-.day-header{
-  padding:16px 20px;display:flex;align-items:center;gap:14px;
-  border-bottom:1px solid var(--border);flex-wrap:wrap;
-  background:rgba(0,0,0,0.15);
-}
-.day-photo{
-  width:80px;height:56px;border-radius:8px;object-fit:cover;
-  border:1px solid var(--border);flex-shrink:0;
-  transition:.2s;
-}
-.day-card:hover .day-photo{border-color:rgba(93,173,226,0.4)}
-.day-num{font-size:2rem;min-width:52px;text-align:center;opacity:.9}
-.day-info{flex:1;min-width:160px}
-.day-city{font-size:1.05rem;font-weight:700;color:var(--head)}
-.day-label{font-size:.82rem;color:#8899aa;margin-top:1px}
-.weather-badge{
-  display:flex;align-items:center;gap:6px;padding:7px 16px;
-  border-radius:20px;font-size:.78rem;font-weight:600;white-space:nowrap;
-}
-.risk-low{background:rgba(82,201,153,0.1);color:var(--green);border:1px solid rgba(82,201,153,0.2)}
-.risk-medium{background:rgba(240,160,75,0.1);color:var(--orange);border:1px solid rgba(240,160,75,0.2)}
-.risk-high{background:rgba(240,130,100,0.1);color:#f08264;border:1px solid rgba(240,130,100,0.2)}
-.risk-critical{background:rgba(229,83,91,0.12);color:var(--red);border:1px solid rgba(229,83,91,0.25);animation:pulse 2.5s infinite}
+/* Day cards */
+.day-grid{display:grid;gap:14px}
+.day-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.25s;backdrop-filter:blur(12px)}
+.day-card:hover{border-color:rgba(93,173,226,0.2)}
+.day-header{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:rgba(0,0,0,0.12)}
+.day-photo{width:70px;height:50px;border-radius:8px;object-fit:cover;border:1px solid var(--border);flex-shrink:0}
+.day-num{font-size:1.8rem;min-width:44px;text-align:center}
+.day-info{flex:1;min-width:140px}
+.day-city{font-size:1rem;font-weight:700;color:var(--head)}
+.day-label{font-size:.78rem;color:#8899aa;margin-top:1px}
+.wx-badge{display:flex;align-items:center;gap:5px;padding:6px 14px;border-radius:20px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.wx-low{background:rgba(82,201,153,0.1);color:var(--green);border:1px solid rgba(82,201,153,0.2)}
+.wx-med{background:rgba(240,160,75,0.1);color:var(--orange);border:1px solid rgba(240,160,75,0.2)}
+.wx-high{background:rgba(240,130,100,0.1);color:#f08264;border:1px solid rgba(240,130,100,0.2)}
+.wx-crit{background:rgba(229,83,91,0.12);color:var(--red);border:1px solid rgba(229,83,91,0.25);animation:pulse 2.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
 
-.weather-detail{
-  padding:10px 20px;background:rgba(0,0,0,0.2);
-  font-size:.8rem;display:flex;gap:14px;flex-wrap:wrap;align-items:center;
-}
-.weather-detail .tip{flex:1;min-width:200px}
-.weather-detail .tip::before{content:'💡 '}
+.wx-detail{padding:10px 18px;background:rgba(0,0,0,0.15);font-size:.78rem;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.wx-detail .tip{flex:1;min-width:180px}.wx-detail .tip::before{content:'💡 '}
 .rain-chance{color:var(--rain);font-weight:600;white-space:nowrap}
 
-/* ── TIMELINE ── */
-.timeline{padding:6px 20px 16px}
-.timeline-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03);align-items:flex-start}
-.timeline-item:last-child{border-bottom:none}
-.ti-time{min-width:70px;font-size:.75rem;color:var(--accent);font-weight:600;padding-top:2px;opacity:.85}
-.ti-content{flex:1}
-.ti-name{font-size:.88rem;color:var(--head);font-weight:500}
-.ti-detail{font-size:.76rem;color:#8899aa;margin-top:2px}
-.ti-link{
-  display:inline-block;font-size:.73rem;color:var(--accent);text-decoration:none;
-  margin-top:4px;padding:3px 10px;border-radius:6px;
-  background:rgba(93,173,226,0.08);border:1px solid rgba(93,173,226,0.15);
-  transition:.2s;
-}
-.ti-link:hover{background:rgba(93,173,226,0.18);border-color:rgba(93,173,226,0.35)}
-.ti-link::before{content:'🗺️ '}
+/* Timeline */
+.timeline{padding:4px 18px 12px}
+.tl-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.025);align-items:flex-start}
+.tl-item:last-child{border-bottom:none}
+.tl-time{min-width:66px;font-size:.73rem;color:var(--accent);font-weight:600;padding-top:2px;opacity:.85}
+.tl-body{flex:1}
+.tl-name{font-size:.85rem;color:var(--head);font-weight:500}
+.tl-price{font-size:.73rem;color:var(--accent2);margin-top:1px}
+.tl-quote{font-size:.72rem;color:#8899aa;margin-top:2px;font-style:italic;padding:4px 10px;border-left:2px solid rgba(93,173,226,0.3);background:rgba(93,173,226,0.03);border-radius:0 6px 6px 0}
+.tl-tips{font-size:.72rem;color:#8899aa;margin-top:3px}
+.tl-tips::before{content:'💡 '}
+.tl-order{font-size:.72rem;color:var(--green);margin-top:2px}
+.tl-order::before{content:'✅ ORDER: '}
+.tl-skip{font-size:.72rem;color:var(--red);margin-top:1px}
+.tl-skip::before{content:'🚫 SKIP: '}
+.tl-maps{display:inline-block;font-size:.7rem;color:var(--accent);text-decoration:none;margin-top:3px;padding:3px 9px;border-radius:5px;background:rgba(93,173,226,0.07);border:1px solid rgba(93,173,226,0.12);transition:.2s}
+.tl-maps:hover{background:rgba(93,173,226,0.16)}
+.tl-maps::before{content:'🗺️ '}
 
-.backup{
-  background:rgba(229,83,91,0.06);border-left:3px solid var(--red);
-  padding:10px 16px;margin:6px 20px 16px;border-radius:0 10px 10px 0;font-size:.78rem;
-}
-.backup strong{color:var(--red)}
-
-/* ── UTILITY PANELS ── */
-.utils{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px}
-.util-btn{
-  width:44px;height:44px;border-radius:50%;border:1px solid var(--border);
-  background:rgba(18,25,35,0.9);color:var(--text);font-size:1.2rem;
-  cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;
-  backdrop-filter:blur(12px);
-}
-.util-btn:hover{background:rgba(93,173,226,0.15);border-color:var(--accent);transform:scale(1.08)}
-.panel{
-  display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:rgba(15,23,35,0.97);border:1px solid var(--border);border-radius:18px;
-  padding:28px;z-index:300;max-width:480px;width:92%;max-height:72vh;overflow-y:auto;
-  box-shadow:0 24px 80px rgba(0,0,0,.6);backdrop-filter:blur(20px);
-}
+/* Utilities */
+.utils{position:fixed;bottom:20px;right:20px;z-index:200;display:flex;flex-direction:column;gap:8px}
+.util-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:rgba(16,22,32,0.9);color:var(--text);font-size:1.1rem;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
+.util-btn:hover{background:rgba(93,173,226,0.15);border-color:var(--accent)}
+.panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(12,20,32,0.98);border:1px solid var(--border);border-radius:16px;padding:24px;z-index:300;max-width:460px;width:92%;max-height:70vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5);backdrop-filter:blur(16px)}
 .panel.show{display:block}
-.panel h3{color:var(--head);margin-bottom:14px;font-size:1.1rem}
-.panel label{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:.85rem;cursor:pointer}
-.panel input[type=checkbox]{width:17px;height:17px;accent-color:var(--accent)}
-.panel-close{float:right;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer;opacity:.6}
-.panel-close:hover{opacity:1}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:250;backdrop-filter:blur(2px)}
+.panel h3{color:var(--head);margin-bottom:12px;font-size:1.05rem}
+.panel label{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:.82rem;cursor:pointer}
+.panel input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent)}
+.panel-close{float:right;background:none;border:none;color:var(--text);font-size:1.3rem;cursor:pointer;opacity:.6}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:250;backdrop-filter:blur(2px)}
 .overlay.show{display:block}
-.budget-table{width:100%;font-size:.82rem;border-collapse:collapse}
-.budget-table td,.budget-table th{padding:7px 12px;border-bottom:1px solid var(--border);text-align:left}
-.budget-table th{color:var(--accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
-.budget-table .total{color:var(--green);font-weight:700}
-.emergency-item{padding:9px 0;border-bottom:1px solid var(--border);font-size:.82rem}
-.emergency-item strong{color:var(--head)}
+.btable{width:100%;font-size:.8rem;border-collapse:collapse}
+.btable td,.btable th{padding:6px 10px;border-bottom:1px solid var(--border);text-align:left}
+.btable th{color:var(--accent);font-size:.7rem;text-transform:uppercase}
+.btable .total{color:var(--green);font-weight:700}
+.em-item{padding:8px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.em-item strong{color:var(--head)}
 
-/* ── RESPONSIVE ── */
 @media(max-width:640px){
-  .hero{padding:40px 16px 28px}
-  .hero h1{font-size:1.5rem}
-  .overview-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .day-header{flex-direction:column;align-items:flex-start;gap:8px}
-  .weather-detail{flex-direction:column;gap:4px}
-  .ti-time{min-width:56px;font-size:.7rem}
+  .hero{padding:35px 14px 24px}
+  .overview-grid{grid-template-columns:repeat(2,1fr);gap:7px}
+  .day-header{flex-direction:column;align-items:flex-start}
+  .tl-time{min-width:52px;font-size:.68rem}
 }
-
-/* ── SMOOTH SCROLL ── */
 html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- ═══ HERO ═══ -->
 <div class="hero">
 <h1>🇻🇳 VIETNAM SOLO TRIP</h1>
 <div class="sub">Ho Chi Minh City → Phu Quoc → Hanoi → Sapa → Halong Bay</div>
-<div class="dates">June 28 – July 10, 2026 • 13 Days • 52+ Places • 1 INR = 285 VND</div>
+<div class="meta">June 28 – July 10, 2026 • 13 Days • 55+ Enriched Locations • 1 INR = 285 VND</div>
 <div class="countdown" id="countdown">Loading...</div>
 </div>
 
-<!-- ═══ CITY OVERVIEW ═══ -->
 <div class="overview-grid">
-<div class="ov-card" onclick="scrollToCity('HCMC')">
-<div class="ov-emoji">🏙️</div>
-<div class="ov-city">HO CHI MINH CITY</div>
-<div class="ov-dates">Jun 28 – 30 • 2 Nights</div>
-<div class="ov-stats">
-<span class="ov-stat">☔ 17 rain days</span>
-<span class="ov-stat">⭐ Michelin</span>
-<span class="ov-stat">🦪 Food Street</span>
-</div>
-<div class="ov-warn">⚠️ Land 9PM Jun 28 → Bui Vien peak!</div>
-</div>
-<div class="ov-card" onclick="scrollToCity('Phu Quoc')">
-<div class="ov-emoji">🏝️</div>
-<div class="ov-city">PHU QUOC</div>
-<div class="ov-dates">Jun 30 – Jul 3 • 3 Nights</div>
-<div class="ov-stats">
-<span class="ov-stat">🤿 Sea Walking</span>
-<span class="ov-stat">🎢 VinWonders</span>
-<span class="ov-stat">💰 Save ₹4,000</span>
-</div>
-<div class="ov-warn">⚠️ 4 Island Tour cancels rough seas!</div>
-</div>
-<div class="ov-card" onclick="scrollToCity('Hanoi')">
-<div class="ov-emoji">🍜</div>
-<div class="ov-city">HANOI</div>
-<div class="ov-dates">Jul 3 • 4 • 7 • 8 • 10</div>
-<div class="ov-stats">
-<span class="ov-stat">🍜 #1 Pho</span>
-<span class="ov-stat">🥚 Egg Coffee</span>
-<span class="ov-stat">🚂 Train Street</span>
-</div>
-<div class="ov-warn">⚠️ Halong Bay typhoon risk Jul 9!</div>
-</div>
-<div class="ov-card" onclick="scrollToCity('Sapa')">
-<div class="ov-emoji">⛰️</div>
-<div class="ov-city">SAPA</div>
-<div class="ov-dates">Jul 4 – 7 • 3 Nights</div>
-<div class="ov-stats">
-<span class="ov-stat">🏔️ Fansipan</span>
-<span class="ov-stat">☕ 6 Cafes</span>
-<span class="ov-stat">🌧️ Wettest!</span>
-</div>
-<div class="ov-warn">⚠️ Cable car closes in heavy rain!</div>
-</div>
-<div class="ov-card" onclick="scrollToCity('Halong')">
-<div class="ov-emoji">🚢</div>
-<div class="ov-city">HALONG BAY</div>
-<div class="ov-dates">Jul 9 • Day Trip</div>
-<div class="ov-stats">
-<span class="ov-stat">☀️ 7hr sun!</span>
-<span class="ov-stat">🕳️ Cave</span>
-<span class="ov-stat">🏖️ Island</span>
-</div>
-<div class="ov-warn">⚠️ TYPHOON — cruise may cancel!</div>
-</div>
+<div class="ov-card" onclick="scrollToCity('HCMC')"><div class="ov-emoji">🏙️</div><div class="ov-city">HO CHI MINH CITY</div><div class="ov-dates">Jun 28–30 • 2 Nights</div><div class="ov-warn">⚠️ Land 9PM → Bui Vien Sunday peak!</div></div>
+<div class="ov-card" onclick="scrollToCity('PhuQuoc')"><div class="ov-emoji">🏝️</div><div class="ov-city">PHU QUOC</div><div class="ov-dates">Jun 30–Jul 3 • 3 Nights</div><div class="ov-warn">⚠️ 4 Island Tour cancels in rough seas!</div></div>
+<div class="ov-card" onclick="scrollToCity('Hanoi')"><div class="ov-emoji">🍜</div><div class="ov-city">HANOI</div><div class="ov-dates">Jul 3,4,7,8,10</div><div class="ov-warn">⚠️ Halong Bay typhoon risk Jul 9!</div></div>
+<div class="ov-card" onclick="scrollToCity('Sapa')"><div class="ov-emoji">⛰️</div><div class="ov-city">SAPA</div><div class="ov-dates">Jul 4–7 • 3 Nights</div><div class="ov-warn">⚠️ 22/31 rain days — cable car may close!</div></div>
+<div class="ov-card" onclick="scrollToCity('Halong')"><div class="ov-emoji">🚢</div><div class="ov-city">HALONG BAY</div><div class="ov-dates">Jul 9 • Day Trip</div><div class="ov-warn">⚠️ TYPHOON — cruise may cancel!</div></div>
 </div>
 
-<!-- ═══ TABS ═══ -->
 <div class="tabs">
-<button class="tab active" onclick="filterDays('all',this)">📅 All Days</button>
+<button class="tab active" onclick="filterDays('all',this)">📅 All</button>
 <button class="tab" onclick="filterDays('HCMC',this)">🏙️ HCMC</button>
-<button class="tab" onclick="filterDays('Phu Quoc',this)">🏝️ Phu Quoc</button>
+<button class="tab" onclick="filterDays('PhuQuoc',this)">🏝️ Phu Quoc</button>
 <button class="tab" onclick="filterDays('Hanoi',this)">🍜 Hanoi</button>
 <button class="tab" onclick="filterDays('Sapa',this)">⛰️ Sapa</button>
 <button class="tab" onclick="filterDays('Halong',this)">🚢 Halong</button>
 </div>
 
-<input type="text" class="search-bar" placeholder="🔍 Search anything — pho, cafe, beach, Fansipan, Obama..." oninput="searchDays(this.value)">
+<input class="search-bar" placeholder="🔍 Search — pho, cafe, beach, Fansipan, Obama, Banh Mi..." oninput="searchDays(this.value)">
 
 <div class="day-grid" id="dayGrid">
 
-<div class="day-card" data-city="HCMC">
+<div class="day-card" data-city="Ho Chi Minh City">
 <div class="day-header">
-<div class="day-num">🌙</div>
+<div class="day-num">🏙️</div>
 <div class="day-info">
-<div class="day-city">HCMC</div>
-<div class="day-label">Day 0 • Jun 28 — Night Arrival 🌙</div>
+<div class="day-city">Ho Chi Minh City</div>
+<div class="day-label">Day 1 • June 28, 2026 (Sunday) — HCMC — Night Arrival + Bui Vien Peak</div>
 </div>
-<div class="weather-badge risk-low">☀️ 20%</div>
 <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-med">🟡 Rain: 17/31 rain days monthly</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 20%</span>
-<span class="tip">Sunday = Bui Vien peak night! Streets pedestrian-only, neon everywhere</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 31°C/24°C | 🌧️ 17/31 rain days monthly</span>
+<span class="tip">Sunday = Bui Vien Walking Street PEAK NIGHT. Streets closed to vehicles. Maximum energy.</span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">9:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🛬 Land Tan Son Nhat (SGN)</div>
-
-
+<div class="tl-item">
+<div class="tl-time">9:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🛬 Land at Tan Son Nhat Airport (SGN)</div>
+<div class="tl-price">💰 grabToD1: ₹350-500 (100K-143K VND) | duration: ~30 min to District 1</div>
+<a href="https://maps.google.com/?q=Tan+Son+Nhat+Airport+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Buy local SIM at airport: Viettel/Mobifone ~150K-200K VND for 30-day data</div>
+<div class="tl-tips">Download Grab app BEFORE landing — set up with credit card</div>
+<div class="tl-skip">Airport taxis — use Grab only (transparent pricing, no scams)</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Night temps 24°C — comfortable. No rain expected evening. ⏰ N/A — arrival time fixed</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🏨 Check-in District 1</div>
-
-
+<div class="tl-item">
+<div class="tl-time">10:45 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍺 BUI VIEN WALKING STREET — Sunday Peak Night!</div>
+<div class="tl-price">💰 biaHoi: 15,000-25,000 VND (₹53-88) per cup | grilledSkewers: 10,000-25,000 VND (₹35-88) per skewer | banhMi: 20,000-40,000 VND (₹70-140)</div>
+<a href="https://maps.google.com/?q=Bui+Vien+Walking+Street+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Bui Vien Walking Street is Saigon's most famous nightlife hotspot, glowing with neon lights, lively live music, sizzling street food stalls, and rooftop bars. — YourVietnamTravel"</div>
+<div class="tl-quote">"This is definitely one for the books experience and a must try if you are in HCM. Apart from the food which are great, the vibe is unmatched. — Klook Reviewer"</div>
+<div class="tl-tips">Sunday = maximum energy, streets closed to vehicles — best night of the week!</div>
+<div class="tl-tips">Look for Banh Mi Huynh Hoa (26 Le Thi Rieng) — Bourdain-approved, best in Saigon</div>
+<div class="tl-order">Bia hoi (fresh draught beer), grilled beef skewers (xien nuong), banh xeo (crispy crepe), goi cuon (fresh spring rolls), banh trang nuong (Vietnamese pizza)</div>
+<div class="tl-skip">Pre-mixed cocktails from aggressive touts — often watered down. Rooftop bars with 'cover charge' — many are free entry.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Evenings clear after afternoon rain. Umbrella unnecessary — streets are covered/close to shelters. ⏰ Sunday 9PM-1AM — peak energy, all stalls open, maximum crowd</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:45 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍺 BUI VIEN WALKING ST — Sunday peak!</div>
-<div class="ti-detail">Beer ₹53-88, skewers, live music. Streets closed to vehicles!</div>
-<a href="https://maps.google.com/?q=Bui+Vien+Walking+Street+HCMC" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
 </div>
-</div></div></div>
-
-<div class="day-card" data-city="HCMC">
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹500-800
+</div>
+</div>
+<div class="day-card" data-city="Ho Chi Minh City">
 <div class="day-header">
-<div class="day-num">⛅</div>
+<div class="day-num">🏙️</div>
 <div class="day-info">
-<div class="day-city">HCMC</div>
-<div class="day-label">Day 1 • Jun 29 — Full Day Explorer</div>
+<div class="day-city">Ho Chi Minh City</div>
+<div class="day-label">Day 2 • June 29, 2026 (Monday) — HCMC — Full Day: 10 Spots Across 5 Districts</div>
 </div>
-<div class="weather-badge risk-medium">⛅  60%</div>
-<img src="https://images.unsplash.com/photo-1535957998253-26ae1ef29506?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-med">🟡 Rain: 17/31 rain days. Afternoon thunderstorms 2-5 PM predictable.</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 60%</span>
-<span class="tip">Outdoor 7AM-2PM. Museum/cafe crawl after. Rain is predictable like clockwork!</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 31°C/24°C | 🌧️ 17/31 rain days. Afternoon thunderstorms 2-5 PM predictable.</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:30 AM</div>
-<div class="ti-content">
-<div class="ti-name">🍜 Pho breakfast — Pho Minh (since 1940s)</div>
-<div class="ti-detail">70K-90K VND (₹246-316)</div>
-
+<div class="tl-item">
+<div class="tl-time">7:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 PHO MINH — Hidden Gem Breakfast Since 1940s</div>
+<div class="tl-price">💰 phoBowl: 70,000-90,000 VND (₹246-316)</div>
+<a href="https://maps.google.com/?q=63/6+Pasteur+District+3+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Unlike the touristy Pho 2000, Pho Minh is where locals have been coming for generations. The broth is deep, clear, and unforgettable."</div>
+<div class="tl-tips">Hidden down a narrow alley off Pasteur — look for the small sign</div>
+<div class="tl-tips">OR try Pho Hoa Pasteur (260C Pasteur) — famous since 1968, try pho tai lan (rare beef)</div>
+<div class="tl-order">Pho tai (rare beef pho) or pho tai nam (rare beef + brisket)</div>
+<div class="tl-skip">Pho 2000 (tourist trap near Ben Thanh Market — Bill Clinton ate there, quality declined)</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning reliably dry. Sit inside (most pho shops are semi-open). ⏰ 6:00-7:30 AM — freshest broth, no queue</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">8:30 AM</div>
-<div class="ti-content">
-<div class="ti-name">🎫 Hop-On Hop-Off Bus @ Opera House</div>
-<div class="ti-detail">145K VND (₹509) ⭐4.4 — Full city loop</div>
-<a href="https://maps.google.com/?q=Saigon+Opera+House+HCMC" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">8:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🎫 KLOOK HOP-ON HOP-OFF BUS TOUR — City Orientation</div>
+<div class="tl-price">💰 ticket: 145,000 VND (₹509) via Klook</div>
+<a href="https://maps.google.com/?q=Saigon+Opera+House+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Overall, this was a fun and relaxing way to explore Ho Chi Minh City. The booking process on Klook was very easy, and ticket redemption near the Opera House was straightforward. — Klook Verified Revie"</div>
+<div class="tl-quote">"A fantastic overview of Saigon's landmarks. The open-top deck gives wide, unobstructed sightlines. Great for orientation on day one. — SaigonGuides.com"</div>
+<div class="tl-tips">Do the FULL loop first without hopping off — orient yourself, then revisit favorites</div>
+<div class="tl-tips">Sit on the open-top deck for best photos (but bring hat/sunscreen!)</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">Night tour version — less visibility of landmarks. Day tour superior for orientation.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning is dry. Open-top deck — wear sunscreen SPF 50+ (UV 11+). After 11 AM heat becomes intense — duck inside lower deck. ⏰ 8:00-9:30 AM — cooler, fewer passengers, best light for photos</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:45 AM</div>
-<div class="ti-content">
-<div class="ti-name">🍜 BANH CANH CUA BA BA — MICHELIN 2026!</div>
-<div class="ti-detail">45K-100K VND ⭐4.3 — Crab in silky broth. SELLS OUT 1PM!</div>
-<a href="https://maps.google.com/?q=84/6+Nguyen+Bieu+Quan+5+HCMC" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">9:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🚶 NGUYEN HUE WALKING STREET — 800m Promenade</div>
+<div class="tl-price">💰 entry: FREE | nearbyCafes: 35,000-70,000 VND (₹123-246)</div>
+<a href="https://maps.google.com/?q=Nguyen+Hue+Walking+Street+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Nguyen Hue Walking Street is a vibrant pedestrian promenade stretching for nearly 800 meters from the Saigon River to the City Hall. It features street performances, cafes, rooftop bars, and fountain "</div>
+<div class="tl-quote">"One of the best places in Ho Chi Minh City for a relaxed experience. Fully lit and police-patrolled at all hours, with food and open seating accessible to all ages. — VietnamTour.in"</div>
+<div class="tl-tips">Morning: Best photos without crowds, golden light on colonial buildings</div>
+<div class="tl-tips">Evening: Street performers, fountain light shows, families</div>
+<div class="tl-order">Ca phe sua da (iced milk coffee) from any cafe lining the street</div>
+<div class="tl-skip">Overpriced restaurants directly on the walking street — go one block back for better value</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning: HOT but dry. Bring water. Afternoon: duck into cafes if rain hits. ⏰ 8:00-10:00 AM for peaceful photos. 6:00-8:00 PM for vibrant atmosphere.</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">12:45 PM</div>
-<div class="ti-content">
-<div class="ti-name">🎨 VAN GOGH METASHOW — 30+ immersive rooms</div>
-<div class="ti-detail">250K VND (₹878) ⭐4.6</div>
-<a href="https://maps.google.com/?q=Thiso+Mall+Sala+Thu+Duc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">10:45 AM</div>
+<div class="tl-body">
+<div class="tl-name">🦀 BANH CANH CUA BA BA — MICHELIN Bib Gourmand 2026!</div>
+<div class="tl-price">💰 smallBowl: 45,000 VND (₹158) | largeBowl: 70,000 VND (₹246) | clayPot: 100,000 VND (₹351)</div>
+<a href="https://maps.google.com/?q=84/6+Nguyen+Bieu+Quan+5+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Tucked deep inside a narrow alley on Nguyen Bieu Street in District 5, Banh Canh Cua Ba Ba is the kind of place I almost walked past. I had to squeeze past motorbikes and a stream of locals just to ge"</div>
+<div class="tl-quote">"The menu focuses on a single dish: banh canh cua, a vivid orange crab rice noodle soup. With a zesty green chilli-lime sauce on the side, the silky broth is generously filled with fish cakes, crab leg"</div>
+<div class="tl-tips">⚠️ CRITICAL: Arrive BEFORE 11:30 AM — sells out by 1 PM sharp</div>
+<div class="tl-tips">Hidden in alley — look for the small sign, squeeze past motorbikes</div>
+<div class="tl-order">Banh canh cua (crab noodle soup) — clay pot version if very hungry. Add the chili-lime sauce generously.</div>
+<div class="tl-skip">Don't come looking for other dishes — this place does ONE thing perfectly</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Indoor/semi-covered seating. Rain not a factor. D5 is slightly less flood-prone than D1. ⏰ 10:00-11:00 AM — beat the lunch rush, guaranteed not sold out yet</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">5:45 PM</div>
-<div class="ti-content">
-<div class="ti-name">🦪 VINH KHANH FOOD ST — Seafood dinner</div>
-<div class="ti-detail">Oysters ₹105-175 ⭐4.5 — Time Out UK top 31</div>
-<a href="https://maps.google.com/?q=Vinh+Khanh+Food+Street+D4+HCMC" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">12:45 PM</div>
+<div class="tl-body">
+<div class="tl-name">🎨 VAN GOGH METASHOW — Immersive Art Experience</div>
+<div class="tl-price">💰 standard: 250,000 VND (₹878) | vip: ~350,000 VND (₹1,228)</div>
+<a href="https://maps.google.com/?q=Thiso+Mall+Sala+10+Mai+Chi+Tho+Thu+Duc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"I had an amazing experience at Metashow Art Lighting featuring Van Gogh at Thiso Mall! The whole setup was immersive, creative, and unlike anything I've tried before. — Klook Verified Review"</div>
+<div class="tl-quote">"This Metashow is highly recommended. It is visually stunning, creatively executed, and offers a unique way to experience one of the world's most celebrated artists. — TripAdvisor"</div>
+<div class="tl-tips">Book on Klook for slight discount + skip-the-line e-ticket</div>
+<div class="tl-tips">Weekday afternoon = empty! No crowds, best photo opportunities</div>
+<div class="tl-order">Standard Experience ticket is sufficient — VIP adds only 1 extra room</div>
+<div class="tl-skip">VIP upgrade unless you're a hardcore Van Gogh fan — marginal difference</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⭐ PERFECT RAIN BACKUP! Fully indoor, air-conditioned. Ideal 2-5 PM during peak thunderstorm window. ⏰ 12:00-3:00 PM weekdays — EMPTY. Weekends get crowded with local families.</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">7:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍺 BUI VIEN — Round 2!</div>
-<div class="ti-detail">Banh Mi Huynh Hoa = Bourdain-approved!</div>
-<a href="https://maps.google.com/?q=Bui+Vien+Walking+Street+HCMC" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
-</div>
-</div></div></div>
-
-<div class="day-card" data-city="Phu Quoc">
-<div class="day-header">
-<div class="day-num">✈️</div>
-<div class="day-info">
-<div class="day-city">Phu Quoc</div>
-<div class="day-label">Day 2 • Jun 30 — Arrival + Grand World</div>
-</div>
-<div class="weather-badge risk-medium">⛅  45%</div>
-<img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=600&q=80" class="day-photo" alt="" loading="lazy">
-</div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 45%</span>
-<span class="tip">Evening FREE shows at Grand World: Venice water show 9:30PM + Laser 10:45PM</span>
-</div>
-<div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🕳️ Cu Chi Tunnels (morning best)</div>
-<div class="ti-detail">Skip if muddy. Half-day, ~₹500</div>
-
+<div class="tl-item">
+<div class="tl-time">2:45 PM</div>
+<div class="tl-body">
+<div class="tl-name">☕ NOONG OI CAFE — Miniature Sapa in Saigon</div>
+<div class="tl-price">💰 drinks: 45,000-75,000 VND (₹158-263) | acousticMusic: FREE at night</div>
+<a href="https://maps.google.com/?q=283/2+Linh+Dong+Thu+Duc+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Noong Oi Cafe is not for you if you want a quiet corner and a laptop. This cafe is exclusively outdoor, and while this adds to the rustic charm, it means you are at the mercy of the Saigon heat. — Tra"</div>
+<div class="tl-quote">"Tiem Ca Phe Noong Oi recreates a miniature Sapa with wood, bamboo, and greenery across 2,000 sq m. The venue features koi ponds, mist effects, and mountain-style decor. — Instagram/Cotrang.org"</div>
+<div class="tl-tips">⚠️ Entirely OUTDOOR — brutal in midday heat. Go after 3 PM when it starts cooling.</div>
+<div class="tl-tips">Combine with Chuyen Cua Tung Cafe — they're only 1 km apart (15 min walk!)</div>
+<div class="tl-order">Ca phe sua da (iced milk coffee) or coconut coffee. The drinks are solid, but you're here for the ambiance.</div>
+<div class="tl-skip">Don't come expecting a work-friendly cafe — no quiet corners, no laptops</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ Rain sensitive! Outdoor only. Skip if afternoon thunderstorm hits. Check sky before Grab-ing over. ⏰ 3:00-5:00 PM — afternoon light through bamboo, cooling temperatures</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">2:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">✈️ Fly HCMC → Phu Quoc (1hr)</div>
-<div class="ti-detail">~₹2,500-3,500</div>
-
+<div class="tl-item">
+<div class="tl-time">4:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🐟 OASIS CAFE — Dine with Koi Fish at Your Feet</div>
+<div class="tl-price">💰 coffee: 45,000-65,000 VND (₹158-228)</div>
+<a href="https://maps.google.com/?q=176/1B+Le+Van+Sy+Phu+Nhuan+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"A Cafe Where You Dine with Fish — Welcome to Oasis Cafe, one of the most unique and peaceful cafes in Ho Chi Minh City. Tables are sunken into a giant koi pond, allowing you to dine with fish swimming"</div>
+<div class="tl-quote">"Beautiful cafe where you sit among a giant Koi pond. Amazing coffee and beautiful decor. A must-visit for coffee lovers! — TripAdvisor"</div>
+<div class="tl-tips">⚠️ CLOSED 12:00-13:00 for break — don't arrive at noon!</div>
+<div class="tl-tips">Sit at the sunken tables (not the dry ones) — that's the whole point</div>
+<div class="tl-order">Vietnamese iced coffee (ca phe sua da) — simple, refreshing, perfect for the setting</div>
+<div class="tl-skip">Food menu is limited — eat at Vinh Khanh later</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Partially covered. Koi pond area has roof — rain-safe. Good afternoon rain backup. ⏰ 4:00-5:30 PM — golden light on the pond, fewer customers</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">6:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🏛️ GRAND WORLD — FREE entry</div>
-<div class="ti-detail">Teddy Bear Museum ₹718</div>
-<a href="https://maps.google.com/?q=Grand+World+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">5:45 PM</div>
+<div class="tl-body">
+<div class="tl-name">🦪 VINH KHANH FOOD STREET — World's 31 Coolest Streets (Time Out UK)</div>
+<div class="tl-price">💰 grilledOysters: 30,000-50,000 VND (₹105-175) | snailsOc: 40,000-80,000 VND (₹140-280) | diyBBQPlatter: 150,000-300,000 VND (₹526-1,053)</div>
+<a href="https://maps.google.com/?q=Vinh+Khanh+Food+Street+D4+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"A steady flow of seafood and activity is what you can expect on Vinh Khanh Street in District 4. Known for serving the best street seafood in Saigon, this was easily my favorite dining experience in o"</div>
+<div class="tl-quote">"Vinh Khanh Food Street is a bustling culinary haven. Known for its vibrant atmosphere and diverse selection of dishes, this popular destination attracts both locals and tourists. — VinWonders"</div>
+<div class="tl-tips">Two standout stalls: Oc Dao (famous snail specialist) and Quan Oc 232</div>
+<div class="tl-tips">Grab from D1: ~5 min ride, super close</div>
+<div class="tl-order">Grilled oysters with scallion oil, oc huong (sweet snails) with lemongrass, DIY BBQ platter, grilled scallops, cold Saigon beer</div>
+<div class="tl-skip">Pre-cooked seafood sitting on displays — order fresh from tanks or ask them to grill to order</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Most stalls have plastic awnings/covers. Light rain OK. Heavy rain may close some outdoor grills. ⏰ 5:30-7:00 PM — freshest seafood, beats dinner rush</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">9:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🌊 Charm of Venice Show — FREE!</div>
-<div class="ti-detail">Water + light spectacular</div>
-
+<div class="tl-item">
+<div class="tl-time">7:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍺 BUI VIEN WALKING STREET — Round 2!</div>
+<div class="tl-price">💰 biaHoi: 15,000-25,000 VND (₹53-88) | streetFood: 10,000-25,000 VND per item</div>
+<a href="https://maps.google.com/?q=Bui+Vien+Walking+Street+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Monday is quieter than Sunday, but still lively. Easier to find seats.</div>
+<div class="tl-tips">Different vibe from last night — explore side streets off Bui Vien for hidden bars</div>
+<div class="tl-order">Bia hoi, late-night banh mi, grilled skewers</div>
+<div class="tl-skip">Sky bars on Bui Vien with 'minimum spend' — many have free entry if you just walk up</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Evening generally clear. Rain usually stops by 6 PM. ⏰ 9:00 PM - midnight</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:45 PM</div>
-<div class="ti-content">
-<div class="ti-name">🔦 Laser Show — FREE!</div>
-
-
 </div>
-</div></div></div>
-
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹2,100 (Bus ₹509 + Meals ₹800 + Cafes ₹500 + Transport ₹300)
+</div>
+</div>
 <div class="day-card" data-city="Phu Quoc">
 <div class="day-header">
 <div class="day-num">🏝️</div>
 <div class="day-info">
-<div class="day-city">Phu Quoc</div>
-<div class="day-label">Day 3 • Jul 1 — 4 Island Tour 🏝️</div>
+<div class="day-city">Ho Chi Minh City → Phu Quoc Island</div>
+<div class="day-label">Day 3 • June 30, 2026 (Tuesday) — HCMC Morning → Phu Quoc Evening (Grand World)</div>
 </div>
-<div class="weather-badge risk-high">⛅  50%</div>
 <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-low">🟢 Rain: N/A</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 50%</span>
-<span class="tip">BOOK LOCAL ₹4,200 (NOT online ₹8,250!). July = low season, negotiate!</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ / | 🌧️ N/A</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🚢 4 ISLAND TOUR — Hotel pickup</div>
-<div class="ti-detail">₹4,200-5,250 LOCAL booking — save ₹4,000!</div>
-<a href="https://maps.google.com/?q=An+Thoi+Port+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 PHO LE — Local Secret Breakfast in D5</div>
+<div class="tl-price">💰 phoBowl: 70,000-100,000 VND (₹246-351)</div>
+<a href="https://maps.google.com/?q=413+Nguyen+Trai+District+5+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"While tourists flock to Pho 2000 in the tourist district, locals know Pho Le in District 5 is the real deal."</div>
+<div class="tl-tips">This is where locals go — zero tourists. Pho 2000 (near Ben Thanh) gets all the guidebook traffic.</div>
+<div class="tl-tips">Open till 1 AM — also great for late-night pho cravings</div>
+<div class="tl-order">Pho dac biet (special with all toppings) or pho tai (rare beef)</div>
+<div class="tl-skip">Pho 2000 near Ben Thanh Market — tourist trap, overpriced, quality declined since Clinton visit</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning dry. Hot but manageable. ⏰ 7:00 AM — fresh morning broth, no queue</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">8:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🚡 World's longest oversea cable car</div>
-<div class="ti-detail">⚠️ Closes in high winds</div>
-
+<div class="tl-item">
+<div class="tl-time">8:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🚶 NGUYEN HUE WALKING STREET — Peaceful Morning Photos</div>
+<div class="tl-price">💰 entry: FREE</div>
+<a href="https://maps.google.com/?q=Nguyen+Hue+Walking+Street+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Nguyen Hue in the morning is a completely different world — peaceful, golden light on the French colonial buildings, locals doing tai chi."</div>
+<div class="tl-tips">Best photos WITHOUT crowds — the Instagram crowd doesn't wake up till 10 AM</div>
+<div class="tl-tips">Walk the full 800m for golden light on City Hall</div>
+<div class="tl-order">Grab a ca phe sua da from a street cart for the walk</div>
+<div class="tl-skip">N/A</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning dry. Sun getting strong by 9 AM — hat recommended. ⏰ 8:00-9:00 AM — golden morning light, empty</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🤿 SEA WALKING — walk ocean floor!</div>
-<div class="ti-detail">'Fish circling your helmet'</div>
-
+<div class="tl-item">
+<div class="tl-time">9:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">☕ MIEN THAO MOC CAFE — Garden Zen (Optional)</div>
+<div class="tl-price">💰 saltedCoffee: 45,000 VND (₹158) | otherDrinks: 45,000-65,000 VND (₹158-228)</div>
+<a href="https://maps.google.com/?q=554E+Minh+Phung+Quan+11+HCMC" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"If you are looking for the ultimate zen backdrop, Mien Thao Moc Cafe in District 11 is a masterclass in landscape design. Lanterns, mini waterfalls, serene ponds — a hidden gem. — Travelbinger"</div>
+<div class="tl-quote">"Very beautiful cafe, instagram friendly. Nice vinahouse music. Drinks are delicious, just don't order food here — it's bad and wrapped in plastic. — Postcard.inc"</div>
+<div class="tl-tips">⚠️ ORDER DRINKS ONLY — food is reportedly poor and wrapped in plastic</div>
+<div class="tl-tips">3,898+ reviews with 4.8 average — remarkably consistent quality</div>
+<div class="tl-order">Ca phe muoi (salted coffee) — their signature</div>
+<div class="tl-skip">Any food items — multiple sources warn food is bad</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Multiple covered areas. Good rain backup. Lanterns and mist create atmosphere even in rain. ⏰ 9:00-10:30 AM weekday — peaceful, no crowds</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">5:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🌅 SUNSET TOWN — Kiss Bridge FREE</div>
-<div class="ti-detail">Clock Tower, Pompeii Ruins, Dragon Stairs</div>
-<a href="https://maps.google.com/?q=Sunset+Town+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">10:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🏨 Check Out + Head to Airport</div>
+<div class="tl-tips">Leave by 11:00 AM for a comfortable airport arrival</div>
+<div class="tl-tips">Check in online if possible — SGN domestic terminal is busy</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Flights operate in rain. Possible delays if thunderstorm directly over airport.</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">7:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🏮 DUONG DONG NIGHT MARKET</div>
-<div class="ti-detail">150+ stalls ⭐5/5 solo travelers</div>
-<a href="https://maps.google.com/?q=Duong+Dong+Night+Market+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">6:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🏝️ GRAND WORLD PHU QUOC — 'Sleepless City'</div>
+<div class="tl-price">💰 entry: FREE | teddyBearMuseum: ₹718 (~205,000 VND) | foodStalls: 20,000-200,000 VND (₹70-700)</div>
+<a href="https://maps.google.com/?q=Grand+World+Phu+Quoc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Two FREE nightly shows: Charm of Venice Show (9:30 PM) + Laser Show (10:45 PM)</div>
+<div class="tl-tips">Teddy Bear Museum is cute but skippable if on budget</div>
+<div class="tl-order">Street food exploration — try multiple small items from different stalls</div>
+<div class="tl-skip">Expensive sit-down restaurants inside Grand World — food stalls are better value</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Phu Quoc evenings often clear after afternoon rain. Shows may pause in heavy rain but resume. ⏰ 7:00 PM onwards — all shows, lit up beautifully</div>
 </div>
-</div></div></div>
-
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹500 (HCMC morning) + ₹718 (Phu Quoc evening)
+</div>
+</div>
 <div class="day-card" data-city="Phu Quoc">
 <div class="day-header">
-<div class="day-num">🎢</div>
+<div class="day-num">🏝️</div>
 <div class="day-info">
-<div class="day-city">Phu Quoc</div>
-<div class="day-label">Day 4 • Jul 2 — VinWonders 🎢</div>
+<div class="day-city">Phu Quoc Island</div>
+<div class="day-label">Day 4 • July 1, 2026 (Wednesday) — Phu Quoc — 4 Islands + Sunset Town</div>
 </div>
-<div class="weather-badge risk-low">🌤️ 40%</div>
-<img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-high">🟠 Rain: 18/31 rain days. Sea conditions can get ROUGH.</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 40%</span>
-<span class="tip">Aquarium + indoor shows = rain-proof! THE ONCE SHOW 6:45PM — $12M production!</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 31°C/23°C | 🌧️ 18/31 rain days. Sea conditions can get ROUGH.</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">9:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🎢 VINWONDERS — Vietnam's largest!</div>
-<div class="ti-detail">₹3,410 — theme park + water park + aquarium</div>
-<a href="https://maps.google.com/?q=VinWonders+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🚢 4 ISLAND TOUR — Full Day Speedboat Adventure</div>
+<div class="tl-price">💰 localBooking: ₹4,200-5,250 (1,200,000-1,500,000 VND) — WALK-UP price in Duong Dong | onlineKlook: ₹8,250+ (2,350,000 VND) — MUCH MORE EXPENSIVE! | seaWalkingAddon: ₹1,020-1,700 (300,000-500,000 VND) extra</div>
+<a href="https://maps.google.com/?q=An+Thoi+Port+Phu+Quoc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Standing on the ocean floor with fish circling your helmet — surreal experience. — Sea walking participant"</div>
+<div class="tl-quote">"Great value for money. Cable car is breathtaking. Buffet lunch exceeded expectations. — Klook Reviews"</div>
+<div class="tl-tips">💎 CRITICAL: Book LOCALLY at Duong Dong the evening before! Walk-up price is ₹4,200-5,250 vs ₹8,250 online!</div>
+<div class="tl-tips">July = low season — negotiate HARD. Operators are desperate for customers!</div>
+<div class="tl-order">Buffet lunch at Mango Restaurant (Hon Thom) is included. Order fresh coconut on the beach.</div>
+<div class="tl-skip">Sea walking add-on if visibility is poor (rain runoff reduces clarity). Jetski/parasailing — overpriced add-ons.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ HIGHEST CANCELLATION RISK on your trip! Rough seas = tour cancelled. Check windy.com 3 days before. If cancelled: operators refund or reschedule. Have backup plan ready. ⏰ 7:00 AM start — calmest seas in morning, clearest water for snorkeling</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">1:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍽️ Deep Sea Restaurant — aquarium view</div>
-
-
+<div class="tl-item">
+<div class="tl-time">5:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🏙️ SUNSET TOWN — Kiss Bridge + Mediterranean Vibes</div>
+<div class="tl-price">💰 kissBridge: FREE with cable car ticket | kissOfTheSeaShow: ₹3,590 (~1,000,000 VND) — optional evening show at 9:30 PM | entry: FREE (town exploration)</div>
+<a href="https://maps.google.com/?q=Sunset+Town+Phu+Quoc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Kiss Bridge is FREE if you have a cable car ticket — don't pay separately!</div>
+<div class="tl-tips">Clock Tower and Pompeii Ruins are great photo spots — Mediterranean aesthetic</div>
+<div class="tl-order">Coconut coffee from a cafe with sea views</div>
+<div class="tl-skip">Kiss of the Sea show if you're budget-conscious — ₹3,590 for 30-min show</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Sunset may be obscured by clouds in rainy season. Kiss Bridge closes in high winds. ⏰ 5:30-6:30 PM — golden hour, sunset views from Kiss Bridge</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">3:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🌊 Typhoon Water Park</div>
-
-
+<div class="tl-item">
+<div class="tl-time">7:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🏮 DUONG DONG NIGHT MARKET — 150+ Stalls</div>
+<div class="tl-price">💰 seafoodDinner: 150,000-300,000 VND (₹526-1,053) | banhMi: 15,000-25,000 VND (₹53-88) | souvenirs: 50,000-200,000 VND (₹175-700)</div>
+<a href="https://maps.google.com/?q=Duong+Dong+Night+Market+Phu+Quoc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Bargain at souvenir stalls — start at 60-70% of asking price</div>
+<div class="tl-tips">Count change carefully — night market is honest but mistakes happen</div>
+<div class="tl-order">Grilled sea urchin (nhim bien, 30K-50K/piece), grilled squid, goi ca trich (herring salad), fresh coconut</div>
+<div class="tl-skip">Pre-cooked seafood sitting out — ask them to grill fresh. Overpriced pearl jewelry (go to actual Pearl Farm for authentic).</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Partially covered. Light rain OK. Heavy rain may thin out stalls but many remain. ⏰ 7:00-9:00 PM — peak energy, all stalls open</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">6:45 PM</div>
-<div class="ti-content">
-<div class="ti-name">⭐ THE ONCE SHOW — $12M production!</div>
-<div class="ti-detail">Fire, light, water — INCLUDED in ticket!</div>
-
 </div>
-</div></div></div>
-
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹5,250 (BOOK LOCALLY — online is ₹8,250+!) + ₹3,590 if Kiss of the Sea show
+</div>
+</div>
+<div class="day-card" data-city="Phu Quoc">
+<div class="day-header">
+<div class="day-num">🏝️</div>
+<div class="day-info">
+<div class="day-city">Phu Quoc Island</div>
+<div class="day-label">Day 5 • July 2, 2026 (Thursday) — Phu Quoc — VinWonders Full Day</div>
+</div>
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-high">🟠 Rain: 18/31 rain days</div>
+</div>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 31°C/23°C | 🌧️ 18/31 rain days</span>
+<span class="tip"></span>
+</div>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-time">9:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🎢 VINWONDERS PHU QUOC — Vietnam's Largest Theme Park</div>
+<div class="tl-price">💰 ticket: ₹3,410 (~970,000 VND) | foodInside: ₹250-500 per meal</div>
+<a href="https://maps.google.com/?q=VinWonders+Phu+Quoc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Morning: Palace of Dreams → Fantasy World (beat the crowds)</div>
+<div class="tl-tips">Noon: Viking Village + Sea Shell (partially covered)</div>
+<div class="tl-order">Lunch at Deep Sea Restaurant — the aquarium-view dining is unique</div>
+<div class="tl-skip">Overpriced souvenirs inside the park. Buy at Duong Dong Night Market instead.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Theme park operates in light rain. Some outdoor rides close in heavy rain/thunder. Aquarium and indoor shows run regardless. Water park closes in lightning. ⏰ 9:00 AM opening — beat the crowds. Thursday = weekday, lighter crowds.</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-time">6:45 PM</div>
+<div class="tl-body">
+<div class="tl-name">✨ THE ONCE SHOW — $12M Spectacle Finale</div>
+<div class="tl-price">💰 ticket: INCLUDED in VinWonders entry — FREE!</div>
+<div class="tl-tips">Arrive 15 min early for good seats — fills up fast</div>
+<div class="tl-tips">This is the GRAND FINALE of VinWonders — don't leave at 5 PM thinking you've seen everything</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">N/A</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Outdoor amphitheater. Show may pause or modify in heavy rain. Usually runs through light rain. ⏰ 6:30 PM arrival for 6:45 PM show</div>
+</div>
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹3,410
+</div>
+</div>
+<div class="day-card" data-city="Phu Quoc">
+<div class="day-header">
+<div class="day-num">🏝️</div>
+<div class="day-info">
+<div class="day-city">Phu Quoc → Hanoi</div>
+<div class="day-label">Day 6 • July 3, 2026 (Friday) — Phu Quoc Morning → Hanoi Evening (Weekend Night Market!)</div>
+</div>
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-low">🟢 Rain: N/A</div>
+</div>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ / | 🌧️ N/A</span>
+<span class="tip"></span>
+</div>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🏖️ ONG LANG BEACH — Best Solo Beach Morning</div>
+<div class="tl-price">💰 beachBarSunbeds: ₹100-175 (price of a drink!) | coconut: ~30,000 VND (₹105)</div>
+<a href="https://maps.google.com/?q=Ong+Lang+Beach+Phu+Quoc" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Best solo beach in Phu Quoc — no mass tourism, no loud groups</div>
+<div class="tl-tips">Go at 8 AM for calmest water — leave by 2 PM before afternoon rain</div>
+<div class="tl-order">Fresh coconut, Vietnamese iced coffee from a beach bar</div>
+<div class="tl-skip">Bai Sao Beach (overrun, loud, trashy — AVOID!)</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Mornings reliably sunny till 11 AM. Beach is exposed — leave if thunderclouds build. ⏰ 8:00-11:00 AM — calmest water, morning sun, empty beach</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-time">8:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🏮 HANOI WEEKEND NIGHT MARKET — Friday Night Magic!</div>
+<div class="tl-price">💰 streetFood: 15,000-50,000 VND (₹53-175) | souvenirs: 30,000-200,000 VND (₹105-700) | entry: FREE</div>
+<a href="https://maps.google.com/?q=Hang+Dao+Street+Night+Market+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Transforms Hang Dao into a lively pedestrian bazaar. Fri-Sun 6PM-midnight. — Nomado Travel"</div>
+<div class="tl-quote">"Must-see for first-time visitors. From Hang Dao to Dong Xuan Market. — Aravinda Travel"</div>
+<div class="tl-tips">💡 PERFECT first night in Hanoi — the city's best energy!</div>
+<div class="tl-tips">Combine Night Market + Bia Hoi Corner + Hoan Kiem Lake walking street = perfect Friday trifecta</div>
+<div class="tl-order">Street food exploration — grilled skewers, banh mi, che (sweet dessert soup), fresh spring rolls</div>
+<div class="tl-skip">Expensive souvenirs at the fancy end of Hang Dao — prices drop as you walk north</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Evening typically clear. Streets partially covered by stall awnings. Umbrella recommended just in case. ⏰ 8:00-10:00 PM — peak energy, all stalls open</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-time">8:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍺 BIA HOI CORNER — Fresh Beer ₹18/Cup!</div>
+<div class="tl-price">💰 biaHoi: 5,000-10,000 VND (₹18-35) PER CUP! | streetSnacks: 15,000-25,000 VND (₹53-88)</div>
+<a href="https://maps.google.com/?q=Ta+Hien+Beer+Street+Bia+Hoi+Corner+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Sit on small plastic chairs on the sidewalk... costs around 5,000 dong each cup. — TripAdvisor"</div>
+<div class="tl-quote">"Ta Hien — the most famous Bia Hoi corner, 266m connecting Luong Ngoc Quyen and Hang Bac. — HanoiLocals.com"</div>
+<div class="tl-tips">₹18 for a fresh draught beer — cheapest quality beer you'll ever have!</div>
+<div class="tl-tips">Sit on the tiny plastic stools — it's the authentic Hanoi experience</div>
+<div class="tl-order">Bia hoi (fresh draught beer), grilled fermented pork skewers, peanuts, dried squid</div>
+<div class="tl-skip">Bottled imported beer — you're here for the fresh bia hoi experience</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Open air. Some awnings. Evening usually clear. Light rain tolerated — umbrellas work fine. ⏰ 8:00-10:30 PM — peak crowd, best atmosphere</div>
+</div>
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹200-300 (Hanoi evening food + drinks)
+</div>
+</div>
 <div class="day-card" data-city="Hanoi">
 <div class="day-header">
-<div class="day-num">✈️</div>
+<div class="day-num">🍜</div>
 <div class="day-info">
-<div class="day-city">Hanoi</div>
-<div class="day-label">Day 5 • Jul 3 — Beach AM + Fly + Hanoi PM</div>
+<div class="day-city">Hanoi → Sapa</div>
+<div class="day-label">Day 7 • July 4, 2026 (Saturday) — Hanoi Morning Magic → Sapa Sunset</div>
 </div>
-<div class="weather-badge risk-medium">⛅  45%</div>
 <img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-low">🟢 Rain: N/A</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 45%</span>
-<span class="tip">Ong Lang hidden beach morning, then fly. Hanoi evening: Water Puppet Theatre!</span>
-</div>
-<div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🏖️ ONG LANG BEACH — Best solo beach</div>
-<div class="ti-detail">No crowds, sunbeds ₹100-175</div>
-<a href="https://maps.google.com/?q=Ong+Lang+Beach+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
-</div>
-</div>
-<div class="timeline-item">
-<div class="ti-time">10:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🍜 BUN QUAY KIEN XAY — Legendary!</div>
-<div class="ti-detail">₹175-228 — ONE dish, you stir paste into broth!</div>
-<a href="https://maps.google.com/?q=28+Bach+Dang+Duong+Dong+Phu+Quoc" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
-</div>
-</div>
-<div class="timeline-item">
-<div class="ti-time">6:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🎭 WATER PUPPET THEATRE — iconic!</div>
-<div class="ti-detail">45-min show. PERFECT rain activity!</div>
-
-</div>
-</div>
-<div class="timeline-item">
-<div class="ti-time">8:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍺 BIA HOI CORNER — Beer ₹18/cup!</div>
-<div class="ti-detail">Ta Hien Street — Hanoi's party hub</div>
-
-</div>
-</div></div></div>
-
-<div class="day-card" data-city="Sapa">
-<div class="day-header">
-<div class="day-num">🚌</div>
-<div class="day-info">
-<div class="day-city">Sapa</div>
-<div class="day-label">Day 6 • Jul 4 — Hanoi AM + Bus to Sapa</div>
-</div>
-<div class="weather-badge risk-high">Ha 70%</div>
-<img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80" class="day-photo" alt="" loading="lazy">
-</div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 70%</span>
-<span class="tip">Morning: #1 Pho Thin garlic beef + Egg Coffee at Giang (since 1946). Sapa: Best View sunset!</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ / | 🌧️ N/A</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">6:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🌅 Hoan Kiem Lake sunrise — Tai Chi locals</div>
-<div class="ti-detail">ZERO tourists, golden light</div>
-
+<div class="tl-item">
+<div class="tl-time">6:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🌅 HOAN KIEM LAKE SUNRISE — Tai Chi + Pure Magic</div>
+<div class="tl-price">💰 entry: FREE | ngocSonTemple: 30,000 VND (₹105)</div>
+<a href="https://maps.google.com/?q=Hoan+Kiem+Lake+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"The heart and soul of Hanoi. Locals doing tai chi at dawn. Pure magic. — Travel guides"</div>
+<div class="tl-tips">BEST photos — ZERO tourists at 6 AM. Only locals doing tai chi and aerobics.</div>
+<div class="tl-tips">Walk across The Huc Bridge (red lacquered) to Ngoc Son Temple — empty at dawn</div>
+<div class="tl-order">Grab a ca phe sua da from a street vendor near the lake</div>
+<div class="tl-skip">Tourist trishaws (cyclos) — overpriced, negotiate hard if you must</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning generally clear. Sunrise might be hazy from humidity but still atmospheric. ⏰ 5:30-7:00 AM — sunrise, tai chi, zero crowds, golden light</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">6:45 AM</div>
-<div class="ti-content">
-<div class="ti-name">🍜 PHỞ THÌN 13 LÒ ĐÚC — Garlic beef pho!</div>
-<div class="ti-detail">70K-90K VND ⭐4.5 — UNIQUE garlic stir-fried beef</div>
-<a href="https://maps.google.com/?q=Pho+Thin+13+Lo+Duc+Hanoi" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">6:45 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 PHỞ THÌN 13 LÒ ĐÚC — #1 Hanoi Pho (Garlic Stir-Fried Beef!)</div>
+<div class="tl-price">💰 phoBowl: 70,000-90,000 VND (₹246-316)</div>
+<a href="https://maps.google.com/?q=Pho+Thin+13+Lo+Duc+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Beef stir-fried with garlic before adding to broth — a technique found nowhere else in Vietnam."</div>
+<div class="tl-tips">🔥 This is Hanoi's #1 pho — ranked above all others by Hanoians</div>
+<div class="tl-tips">The garlic stir-fry technique makes the beef smoky, aromatic, completely different from regular pho</div>
+<div class="tl-order">Pho tai lan (stir-fried rare beef pho) — the signature garlic beef version</div>
+<div class="tl-skip">Don't ask for pho ga (chicken) — this place is beef ONLY</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Indoor seating. Rain-proof breakfast. ⏰ 6:00-7:30 AM — freshest broth, local crowd, no tourist queue</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">7:30 AM</div>
-<div class="ti-content">
-<div class="ti-name">☕ GIANG CAFE — Egg coffee inventor (1946)</div>
-<div class="ti-detail">35K VND ⭐4.8 (22K reviews!)</div>
-<a href="https://maps.google.com/?q=Giang+Cafe+39+Nguyen+Huu+Huan+Hanoi" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">7:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">☕ GIANG CAFE — Birthplace of Egg Coffee Since 1946!</div>
+<div class="tl-price">💰 eggCoffee: 35,000-45,000 VND (₹123-158) | eggCocoa: 35,000-45,000 VND | eggMatcha: 40,000-50,000 VND</div>
+<a href="https://maps.google.com/?q=Giang+Cafe+39+Nguyen+Huu+Huan+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Down a small alleyway is this gem! Surrounded by locals on miniature chairs — the egg coffee is amazing. — TripAdvisor"</div>
+<div class="tl-quote">"Cafe Giang — they have the best egg coffee in Hanoi. — Reddit r/hanoi"</div>
+<div class="tl-tips">Down a SMALL ALLEYWAY off Nguyen Huu Huan — easy to miss! Look for the small sign</div>
+<div class="tl-tips">Sit on the tiny plastic stools — it's the authentic local experience</div>
+<div class="tl-order">Ca phe trung nong (hot egg coffee) — the classic. Then try iced egg coffee for comparison.</div>
+<div class="tl-skip">Don't rush — sit, savor, and watch the local life on the alley</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Indoor + alley seating. Excellent rain backup. The alley is partially covered. ⏰ 7:30-8:30 AM — fresh, less crowded, perfect after pho breakfast</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">9:30 AM</div>
-<div class="ti-content">
-<div class="ti-name">🚌 BUS TO SAPA — 6hr scenic drive</div>
-<div class="ti-detail">Pickup Old Quarter hotel FREE</div>
-
+<div class="tl-item">
+<div class="tl-time">8:15 AM</div>
+<div class="tl-body">
+<div class="tl-name">🥖 BANH MI 25 — Grab-and-Go Sapa Bus Snack</div>
+<div class="tl-price">💰 grilledPorkBanhMi: 25,000-45,000 VND (₹88-158)</div>
+<a href="https://maps.google.com/?q=Banh+Mi+25+25+Hang+Ca+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Fresh, crispy bread and tasty fillings... extremely clean for a local place. — TripAdvisor"</div>
+<div class="tl-quote">"So packed with flavor. The one and only banh mi I had in Hanoi and it didn't disappoint! — Reddit"</div>
+<div class="tl-tips">⚠️ Can be queue-heavy (15-30 min wait). Alternative: Bami Bread — less wait, equally good!</div>
+<div class="tl-tips">Order the grilled pork (thit nuong) banh mi — the signature</div>
+<div class="tl-order">Banh mi thit nuong (grilled pork) — crispy bread, flavorful meat, fresh herbs</div>
+<div class="tl-skip">Don't sit in if queue is long — just grab and go</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Takeaway shop. Wait outside may be in rain — umbrella useful. ⏰ 8:15 AM — just after breakfast rush</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">5:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🌅 BEST VIEW SA PA — Sunset!</div>
-<div class="ti-detail">120K VND (₹400) INCLUDES 1 drink!</div>
-<a href="https://maps.google.com/?q=Best+View+Sa+Pa" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">9:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🚌 BUS TO SAPA — 6-Hour Scenic Mountain Journey</div>
+<div class="tl-price">💰 vipSleeperBus: ~₹800 (~228,000 VND)</div>
+<div class="tl-tips">All operators offer FREE door-to-door hotel pickup in Old Quarter</div>
+<div class="tl-tips">VIP sleeper bus recommended — recline, sleep, enjoy mountain views</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">Day buses (7 AM departure) — you'd lose the entire Hanoi morning</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Bus runs regardless of weather. Scenic mountain views BEST on clear days. Fog can obscure views. Rain creates dramatic mist — different but still beautiful. ⏰ 9:30 AM-10:00 AM departure — morning in Hanoi, afternoon in Sapa</div>
 </div>
-</div></div></div>
-
+</div>
+<div class="tl-item">
+<div class="tl-time">5:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🌅 BEST VIEW SA PA — Mountain-Top Sunset with Drink!</div>
+<div class="tl-price">💰 entry: 120,000 VND (₹400) — INCLUDES 1 DRINK! | vietnameseCoffee: Included in entry (brown coffee) | freshCoconut: ~40,000 VND (₹140) extra</div>
+<a href="https://maps.google.com/?q=22.3367,103.8432" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Quiet, breezy, great view of Sapa City. — Traveler review"</div>
+<div class="tl-quote">"They open the coconut after drinking so you can eat the meat! — Raved about in reviews"</div>
+<div class="tl-tips">💰 Entry 120K INCLUDES 1 drink — incredible value! Get the Vietnamese brown coffee.</div>
+<div class="tl-tips">🥥 Order the FRESH COCONUT — they open it after drinking so you can eat the meat (multiple reviews rave about this!)</div>
+<div class="tl-order">Vietnamese brown coffee (included), fresh coconut (extra — the meat-eating experience is unique!), BBQ if time permits</div>
+<div class="tl-skip">BBQ if you're not extremely hungry — 1.5 hour wait is real</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ Afternoon fog GUARANTEED in July. Sunset may be obscured. Go anyway — the misty atmosphere is photogenic. If heavy rain: platforms are covered. ⏰ 5:00 PM arrival for 6:50 PM sunset — golden hour mountain views</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-time">8:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🏮 SAPA NIGHT MARKET — H'mong Handicrafts + Street Food</div>
+<div class="tl-price">💰 streetFood: ₹50-150 per item | h'mongHandicrafts: ₹175-1,750 (bargain!) | grilledSkewers: 10,000-25,000 VND (₹35-88)</div>
+<a href="https://maps.google.com/?q=Sapa+Night+Market+Lao+Cai" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">💵 CASH ONLY! Bring small VND notes.</div>
+<div class="tl-tips">Walk down from Best View: 15 min downhill (or 2 min Grab)</div>
+<div class="tl-order">Grilled skewers, hot corn with scallion oil, banh mi, grilled sticky rice</div>
+<div class="tl-skip">Mass-produced 'handicrafts' that look factory-made — examine quality</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Partially covered by stall awnings. Light rain OK. Heavy rain thins stalls but core remains. ⏰ 7:00-9:00 PM — peak energy, all stalls open</div>
+</div>
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹500 (Hanoi morning) + ₹800-1,000 (Sapa evening)
+</div>
+</div>
 <div class="day-card" data-city="Sapa">
 <div class="day-header">
-<div class="day-num">🌧️</div>
+<div class="day-num">⛰️</div>
 <div class="day-info">
 <div class="day-city">Sapa</div>
-<div class="day-label">Day 7 • Jul 5 — Moana + Cat Cat Village</div>
+<div class="day-label">Day 8 • July 5, 2026 (Sunday) — Sapa — Moana + Cat Cat + Cafe Perfection</div>
 </div>
-<div class="weather-badge risk-high">🌧️ 75%</div>
 <img src="https://images.unsplash.com/photo-1599148400616-2e3b7939644c?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-high">🟠 Rain: 22/31 rain days — HIGHEST of all destinations!</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 75%</span>
-<span class="tip">Moana 7AM = ZERO queues! By 10AM: 10-20min wait. Cat Cat only 1.3km away!</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 32°C/25°C | 🌧️ 22/31 rain days — HIGHEST of all destinations!</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🌅 MOANA SAPA — 13 photo spots!</div>
-<div class="ti-detail">80K VND (₹280) — Bali Gate, Buddha Hand, Infinity Pool</div>
-<a href="https://maps.google.com/?q=22.3274,103.8463" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🌅 MOANA SAPA — 'Gate of Heaven' at Opening!</div>
+<div class="tl-price">💰 basicEntry: 80,000 VND (₹280) | withDrink: 100,000 VND (₹350) | withCostume: 150,000 VND (₹525)</div>
+<a href="https://maps.google.com/?q=22.3274,103.8463" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"The highlight even on foggy days. — TripAdvisor April 2025"</div>
+<div class="tl-tips">⚠️ 7:00 AM ARRIVAL = ZERO PHOTO QUEUES! By 10 AM: 10-20 min queue per spot!</div>
+<div class="tl-tips">Sunday = more domestic tourists. Early arrival ESSENTIAL!</div>
+<div class="tl-order">Entry with drink ticket (₹350) — get a Vietnamese coffee for the walk</div>
+<div class="tl-skip">Don't arrive after 9:30 AM — queues make it frustrating</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning = best chance of clear weather. Fog adds mystical atmosphere. Rain: photo spots have some coverage but bring umbrella. ⏰ 7:00 AM SHARP — opening time, zero queues, golden light</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">8:45 AM</div>
-<div class="ti-content">
-<div class="ti-name">🏘️ CAT CAT VILLAGE — 9AM cultural show</div>
-<div class="ti-detail">150K VND (₹525) — Water wheels, waterfall, brocade</div>
-<a href="https://maps.google.com/?q=22.3310,103.8341" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">8:45 AM</div>
+<div class="tl-body">
+<div class="tl-name">🏘️ CAT CAT VILLAGE — H'mong Culture + Waterfall</div>
+<div class="tl-price">💰 entry: 150,000 VND (₹525) | motorbikeTaxiReturn: 30,000-50,000 VND (₹105-175) | brocadeScarves: ₹350-1,050</div>
+<a href="https://maps.google.com/?q=22.3310,103.8341" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"James F. July 2025 — 2.5 hrs inside. — TripAdvisor verified review"</div>
+<div class="tl-tips">⚠️ NO ELECTRIC CART! Walk down = easy downhill. Return = motorbike taxi (₹105-175) — ESSENTIAL, the climb back is brutal!</div>
+<div class="tl-tips">Catch the 9:00 AM cultural show at the pavilion — traditional H'mong dance and music</div>
+<div class="tl-order">Buy a bottle of water at the top — few vendors on the path down</div>
+<div class="tl-skip">Don't walk back UP — the climb is 200m elevation gain, brutal in July heat. Take motorbike taxi!</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ July = MUDDY. Waterproof boots essential. Path is paved but side trails muddy. Leeches active after rain. ⏰ 8:45 AM arrival — catch the 9:00 AM cultural show, beat midday crowds</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">12:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍜 WHITE CLOUD CAFE — Crème Brûlée Egg Coffee</div>
-<div class="ti-detail">⭐4.4 — ₹165. Order Bánh mì (crispy!)</div>
-
+<div class="tl-item">
+<div class="tl-time">12:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 WHITE CLOUD CAFE — Lunch with Crème Brûlée Egg Coffee</div>
+<div class="tl-price">💰 cremeBruleeEggCoffee: ₹165 (~47,000 VND) | saltedCoffee: ₹150 (~43,000 VND) | banhMi: ₹88-158</div>
+<a href="https://maps.google.com/?q=65+Fansipan+St+Sapa" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"The banh mi is crispy, soft, flavorful. — Multiple reviews"</div>
+<div class="tl-tips">Perfect lunch stop between Cat Cat and afternoon exploring — NOT just a cafe, actually EAT here</div>
+<div class="tl-tips">Crème Brûlée Egg Coffee is UNIQUE to this cafe — caramelized sugar top on egg coffee</div>
+<div class="tl-order">Crème Brûlée Egg Coffee (signature!), banh mi thit nuong (grilled pork banh mi)</div>
+<div class="tl-skip">Pho (average, per reviews), Burgers (dry, per reviews). Stick to Vietnamese dishes.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Covered indoor seating. Good rain shelter. ⏰ 12:00-1:00 PM — lunch timing, post-Cat Cat</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">2:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">⛪ SAPA STONE CHURCH + LAKE</div>
-<div class="ti-detail">FREE — Gothic French colonial</div>
-<a href="https://maps.google.com/?q=Sapa+Stone+Church" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">2:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">⛪ SAPA STONE CHURCH + SAPA LAKE — Free Landmarks</div>
+<div class="tl-price">💰 both: FREE</div>
+<div class="tl-tips">Stone Church = most photographed building in Sapa — iconic shot</div>
+<div class="tl-tips">Sapa Lake loop is a gentle 30-min paved walk — great for post-lunch digestion</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">N/A</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Outdoor. Lake walk with umbrella is pleasant even in light rain. Church exterior viewable from street. ⏰ 2:30-3:30 PM — after lunch, before fog rolls in</div>
 </div>
-</div></div></div>
-
+</div>
+<div class="tl-item">
+<div class="tl-time">3:15 PM</div>
+<div class="tl-body">
+<div class="tl-name">☕ Ô LA LA COFFEE — Hidden Local Gem</div>
+<div class="tl-price">💰 coffee: ₹83-167 (cheapest cafe in Sapa!) | bananaBread: ~₹50</div>
+<div class="tl-tips">Smallest and cheapest cafe on the Sapa crawl — a real local discovery</div>
+<div class="tl-tips">Banana bread + Vietnamese drip coffee = perfect afternoon pick-me-up</div>
+<div class="tl-order">Vietnamese drip coffee (ca phe phin) + banana bread (bánh chuối)</div>
+<div class="tl-skip">Fancy coffee drinks — stick to the traditional drip</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Small indoor space. Good rain shelter. ⏰ 3:15-4:00 PM — afternoon coffee window</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-time">6:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍖 PHANSI CAFE — Ship Floating in Clouds + Table BBQ!</div>
+<div class="tl-price">💰 comboNuongHanhPhuc: 490,000 VND (₹1,720) — BBQ for 2! | signatureCocktail: ₹250 | vietnameseCoffee: ₹65 (~18,500 VND)</div>
+<a href="https://maps.google.com/?q=22.3354,103.8426" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"'Ship floating in clouds' — exactly the feeling. BBQ at your table with 360° valley views."</div>
+<div class="tl-tips">💰 FREE ENTRY! Best dinner in Sapa — incredible value for the experience</div>
+<div class="tl-tips">🍖 Combo Nướng Hạnh Phúc (BBQ for 2) at 490K VND — grill at YOUR table!</div>
+<div class="tl-order">BBQ platter (grill at your table!), signature cocktail, Vietnamese coffee</div>
+<div class="tl-skip">N/A — everything is well-reviewed here</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Ship venue has covered areas. Fog/mist adds to the 'ship in clouds' atmosphere — actually a plus! ⏰ 6:00-8:30 PM — sunset BBQ, jazz bar after</div>
+</div>
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹3,335 (Moana ₹350 + Cat Cat ₹525 + Lunch ₹300 + Ô La La ₹150 + Phansi BBQ ₹1,720 + Transport ₹290)
+</div>
+</div>
 <div class="day-card" data-city="Sapa">
 <div class="day-header">
-<div class="day-num">🌊</div>
+<div class="day-num">⛰️</div>
 <div class="day-info">
 <div class="day-city">Sapa</div>
-<div class="day-label">Day 8 • Jul 6 — Rong May + Waterfalls</div>
+<div class="day-label">Day 9 • July 6, 2026 (Monday) — Sapa — Rong May Thrill Day + Scenic Chill</div>
 </div>
-<div class="weather-badge risk-high">🌧️ 70%</div>
-<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1599148400616-2e3b7939644c?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-high">🟠 Rain: 22/31 rain days</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 70%</span>
-<span class="tip">Rong May Glass Bridge closes in rain — check AM! Silver Waterfall doable with umbrella.</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 32°C/25°C | 🌧️ 22/31 rain days</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🌁 RONG MAY GLASS BRIDGE — go early!</div>
-<div class="ti-detail">⚠️ CHECK: closes in rain/fog. Zipline, swing, glass walkway</div>
-
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍳 VIETTREKKING COFFEE — Breakfast in the Clouds</div>
+<div class="tl-price">💰 braisedPorkBellyRice: ₹358 (~102,000 VND) | sapaWhiteCloudCoffee: ₹183-217 (~52,000-62,000 VND) | breakfastBudget: ~₹250</div>
+<a href="https://maps.google.com/?q=22.3342,103.8399" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"'Café in the Clouds' — the funicular passes below your terrace while you eat breakfast."</div>
+<div class="tl-tips">One of only TWO Sapa cafes open at 6 AM — perfect for early risers!</div>
+<div class="tl-tips">Braised Pork Belly with rice (₹358) is their signature breakfast — hearty, local</div>
+<div class="tl-order">Braised Pork Belly with rice (thit kho tau), Sapa White Cloud signature coffee</div>
+<div class="tl-skip">Western breakfast items — the Vietnamese dishes are the star</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Terrace has some coverage. Morning mist adds atmosphere. Rain: indoor seating available. ⏰ 7:00-8:00 AM — morning mist, funicular views, fresh coffee</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🌊 SILVER WATERFALL + LOVE WATERFALL</div>
-<div class="ti-detail">30K VND — 200m cascade</div>
-
+<div class="tl-item">
+<div class="tl-time">8:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🌉 RONG MAY GLASS BRIDGE — 60m Bridge, 2,200m Drop!</div>
+<div class="tl-price">💰 baseTicketKlook: 500,000 VND (₹1,750) — Klook saves ₹175 + SKIPS queue (20-40 min saved!) | zipline: 150,000 VND (₹525) — BEST add-on | alpineCoaster: 150,000 VND (₹525)</div>
+<a href="https://maps.google.com/?q=22.3682,103.8025" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"60m glass bridge, 2,200m above the valley. You walk on air. — JungleBossTours"</div>
+<div class="tl-quote">"Unforgettable — the glass bridge extends over empty space with clouds below."</div>
+<div class="tl-tips">💰 BOOK ON KLOOK — saves ₹175 AND skips ticket queue (20-40 min saved!)</div>
+<div class="tl-tips">⚡ ZIPLINE = BEST add-on (₹525). SKIP: Rope Bike (gimmick), Suspension Bridge (just wood).</div>
+<div class="tl-order">Lunch at Rong May food court (₹250-350). Basic but adequate.</div>
+<div class="tl-skip">Rope Bike — gimmicky, not thrilling. Suspension Bridge — just a wood bridge, nothing special. EVERYTHING if it's foggy — zero visibility.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ CRITICAL: Glass bridge CLOSES in rain/fog/dense clouds. Slippery glass = dangerous. Zero visibility in fog. Check weather before 30-min Grab ride! ⏰ 8:30 AM arrival — beat morning tour groups, clearest visibility</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">2:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🛍️ SAPA MARKET — H'mong textiles</div>
-<div class="ti-detail">Scarves ₹350-1,050. CASH ONLY</div>
-
+<div class="tl-item">
+<div class="tl-time">3:15 PM</div>
+<div class="tl-body">
+<div class="tl-name">☕ LA DO HOMESTAY COFFEE — Train Photography Heaven</div>
+<div class="tl-price">💰 eggCoffee: ₹133-200 (~38,000-57,000 VND) | coconutCoffee: ₹133-200 | gingerTea: ₹133</div>
+<a href="https://maps.google.com/?q=22.3320,103.8355" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"The Muong Hoa monorail passes right below the balcony — hands down the best train photography in Sapa."</div>
+<div class="tl-tips">⚠️ Go for VIEWS, not service — 3.0 rating reflects slow/indifferent service, not the location</div>
+<div class="tl-tips">BEST train photography spot in all of Sapa — monorail passes directly below balcony</div>
+<div class="tl-order">Egg Coffee or Coconut Coffee. Ginger Tea if you want something warm after mountain wind.</div>
+<div class="tl-skip">Don't expect attentive service — you're paying for the view. Don't order food — limited menu.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Balcony is covered. Good rain shelter. Fog adds atmosphere to train photos. ⏰ 3:00-4:30 PM — afternoon light, monorail frequency good</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">6:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍲 HOTPOT DINNER</div>
-<div class="ti-detail">Sapa specialty — perfect rainy evening!</div>
-
+<div class="tl-item">
+<div class="tl-time">6:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍢 SAPA NIGHT MARKET — Last Souvenir Hunt + Light Dinner</div>
+<div class="tl-price">💰 grilledSkewers: 10,000-25,000 VND (₹35-88) | banhMi: 20,000-35,000 VND (₹70-123) | dinnerBudget: ₹150-200</div>
+<a href="https://maps.google.com/?q=Sapa+Night+Market+Lao+Cai" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Light dinner — save appetite and budget. Tomorrow is Fansipan!</div>
+<div class="tl-tips">Last chance for H'mong handicraft souvenirs</div>
+<div class="tl-order">Grilled skewers, hot corn, banh mi — light, cheap, satisfying</div>
+<div class="tl-skip">Large meals — you want to wake up light for Fansipan summit</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Partially covered. Light food in rain still fine. ⏰ 6:30-8:00 PM — last shopping, early bedtime</div>
 </div>
-</div></div></div>
-
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹2,950 (Rong May ₹1,750 + Zipline ₹525 + Food ₹500 + Transport ₹175)
+</div>
+</div>
 <div class="day-card" data-city="Hanoi">
 <div class="day-header">
-<div class="day-num">🏔️</div>
+<div class="day-num">🍜</div>
 <div class="day-info">
-<div class="day-city">Sapa→Hanoi</div>
-<div class="day-label">Day 9 • Jul 7 — Fansipan 🏔️ + Bus back</div>
+<div class="day-city">Sapa → Hanoi</div>
+<div class="day-label">Day 10 • July 7, 2026 (Tuesday) — ⭐ FANSIPAN SUMMIT + Return to Hanoi</div>
 </div>
-<div class="weather-badge risk-critical">⛅  65%</div>
-<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-high">🟠 Rain: 22/31 rain days. Cable car CLOSES in heavy rain/thunderstorm.</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 65%</span>
-<span class="tip">MONDAY = 10-min queue (vs 2hr Sat!). Summit 8-15°C — BRING FLEECE! Go 8AM sharp.</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ / | 🌧️ 22/31 rain days. Cable car CLOSES in heavy rain/thunderstorm.</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:30 AM</div>
-<div class="ti-content">
-<div class="ti-name">🏔️ FANSIPAN CABLE CAR — MONDAY!</div>
-<div class="ti-detail">1M VND (₹3,500). ⚠️ CLOSES in heavy rain. 15-min ride</div>
-
+<div class="tl-item">
+<div class="tl-time">6:05 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍳 VIETTREKKING COFFEE — Light Summit Fuel</div>
+<div class="tl-price">💰 vietnameseCoffeeCondensedMilk: ₹65 (~18,500 VND) | banhMiToGo: ₹125 (~35,600 VND) | cakeSlice: ₹100 (~28,500 VND)</div>
+<a href="https://maps.google.com/?q=22.3342,103.8399" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">Light + energy = best summit breakfast. Don't eat heavy before 3,143m climb!</div>
+<div class="tl-tips">Get banh mi TO-GO — perfect snack after summit descent</div>
+<div class="tl-order">Vietnamese coffee with condensed milk, banh mi to-go, slice of cake</div>
+<div class="tl-skip">Heavy meals — you'll feel it on the 600 steps at altitude</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Check Fansipan cable car status before ordering. If closed, adjust plans. ⏰ 6:05 AM — fuel up, walk to Sun Plaza by 6:45 AM</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">8:30 AM</div>
-<div class="ti-content">
-<div class="ti-name">⛰️ SUMMIT 3,143m — Indochina's roof!</div>
-<div class="ti-detail">Buddha statue, flag tower. FLEECE needed!</div>
-
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🏔️ FANSIPAN LEGEND — 'Roof of Indochina' at 3,143m!</div>
+<div class="tl-price">💰 cableCarRT_weekday: 800,000 VND (₹2,805) | cableCarRT_saturday: 850,000 VND (₹2,980) | muongHoaFunicularRT: 200,000 VND (₹700)</div>
+<a href="https://maps.google.com/?q=22.3343,103.8404" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"TravelynnFamily — weekday morning in August, only 10 min wait."</div>
+<div class="tl-quote">"TripAdvisor Oct 2024 — 2 hours wait each way on weekends. Tuesday = 10 min!"</div>
+<div class="tl-tips">🏆 TUESDAY = WEEKDAY = 10 MIN QUEUE! Sunday would be 2 HOURS — this is why Tuesday was chosen!</div>
+<div class="tl-tips">📱 BOOK ON KLOOK — e-ticket SKIPS the ticket queue (another 20-40 min saved!)</div>
+<div class="tl-order">N/A — bring your own water and banh mi snack</div>
+<div class="tl-skip">Peak funicular train (₹525) if you're fit — the 600-step climb is part of the experience</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ CRITICAL: Cable car CLOSES in heavy rain/thunder/high winds (>15-20 m/s). Even if OPEN, dense fog at summit = ZERO visibility. CHECK STATUS before going! Hotel can call: +84 214 3871 999. Morning = best chance of clear summit. ⏰ 7:30 AM opening on TUESDAY — 10 min queue, clearest morning visibility</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">1:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🚌 BUS TO HANOI — 6hr</div>
-
-
+<div class="tl-item">
+<div class="tl-time">10:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 EARLY LUNCH — Light Meal Before Bus</div>
+<div class="tl-tips">Eat light before 6-hour bus ride — heavy meal + mountain roads = motion sickness risk</div>
+<div class="tl-tips">Grab a second banh mi for the bus</div>
+<div class="tl-order">Light pho or banh mi. Fruit for the road.</div>
+<div class="tl-skip">Heavy BBQ, greasy food, alcohol before bus</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Restaurant — weather irrelevant. ⏰ 10:30-11:30 AM</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">7:30 PM</div>
-<div class="ti-content">
-<div class="ti-name">🍜 BUN CHA HUONG LIEN — Obama's spot!</div>
-<div class="ti-detail">Combo Obama ₹456 — Bourdain+Obama ate here 2016!</div>
-<a href="https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">12:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🚌 BUS TO HANOI — 6-Hour Return Journey</div>
+<div class="tl-price">💰 vipSleeperBus: ~₹800 (~228,000 VND) | bookVia: Klook / Vexere recommended</div>
+<div class="tl-tips">Book VIP sleeper — recline fully after summit climb</div>
+<div class="tl-tips">Bring: snacks, water, power bank, downloaded Netflix (patchy mountain signal)</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">Cheap local buses — uncomfortable, frequent stops, no AC</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Bus runs regardless of weather. Mountain roads can be foggy — driver will go slow. ⏰ 12:00 PM departure — arrive Hanoi by 6:00 PM</div>
 </div>
-</div></div></div>
-
+</div>
+<div class="tl-item">
+<div class="tl-time">8:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 BUN CHA HUONG LIEN — Obama's Bun Cha!</div>
+<div class="tl-price">💰 comboObama: 130,000 VND (₹456) — Bun Cha + Fried Seafood Roll + Hanoi Beer | regularBunCha: 40,000-60,000 VND (₹140-210)</div>
+<a href="https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Highly recommended. First time I've had bun cha and I love it. — Reddit"</div>
+<div class="tl-quote">"I wasn't expecting much but the bun cha itself really impressed me. — TripAdvisor"</div>
+<div class="tl-tips">⚠️ CLOSES AT 8:00 PM! You'll arrive Hanoi ~6:00 PM — go STRAIGHT here!</div>
+<div class="tl-tips">Order the 'Combo Obama' — bun cha + fried seafood roll + Hanoi beer = ₹456</div>
+<div class="tl-order">Combo Obama (bun cha + fried seafood roll + Hanoi beer)</div>
+<div class="tl-skip">N/A — simple menu, everything is good</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Indoor seating. Rain irrelevant. ⏰ Arrive by 7:30 PM — they start winding down at 8 PM</div>
+</div>
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹3,905 (Fansipan combo ₹2,805 + Food ₹300 + Bus ₹800)
+</div>
+</div>
 <div class="day-card" data-city="Hanoi">
 <div class="day-header">
-<div class="day-num">🏛️</div>
+<div class="day-num">🍜</div>
 <div class="day-info">
 <div class="day-city">Hanoi</div>
-<div class="day-label">Day 10 • Jul 8 — Full Hanoi Day</div>
+<div class="day-label">Day 11 • July 8, 2026 (Wednesday) — Hanoi — Full Day: Temple, Train Street, Art + Food</div>
 </div>
-<div class="weather-badge risk-medium">⛅  55%</div>
-<img src="https://images.unsplash.com/photo-1514828938973-6872944ec19e?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-med">🟡 Rain: 16/31 rain days. Afternoon thunderstorms 2-5 PM.</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 55%</span>
-<span class="tip">Train Street 11:50AM train! Time your coffee perfectly. X Space = rain-proof art.</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 33°C/26°C | 🌧️ 16/31 rain days. Afternoon thunderstorms 2-5 PM.</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">9:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🏛️ TEMPLE OF LITERATURE (1070 AD)</div>
-<div class="ti-detail">70K VND ⭐4.5 — Vietnam's first university</div>
-<a href="https://maps.google.com/?q=Temple+of+Literature+Hanoi" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">7:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 PHỞ BÁT ĐÀN — Most Traditional Hanoi Pho</div>
+<div class="tl-price">💰 phoBowl: 50,000-80,000 VND (₹175-280)</div>
+<div class="tl-quote">"Always full of locals. The most traditional pho experience in Hanoi."</div>
+<div class="tl-tips">Queue early — this place fills with LOCALS, not tourists</div>
+<div class="tl-tips">Self-service: order at counter, find your own seat, no frills</div>
+<div class="tl-order">Pho tai (rare beef) or pho chin (well-done brisket)</div>
+<div class="tl-skip">Don't expect service or ambiance — this is utilitarian pho at its finest</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Semi-open shop front. Rain doesn't affect. ⏰ 7:30-8:30 AM — before the sell-out</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">11:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🚂 TRAIN STREET — 11:50AM train!</div>
-<div class="ti-detail">Coffee ₹105-228 ⭐4.5 — 'Inches from your face!'</div>
-<a href="https://maps.google.com/?q=Train+Street+Phung+Hung+Hanoi" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">9:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🏛️ TEMPLE OF LITERATURE (Văn Miếu) — Vietnam's First University</div>
+<div class="tl-price">💰 dayTicket: 50,000 VND (₹175) adult | nightTour: 199,000 VND (₹698) adult — includes 3D mapping shows | student: 30,000 VND (₹105)</div>
+<a href="https://maps.google.com/?q=Temple+of+Literature+58+Quoc+Tu+Giam+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"A temple of Confucius in the middle of Hanoi's hustle — peaceful grounds. — TripAdvisor"</div>
+<div class="tl-quote">"Stroll through ancient courtyards bathed in soft lights. 3D Mapping shows — stunning. — April 2026"</div>
+<div class="tl-tips">Morning visit = fewer crowds, better photos of courtyards</div>
+<div class="tl-tips">OR: Night Tour with 3D Mapping (₹698) — completely different experience, stunning light shows</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">Skip if you visited similar Confucian temples — but this is one of Vietnam's best</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Outdoor courtyards. Partially covered halls. Light rain OK. Heavy rain reduces experience. ⏰ 9:00 AM — opening hour, cool morning, minimal crowds</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">2:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🎨 X SPACE IMMERSIVE — Digital art</div>
-<div class="ti-detail">250K VND ⭐4.8 — B2 floor, ask staff!</div>
-<a href="https://maps.google.com/?q=X+Space+Immersive+Vincom+Royal+City+Hanoi" target="_blank" rel="noopener" class="ti-link">Open in Google Maps</a>
+<div class="tl-item">
+<div class="tl-time">11:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🚂 TRAIN STREET CAFE — Morning Train at 11:50 AM!</div>
+<div class="tl-price">💰 entry: FREE — just buy a coffee/snack (30,000-65,000 VND / ₹105-228)</div>
+<a href="https://maps.google.com/?q=Train+Street+Phung+Hung+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Hanoi Train Street is still open in 2026... you can visit freely, cafe owners will invite you. — ShippedAway.com Feb 2026"</div>
+<div class="tl-quote">"As of April 2026, both Le Duan and Phung Hung sections are open and operating normally. — DOP Service April 2026"</div>
+<div class="tl-tips">🚂 Morning train at 11:50 AM — PERFECT timing! Grab a coffee, sit trackside, wait.</div>
+<div class="tl-tips">Phung Hung = iconic narrow section (most photogenic). Le Duan = wider, less crowded.</div>
+<div class="tl-order">Vietnamese coffee (ca phe sua da), egg coffee, or coconut coffee from a trackside cafe</div>
+<div class="tl-skip">Don't stand on the tracks for photos when train approaches — seriously dangerous</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Trackside cafes have awnings. Light rain OK. Train runs regardless of weather. ⭐ PERFECT afternoon rain activity. ⏰ 11:00 AM arrival for 11:50 AM train. OR 7:10 PM for sunset + 7:50 PM train (BEST!).</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">7:50 PM</div>
-<div class="ti-content">
-<div class="ti-name">🚂 TRAIN STREET — 7:50PM night train!</div>
-<div class="ti-detail">Different vibe with trackside lights</div>
-
+<div class="tl-item">
+<div class="tl-time">2:00 PM</div>
+<div class="tl-body">
+<div class="tl-name">🎨 X SPACE IMMERSIVE — Digital Art Museum</div>
+<div class="tl-price">💰 standard: 250,000 VND (₹878) — Rooms 1-7, 60 min | vip: 300,000 VND (₹1,050) — Rooms 1-8 incl. Tunnel Room, 80 min</div>
+<a href="https://maps.google.com/?q=X+Space+Immersive+Vincom+Mega+Mall+Royal+City+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"It's so beautiful, you should definitely go and experience it. — TikTok @xspaceimmersive (457K views)"</div>
+<div class="tl-quote">"The frames, the sounds, the people — hard to describe the feeling. — TikTok (129K views)"</div>
+<div class="tl-tips">⚠️ HARD TO FIND — B2 floor of Vincom Mega Mall. Google Maps misdirects! Ask mall STAFF for directions.</div>
+<div class="tl-tips">Weekday afternoon = EMPTY — best experience, no photo-bombing</div>
+<div class="tl-order">Standard Experience ticket (₹878) — sufficient for most visitors</div>
+<div class="tl-skip">VIP upgrade unless you're a digital art enthusiast</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⭐ PERFECT RAIN BACKUP! Fully indoor, air-conditioned, inside a mall. Zero weather impact. ⏰ 2:00-4:00 PM weekday — empty, perfect lighting conditions</div>
 </div>
-</div></div></div>
-
-<div class="day-card" data-city="Halong">
+</div>
+<div class="tl-item">
+<div class="tl-time">7:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🚂 TRAIN STREET — 7:50 PM Iconic Night Train!</div>
+<div class="tl-price">💰 coffee: 30,000-65,000 VND (₹105-228)</div>
+<a href="https://maps.google.com/?q=Train+Street+Phung+Hung+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-tips">⭐ THIS IS THE ONE — 7:50 PM train with sunset colors, glowing lanterns, and train headlight = THE iconic Hanoi photo</div>
+<div class="tl-tips">Arrive by 7:10 PM — grab a good trackside seat, order coffee, wait for magic</div>
+<div class="tl-order">Egg coffee or coconut coffee — warm drink for the evening wait</div>
+<div class="tl-skip">Don't lean too far out for photos — train clearance is inches</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Evening usually clears. Train runs regardless. Lanterns create atmosphere in any weather. ⏰ 7:10 PM arrival for 7:50 PM train — THE best photo slot of the day</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-time">8:30 PM</div>
+<div class="tl-body">
+<div class="tl-name">🐟 CHẢ CÁ THĂNG LONG — What Locals Choose Over La Vong</div>
+<div class="tl-price">💰 chaCa: 120,000-180,000 VND (₹421-632)</div>
+<a href="https://maps.google.com/?q=21+Duong+Thanh+Hoan+Kiem+Hanoi" target="_blank" rel="noopener" class="tl-maps">Google Maps</a>
+<div class="tl-quote">"Cha Ca Thang Long does what La Vong used to do — excellent turmeric fish with dill, fair prices, friendly service."</div>
+<div class="tl-tips">🚫 CHA CA LA VONG IS A TOURIST TRAP! 3.6★ TripAdvisor, overpriced (200K VND), small portions, rude service</div>
+<div class="tl-tips">Cha Ca Thang Long is where LOCALS go — ⭐4.5, 120K-180K VND, generous portions</div>
+<div class="tl-order">Cha Ca (turmeric fish with dill) — one portion is usually enough for one person</div>
+<div class="tl-skip">🚫 CHA CA LA VONG (14 Cha Ca St) — tourist trap! 'Overpriced, small portions, rude service' — TripAdvisor. 'Not what it used to be 10 years ago' — Redd</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Indoor seating. Weather irrelevant. ⏰ 8:30 PM — post train street, nice dinner timing</div>
+</div>
+</div>
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹2,000
+</div>
+</div>
+<div class="day-card" data-city="Hanoi">
 <div class="day-header">
-<div class="day-num">⚠️</div>
+<div class="day-num">🍜</div>
 <div class="day-info">
-<div class="day-city">Halong Bay</div>
-<div class="day-label">Day 11 • Jul 9 — Cruise Day 🚢</div>
+<div class="day-city">Halong Bay / Hanoi</div>
+<div class="day-label">Day 12 • July 9, 2026 (Thursday) — 🚢 HALONG BAY — HIGHEST-RISK DAY OF TRIP</div>
 </div>
-<div class="weather-badge risk-critical">⚠️ 50%</div>
-<img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-high">🟠 Rain: 15/31 rain days — BEST sunshine (7 hrs/day!) of all destinations</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 50%</span>
-<span class="tip">HIGHEST RISK DAY! Check forecast 3 days before. Backup: Lan Ha Bay, Quang Ninh Museum.</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 32°C/26°C | 🌧️ 15/31 rain days — BEST sunshine (7 hrs/day!) of all destinations</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">6:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🚌 Hanoi → Halong (2.5hr)</div>
-<div class="ti-detail">Shuttle ~₹500-700</div>
-
+<div class="tl-item">
+<div class="tl-time">7:30 AM</div>
+<div class="tl-body">
+<div class="tl-name">🚢 HALONG BAY DAY CRUISE — Sung Sot Cave + Kayaking</div>
+<div class="tl-price">💰 dayCruise: ₹4,170 (~1,190,000 VND) | includes: Transport, cruise, guide, cave entry, kayaking, buffet lunch</div>
+<div class="tl-quote">"Our Halong Bay cruise in July was amazing — sunshine most of the day, then a dramatic thunderstorm at sunset."</div>
+<div class="tl-tips">Book with a REPUTABLE operator with clear CANCELLATION policy — this is critical!</div>
+<div class="tl-tips">Check forecast 3, 2, and 1 day before via windy.com</div>
+<div class="tl-order">Vietnamese buffet lunch onboard — included. Order a cold beer on deck after kayaking.</div>
+<div class="tl-skip">Overpriced souvenirs at tourist stops. Skip swimming if seas are rough.</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ ⚠️ HIGHEST-RISK DAY OF ENTIRE TRIP. Typhoon warning = FULL CANCELLATION. Operators notify 24-48 hours before. Book flexible/refundable. Halong Bay actually has BEST sunshine (7 hrs/day) of all July destinations — but typhoons are the wildcard. ⏰ Full day trip — cruise operates 11:00 AM-4:00 PM in Halong Bay</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">9:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🚢 HALONG BAY DAY CRUISE</div>
-<div class="ti-detail">⚠️ CANCELS in typhoon. Book flexible!</div>
-
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹4,170 (Cozy Bay Cruise) + small dinner
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">10:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🕳️ SUNG SOT CAVE — open in rain!</div>
-<div class="ti-detail">Largest cave, covered walkways</div>
-
-</div>
-</div>
-<div class="timeline-item">
-<div class="ti-time">3:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🏖️ TI TOP ISLAND — 400-step viewpoint</div>
-<div class="ti-detail">⚠️ Slippery in rain</div>
-
-</div>
-</div>
-<div class="timeline-item">
-<div class="ti-time">5:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🚌 Return Hanoi</div>
-
-
-</div>
-</div></div><div class="backup"><strong>⚠️ RAIN/TYPHOON BACKUP:</strong> IF CANCELLED: Lan Ha Bay → Quang Ninh Museum → Hai Phong day trip → Return Hanoi early</div></div>
-
-<div class="day-card" data-city="Delhi">
+<div class="day-card" data-city="Hanoi">
 <div class="day-header">
-<div class="day-num">✈️</div>
+<div class="day-num">🍜</div>
 <div class="day-info">
-<div class="day-city">Delhi</div>
-<div class="day-label">Day 12 • Jul 10 — Departure ✈️</div>
+<div class="day-city">Hanoi → Delhi</div>
+<div class="day-label">Day 13 • July 10, 2026 (Friday) — Hanoi — Last Morning + Departure</div>
 </div>
-<div class="weather-badge risk-low">⛅  40%</div>
-<img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80" class="day-photo" alt="" loading="lazy">
+<div class="wx-badge wx-med">🟡 Rain: 16/31 rain days</div>
 </div>
-<div class="weather-detail">
-<span class="rain-chance">🌧️ Rain: 40%</span>
-<span class="tip">One last egg coffee + pho. Dong Xuan Market for souvenirs. Extra 30min for rain traffic!</span>
+<div class="wx-detail">
+<span class="rain-chance">🌡️ 33°C/ | 🌧️ 16/31 rain days</span>
+<span class="tip"></span>
 </div>
 <div class="timeline">
-<div class="timeline-item">
-<div class="ti-time">7:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">☕ Last Egg Coffee + Banh Mi</div>
-<div class="ti-detail">Giang Cafe one more time!</div>
-
+<div class="tl-item">
+<div class="tl-time">7:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🍜 LAST PHO BREAKFAST — Pick Your Champion</div>
+<div class="tl-price">💰 phoBowl: 50,000-110,000 VND (₹175-386)</div>
+<div class="tl-tips">One last bowl of the world's best pho before heading home</div>
+<div class="tl-tips">If you haven't tried Pho Thin 13 Lo Duc's garlic beef — THIS is your chance</div>
+<div class="tl-order">Your favorite pho from the trip, one last time</div>
+<div class="tl-skip">Airport food — eat well in the city before heading out</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Morning dry. Allow extra time for airport transfer if raining. ⏰ 7:00-8:30 AM</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">9:00 AM</div>
-<div class="ti-content">
-<div class="ti-name">🛍️ Dong Xuan Market — souvenirs</div>
-<div class="ti-detail">Covered market = rain-proof</div>
-
+<div class="tl-item">
+<div class="tl-time">9:00 AM</div>
+<div class="tl-body">
+<div class="tl-name">🛫 HEAD TO NOI BAI AIRPORT — Flight to Delhi</div>
+<div class="tl-price">💰 grabToAirport: ₹700-1,050 (200,000-300,000 VND) | bus86: ₹158 (45,000 VND)</div>
+<div class="tl-tips">Take Grab — not the time to save ₹500. Door-to-door, 40-50 min, peace of mind.</div>
+<div class="tl-tips">Hanoi traffic can be unpredictable — leave 3 hours before flight</div>
+<div class="tl-order">N/A</div>
+<div class="tl-skip">Bus 86 on departure day — not worth the stress</div>
+<div class="tl-tips" style="color:var(--rain)">🌤️ Allow EXTRA time if raining — Hanoi traffic worsens significantly in rain. Flights operate in rain but may delay if thunderstorm over airport. ⏰ Leave hotel by 9:00 AM for early afternoon flight</div>
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">2:00 PM</div>
-<div class="ti-content">
-<div class="ti-name">🚕 Airport transfer</div>
-<div class="ti-detail">+30 min buffer for rain traffic</div>
-
+</div>
+<div class="wx-detail" style="justify-content:flex-end;font-size:.72rem">
+💰 Day Budget: ₹300-500 (breakfast + transport)
 </div>
 </div>
-<div class="timeline-item">
-<div class="ti-time">Evening</div>
-<div class="ti-content">
-<div class="ti-name">🛫 Fly Hanoi → Delhi 🇮🇳</div>
-<div class="ti-detail">Trip complete! 🎉</div>
-
-</div>
-</div></div></div>
-
 </div><!-- day-grid -->
 </div><!-- container -->
 
-<!-- ═══ UTILITY BUTTONS ═══ -->
 <div class="utils">
 <button class="util-btn" onclick="togglePanel('checklist')" title="Checklist">✅</button>
 <button class="util-btn" onclick="togglePanel('budget')" title="Budget">💰</button>
@@ -961,7 +1180,6 @@ html{scroll-behavior:smooth}
 </div>
 <div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
 
-<!-- CHECKLIST -->
 <div class="panel" id="panel-checklist">
 <button class="panel-close" onclick="closeAllPanels()">✕</button>
 <h3>✅ Pre-Trip Checklist</h3>
@@ -970,107 +1188,62 @@ html{scroll-behavior:smooth}
 <label><input type="checkbox" onchange="saveChecklist()"> Flights: Delhi ↔ Vietnam</label>
 <label><input type="checkbox" onchange="saveChecklist()"> Travel insurance (typhoon cover!)</label>
 <label><input type="checkbox" onchange="saveChecklist()"> Hotels booked — all cities</label>
-<label><input type="checkbox" onchange="saveChecklist()"> Halong Bay cruise (flexible booking!)</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Halong Bay cruise (flexible!)</label>
 <label><input type="checkbox" onchange="saveChecklist()"> Sapa bus tickets booked</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Rain jacket + rain pants</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Waterproof hiking boots</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Leech socks (Amazon)</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Fleece for Fansipan (8-15°C!)</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Sunscreen SPF 50+ (UV 11+)</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Insect repellent DEET</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Waterproof phone pouch</label>
-<label><input type="checkbox" onchange="saveChecklist()"> 🎒 Motion sickness meds</label>
-<label><input type="checkbox" onchange="saveChecklist()"> Grab app installed + registered</label>
-<label><input type="checkbox" onchange="saveChecklist()"> Cash: USD + some VND</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Rain jacket + rain pants</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Waterproof hiking boots</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Leech socks (Amazon)</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Fleece for Fansipan (8-15°C!)</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Sunscreen SPF 50+</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Insect repellent DEET</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Waterproof phone pouch</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Motion sickness meds</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Grab app installed</label>
+<label><input type="checkbox" onchange="saveChecklist()"> Cash: USD + VND</label>
 <label><input type="checkbox" onchange="saveChecklist()"> Check weather (windy.com) 7 days before</label>
 </div>
 
-<!-- BUDGET -->
 <div class="panel" id="panel-budget">
 <button class="panel-close" onclick="closeAllPanels()">✕</button>
-<h3>💰 Budget Breakdown</h3>
-<table class="budget-table">
+<h3>💰 Budget</h3>
+<table class="btable">
 <tr><th>City</th><th>Activities</th><th>Food</th><th>Transport</th><th>Total</th></tr>
 <tr><td>🏙️ HCMC</td><td>₹1,400</td><td>₹800</td><td>₹600</td><td>₹2,800</td></tr>
 <tr><td>🏝️ Phu Quoc</td><td>₹8,500</td><td>₹1,200</td><td>₹800</td><td>₹10,500</td></tr>
 <tr><td>⛰️ Sapa</td><td>₹4,500</td><td>₹1,500</td><td>₹600</td><td>₹6,600</td></tr>
 <tr><td>🍜 Hanoi</td><td>₹1,800</td><td>₹1,200</td><td>₹400</td><td>₹3,400</td></tr>
-<tr><td>🚢 Halong Bay</td><td>₹3,500</td><td>₹500</td><td>₹700</td><td>₹4,700</td></tr>
+<tr><td>🚢 Halong</td><td>₹3,500</td><td>₹500</td><td>₹700</td><td>₹4,700</td></tr>
 <tr class="total"><td>🎯 TOTAL</td><td>₹19,700</td><td>₹5,200</td><td>₹3,100</td><td>₹28,000</td></tr>
 </table>
-<p style="font-size:.78rem;color:#8899aa;margin-top:14px">💡 Hotels (13 nights ≈ ₹25-35K) + Flights (₹20-30K) ≈ <strong style="color:var(--head)">₹75-95K total trip</strong></p>
-<p style="font-size:.75rem;color:var(--red);margin-top:8px">⚠️ SAVE ₹4,000: Book 4 Island Tour locally (₹4,200) not online (₹8,250)!</p>
+<p style="font-size:.75rem;color:#8899aa;margin-top:12px">💡 +Hotels ₹25-35K +Flights ₹20-30K ≈ <strong style="color:var(--head)">₹75-95K total</strong></p>
+<p style="font-size:.72rem;color:var(--red)">⚠️ Save ₹4,000: Book 4 Island locally (₹4,200) not Klook (₹8,250)!</p>
 </div>
 
-<!-- EMERGENCY -->
 <div class="panel" id="panel-emergency">
 <button class="panel-close" onclick="closeAllPanels()">✕</button>
-<h3>🆘 Emergency Contacts</h3>
-<div class="emergency-item"><strong>Police:</strong> 113</div>
-<div class="emergency-item"><strong>Ambulance:</strong> 115</div>
-<div class="emergency-item"><strong>Fire:</strong> 114</div>
-<div class="emergency-item"><strong>Indian Embassy Hanoi:</strong> +84 24 3824 4989</div>
-<div class="emergency-item"><strong>Fansipan Cable Car:</strong> +84 214 3871 999</div>
-<div class="emergency-item"><strong>Weather:</strong> windy.com • zoom.earth</div>
-<div class="emergency-item"><strong>Typhoon Track:</strong> metoc.navy.mil/jtwc/jtwc.html</div>
-<div class="emergency-item"><strong>Grab App:</strong> Download + register BEFORE trip</div>
+<h3>🆘 Emergency</h3>
+<div class="em-item"><strong>Police:</strong> 113</div>
+<div class="em-item"><strong>Ambulance:</strong> 115</div>
+<div class="em-item"><strong>Fire:</strong> 114</div>
+<div class="em-item"><strong>Indian Embassy Hanoi:</strong> +84 24 3824 4989</div>
+<div class="em-item"><strong>Fansipan Cable Car:</strong> +84 214 3871 999</div>
+<div class="em-item"><strong>Weather:</strong> windy.com • zoom.earth</div>
+<div class="em-item"><strong>Typhoon Track:</strong> metoc.navy.mil/jtwc/jtwc.html</div>
+<div class="em-item"><strong>Grab App:</strong> Download + register BEFORE trip</div>
 </div>
 
 <script>
-// ⏳ Countdown
-function uc(){const t=new Date('2026-06-28T00:00:00+07:00'),n=t-new Date();if(n<0){document.getElementById('countdown').textContent='🎉 Trip in progress! Have an amazing time!';return}const d=Math.floor(n/864e5),h=Math.floor(n/36e5)%24,m=Math.floor(n/6e4)%60,s=Math.floor(n/1e3)%60;document.getElementById('countdown').textContent=`⏳ ${d}d ${h}h ${m}m ${s}s until Vietnam 🇻🇳`}
+function uc(){const t=new Date('2026-06-28T00:00:00+07:00'),n=t-new Date();if(n<0){document.getElementById('countdown').textContent='🎉 Trip in progress!';return}const d=Math.floor(n/864e5),h=Math.floor(n/36e5)%24,m=Math.floor(n/6e4)%60,s=Math.floor(n/1e3)%60;document.getElementById('countdown').textContent=`⏳ ${d}d ${h}h ${m}m ${s}s`}
 uc();setInterval(uc,1000);
-
-// 📅 Tabs
-function filterDays(city,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.day-card').forEach(c=>{c.style.display=(city==='all'||c.dataset.city===city)?'':'none'});
-}
-
-// 🔍 Search
-function searchDays(q){
-  const s=q.toLowerCase();
-  document.querySelectorAll('.day-card').forEach(c=>{c.style.display=s===''||c.textContent.toLowerCase().includes(s)?'':'none'});
-}
-
-// 📌 Panels
-function togglePanel(name){
-  const p=document.getElementById('panel-'+name),o=document.getElementById('overlay');
-  const sh=p.classList.contains('show');closeAllPanels();
-  if(!sh){p.classList.add('show');o.classList.add('show')}
-}
-function closeAllPanels(){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));
-  document.getElementById('overlay').classList.remove('show');
-}
-
-// 📍 Scroll to city
-function scrollToCity(city){
-  const cards=document.querySelectorAll('.day-card');
-  for(const c of cards){if(c.dataset.city===city){c.scrollIntoView({behavior:'smooth',block:'start'});break}}
-}
-
-// 👁️ Scroll spy
-const ovcs=document.querySelectorAll('.ov-card');
-window.addEventListener('scroll',()=>{
-  let act='';
-  document.querySelectorAll('.day-card').forEach(c=>{const r=c.getBoundingClientRect();if(r.top<250&&r.bottom>80)act=c.dataset.city});
-  ovcs.forEach(o=>{const ct=o.querySelector('.ov-city');o.classList.toggle('active-overview',ct&&act&&ct.textContent.toUpperCase().includes(act.toUpperCase()))});
-});
-
-// ✅ Checklist persistence
-document.querySelectorAll('#panel-checklist input[type=checkbox]').forEach((cb,i)=>{
-  cb.checked=localStorage.getItem('vn_chk_'+i)==='1';
-  cb.addEventListener('change',()=>localStorage.setItem('vn_chk_'+i,cb.checked?'1':'0'));
-});
-
+function filterDays(city,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.day-card').forEach(c=>{c.style.display=(city==='all'||c.dataset.city===city)?'':'none'})}
+function searchDays(q){const s=q.toLowerCase();document.querySelectorAll('.day-card').forEach(c=>{c.style.display=s===''||c.textContent.toLowerCase().includes(s)?'':'none'})}
+function togglePanel(name){const p=document.getElementById('panel-'+name),o=document.getElementById('overlay'),sh=p.classList.contains('show');closeAllPanels();if(!sh){p.classList.add('show');o.classList.add('show')}}
+function closeAllPanels(){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));document.getElementById('overlay').classList.remove('show')}
+function scrollToCity(city){const cards=document.querySelectorAll('.day-card');for(const c of cards){if(c.dataset.city===city){c.scrollIntoView({behavior:'smooth',block:'start'});break}}
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));const tb=document.querySelector(`.tab[onclick*="${city}"]`);if(tb)tb.classList.add('active')}
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
-
-// ⌨️ Keyboard shortcuts
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeAllPanels();
-});
+document.querySelectorAll('#panel-checklist input[type=checkbox]').forEach((cb,i)=>{cb.checked=localStorage.getItem('vn_'+i)==='1';cb.addEventListener('change',()=>localStorage.setItem('vn_'+i,cb.checked?'1':'0'))});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels()});
 </script>
 </body>
 </html>
