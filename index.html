@@ -94,6 +94,22 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .photo-strip{display:flex;gap:8px;overflow-x:auto;padding:8px 0}
 .photo-strip img{height:120px;border-radius:8px;flex-shrink:0}
 
+/* City overview cards */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+.ov-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.ov-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ov-card .ov-emoji{font-size:2rem;margin-bottom:6px}
+.ov-card .ov-city{font-size:.95rem;font-weight:700;color:var(--head)}
+.ov-card .ov-dates{font-size:.72rem;color:var(--accent);margin:2px 0}
+.ov-card .ov-nights{font-size:.72rem;color:#8899aa}
+.ov-card .ov-stats{display:flex;gap:8px;justify-content:center;margin-top:6px;flex-wrap:wrap}
+.ov-stat{font-size:.68rem;padding:2px 8px;border-radius:10px;background:rgba(100,181,246,.1);color:var(--accent);white-space:nowrap}
+.ov-card .ov-warn{font-size:.65rem;color:var(--red);margin-top:4px}
+.ov-arrow{display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:2rem;color:var(--accent);animation:bounce 1s infinite}
+@keyframes bounce{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(-50%) translateX(6px)}}
+.ov-card.active-overview{border-color:var(--accent);box-shadow:0 0 20px rgba(100,181,246,.15)}
+.ov-card.active-overview .ov-arrow{display:block}
+
 /* Responsive */
 @media(max-width:600px){
   .day-header{flex-direction:column;align-items:flex-start}
@@ -120,6 +136,79 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 </div>
 
 <input type="text" class="search-bar" placeholder="🔍 Search anything — pho, cafe, beach, weather..." oninput="searchDays(this.value)">
+
+<!-- CITY OVERVIEW CARDS — chronological order -->
+<div class="overview-grid">
+<div class="ov-card" onclick="scrollToCity('HCMC')">
+<div class="ov-emoji">🏙️</div>
+<div class="ov-city">HO CHI MINH CITY</div>
+<div class="ov-dates">Jun 28 – Jun 30</div>
+<div class="ov-nights">2 Nights • ₹2,600 activities</div>
+<div class="ov-stats">
+<span class="ov-stat">☔ 17/31 rain days</span>
+<span class="ov-stat">⭐ Michelin Bib Gourmand</span>
+<span class="ov-stat">🦪 31st coolest street</span>
+</div>
+<div class="ov-warn">⚠️ Jun 28: Land 9PM → Bui Vien peak!</div>
+<div class="ov-arrow">➡️</div>
+</div>
+
+<div class="ov-card" onclick="scrollToCity('Phu Quoc')">
+<div class="ov-emoji">🏝️</div>
+<div class="ov-city">PHU QUOC</div>
+<div class="ov-dates">Jun 30 – Jul 3</div>
+<div class="ov-nights">3 Nights • ₹9,128 activities</div>
+<div class="ov-stats">
+<span class="ov-stat">☔ 18/31 rain days</span>
+<span class="ov-stat">🤿 Sea Walking</span>
+<span class="ov-stat">💰 Book LOCAL save ₹4,000</span>
+</div>
+<div class="ov-warn">⚠️ 4 Island Tour cancels in rough seas!</div>
+<div class="ov-arrow">➡️</div>
+</div>
+
+<div class="ov-card" onclick="scrollToCity('Hanoi')">
+<div class="ov-emoji">🍜</div>
+<div class="ov-city">HANOI</div>
+<div class="ov-dates">Jul 3, 4, 7, 8, 10</div>
+<div class="ov-nights">4 Days • ₹3,400 activities</div>
+<div class="ov-stats">
+<span class="ov-stat">☔ 16/31 rain days</span>
+<span class="ov-stat">🍜 #1 Pho + Egg Coffee</span>
+<span class="ov-stat">🚂 Train Street OPEN</span>
+</div>
+<div class="ov-warn">⚠️ Halong Bay cruise = typhoon risk!</div>
+<div class="ov-arrow">➡️</div>
+</div>
+
+<div class="ov-card" onclick="scrollToCity('Sapa')">
+<div class="ov-emoji">⛰️</div>
+<div class="ov-city">SAPA</div>
+<div class="ov-dates">Jul 4 – Jul 7</div>
+<div class="ov-nights">3 Nights • ₹6,600 activities</div>
+<div class="ov-stats">
+<span class="ov-stat">☔ 22/31 — WETTEST!</span>
+<span class="ov-stat">🏔️ Fansipan 3,143m</span>
+<span class="ov-stat">☕ 6 Famous Cafes</span>
+</div>
+<div class="ov-warn">⚠️ Cable car closes in heavy rain!</div>
+<div class="ov-arrow">➡️</div>
+</div>
+
+<div class="ov-card" onclick="scrollToCity('Halong')">
+<div class="ov-emoji">🚢</div>
+<div class="ov-city">HALONG BAY</div>
+<div class="ov-dates">Jul 9 — Day Trip</div>
+<div class="ov-nights">1 Day • ₹4,700</div>
+<div class="ov-stats">
+<span class="ov-stat">☀️ 7 hrs sun — BEST!</span>
+<span class="ov-stat">🕳️ Sung Sot Cave</span>
+<span class="ov-stat">🏖️ Ti Top Island</span>
+</div>
+<div class="ov-warn">⚠️ TYPHOON RISK — Cruise may cancel!</div>
+<div class="ov-arrow">➡️</div>
+</div>
+</div>
 
 <div class="day-grid" id="dayGrid">
 
@@ -1228,6 +1317,26 @@ document.querySelectorAll('#panel-checklist input[type=checkbox]').forEach((cb,i
 function saveChecklist(){}
 
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
+
+// Scroll to first card of a city
+function scrollToCity(city){
+  const cards=document.querySelectorAll('.day-card');
+  for(const c of cards){
+    if(c.dataset.city===city){c.scrollIntoView({behavior:'smooth',block:'start'});break}
+  }
+}
+
+// Scroll spy — highlight active overview card
+const ovCards=document.querySelectorAll('.ov-card');
+const dayCards=document.querySelectorAll('.day-card');
+window.addEventListener('scroll',()=>{
+  let active='';
+  dayCards.forEach(c=>{
+    const rect=c.getBoundingClientRect();
+    if(rect.top<200&&rect.bottom>100)active=c.dataset.city;
+  });
+  ovCards.forEach(o=>o.classList.toggle('active-overview',o.textContent.includes(active)));
+});
 </script>
 </body>
 </html>
