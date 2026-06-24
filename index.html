@@ -327,50 +327,75 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 .plan-cost { font-size:11px; color:var(--muted); margin-top:3px; }
 .plan-cat { font-size:9px; padding:3px 8px; border-radius:20px; background:var(--bg2); color:var(--muted); text-transform:uppercase; white-space:nowrap; font-weight:600; align-self:flex-start; }
 
-/* ── Weather (Premium) ───────────────────── */
-.wx-hero { position:relative; border-radius:var(--radius-lg); overflow:hidden; margin-bottom:16px; min-height:180px; background:linear-gradient(135deg,#1a2a3a,#0d1520); display:flex; align-items:center; }
-.wx-hero-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,15,25,0.85) 0%,rgba(10,15,25,0.5) 60%,rgba(10,15,25,0.85) 100%); }
-.wx-hero-content { position:relative; display:flex; align-items:center; gap:24px; padding:24px 28px; width:100%; }
-.wx-score-badge { width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:800; font-family:var(--font-head); color:#fff; flex-shrink:0; border:3px solid rgba(255,255,255,0.3); }
-.wx-hero-text { flex:1; }
-.wx-hero-label { font-size:12px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.6); margin-bottom:2px; }
-.wx-hero-title { font-family:var(--font-head); font-size:28px; font-weight:800; color:#fff; }
-.wx-hero-sub { font-size:13px; color:rgba(255,255,255,0.65); margin-top:2px; }
-.wx-hero-right { text-align:center; flex-shrink:0; }
-.wx-alert-count { font-size:36px; font-weight:800; font-family:var(--font-head); color:#E85D5D; line-height:1; }
-.wx-alert-label { font-size:11px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+/* ── Weather (Overview First) ─────────────── */
+.wx-header { display:flex; align-items:center; justify-content:space-between; padding:12px 18px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:14px; }
+.wx-h-left { display:flex; align-items:center; gap:12px; }
+.wx-h-icon { font-size:22px; }
+.wx-h-title { font-family:var(--font-head); font-size:18px; font-weight:800; }
+.wx-h-sub { font-size:11px; color:var(--secondary); }
+.wx-h-right { display:flex; align-items:center; gap:16px; }
+.wx-h-score { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; color:#fff; }
+.wx-h-alerts { font-size:13px; font-weight:600; color:var(--danger); }
 
-.wx-city-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:20px 22px; box-shadow:var(--shadow); margin-bottom:14px; transition:all .2s; }
-.wx-city-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.06); }
-.wx-city-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
-.wx-city-name { font-family:var(--font-head); font-size:20px; font-weight:700; display:flex; align-items:center; gap:8px; }
-.wx-city-current { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
-.wx-city-temp { font-family:var(--font-head); font-size:42px; font-weight:300; line-height:1; }
-.wx-city-cond { font-size:14px; color:var(--secondary); }
-.wx-city-rain { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; }
-.wx-rain-icon { font-size:18px; }
-.wx-timeline { display:flex; gap:2px; height:40px; border-radius:8px; overflow:hidden; margin-bottom:12px; background:var(--bg2); }
-.wx-timeline-bar { flex:1; display:flex; flex-direction:column; justify-content:flex-end; border-radius:2px; transition:all .2s; cursor:pointer; position:relative; }
-.wx-timeline-bar:hover { transform:scaleY(1.1); }
-.wx-timeline-labels { display:flex; gap:2px; margin-bottom:12px; }
-.wx-timeline-label { flex:1; text-align:center; font-size:9px; color:var(--secondary); }
-.wx-day-row { display:grid; grid-template-columns:50px 56px 1fr 60px 80px; gap:8px; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); }
-.wx-day-row:last-child { border-bottom:none; }
-.wx-day-date { font-size:13px; font-weight:600; }
-.wx-day-temp { font-size:12px; color:var(--secondary); }
-.wx-day-cond { font-size:12px; color:var(--secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.wx-day-rain { display:flex; align-items:center; gap:4px; font-size:13px; font-weight:700; }
-.wx-day-risk { text-align:center; }
-.wx-risk-pill { font-size:10px; padding:2px 10px; border-radius:12px; font-weight:700; text-transform:uppercase; }
-.wx-risk-low { background:rgba(47,107,82,0.12); color:var(--primary); }
-.wx-risk-med { background:rgba(232,163,61,0.12); color:var(--warning); }
-.wx-risk-high { background:rgba(232,93,93,0.12); color:var(--danger); }
-.wx-rain-bar { height:6px; border-radius:3px; background:var(--bg2); overflow:hidden; margin:2px 0; }
-.wx-rain-fill { height:100%; border-radius:3px; transition:width .4s ease; }
-.wx-best-window { background:rgba(47,107,82,0.08); border:1px solid rgba(47,107,82,0.2); border-radius:10px; padding:8px 12px; font-size:12px; margin:8px 0; display:flex; align-items:center; gap:8px; }
-.wx-ai-insight { background:rgba(212,180,131,0.08); border:1px solid rgba(212,180,131,0.2); border-radius:10px; padding:10px 14px; font-size:13px; margin-top:8px; line-height:1.5; }
-.wx-ai-insight strong { color:var(--primary); }
-.wx-adjustments { margin-top:16px; }
+/* COMPARISON MATRIX — THE MAIN VIEW */
+.wx-matrix-wrap { overflow-x:auto; margin-bottom:16px; }
+.wx-matrix { width:100%; border-collapse:separate; border-spacing:3px; font-size:13px; }
+.wx-matrix th { padding:6px 10px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center; white-space:nowrap; }
+.wx-matrix td { padding:8px 6px; text-align:center; font-weight:700; border-radius:8px; font-size:14px; cursor:pointer; transition:all .15s; position:relative; white-space:nowrap; }
+.wx-matrix td:hover { transform:scale(1.12); z-index:2; }
+.wx-matrix .city-label { text-align:left; font-weight:700; font-size:13px; padding:8px 10px; white-space:nowrap; }
+.wx-cell-high { background:rgba(232,93,93,0.25); color:#E85D5D; }
+.wx-cell-med { background:rgba(232,163,61,0.2); color:#E8A33D; }
+.wx-cell-low { background:rgba(47,107,82,0.15); color:#2F6B52; }
+.wx-tooltip { display:none; position:absolute; bottom:105%; left:50%; transform:translateX(-50%); background:#1a1a2e; color:#fff; padding:6px 10px; border-radius:8px; font-size:11px; white-space:nowrap; z-index:10; pointer-events:none; }
+.wx-matrix td:hover .wx-tooltip { display:block; }
+
+/* CITY SUMMARY ROW */
+.wx-summary { display:flex; gap:10px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px; scrollbar-width:thin; }
+.wx-summary-card { flex:0 0 180px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:12px 14px; cursor:pointer; transition:all .2s; }
+.wx-summary-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+.wx-summary-card .sc-city { font-family:var(--font-head); font-size:15px; font-weight:700; display:flex; align-items:center; gap:6px; margin-bottom:4px; }
+.wx-summary-card .sc-rain { font-size:24px; font-weight:300; line-height:1; }
+.wx-summary-card .sc-risk { display:inline-block; font-size:9px; padding:2px 8px; border-radius:10px; font-weight:700; }
+.wx-summary-card .sc-window { font-size:10px; color:var(--secondary); margin-top:4px; }
+.wx-summary-card .sc-ai { font-size:11px; font-weight:500; margin-top:4px; line-height:1.3; }
+.wx-summary-card.active { border-color:var(--primary); box-shadow:0 0 0 2px rgba(47,107,82,0.15); }
+
+/* AI INSIGHTS */
+.wx-insights { margin-bottom:16px; }
+.wx-insight-card { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:6px; transition:all .15s; }
+.wx-insight-card .ici-icon { font-size:16px; margin-top:1px; }
+.wx-insight-card .ici-text { flex:1; font-size:13px; line-height:1.4; }
+.wx-insight-card .ici-source { font-size:10px; color:var(--secondary); margin-top:2px; }
+.wx-insight-card.danger { border-left:3px solid var(--danger); }
+.wx-insight-card.warning { border-left:3px solid var(--warning); }
+.wx-insight-card.success { border-left:3px solid var(--primary); }
+
+/* EXPANDABLE CITY DETAILS */
+.wx-detail-wrap { margin-bottom:16px; }
+.wx-detail-toggle { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.wx-detail-btn { padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:var(--card); font-size:12px; font-weight:600; cursor:pointer; transition:all .15s; font-family:var(--font-body); }
+.wx-detail-btn:hover { border-color:var(--primary); color:var(--primary); }
+.wx-detail-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+.wx-detail-panel { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px 18px; display:none; }
+.wx-detail-panel.open { display:block; }
+.wx-detail-panel .dp-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.wx-detail-panel .dp-header h3 { font-family:var(--font-head); font-size:16px; font-weight:700; }
+.wx-detail-panel .dp-stats { display:flex; gap:16px; margin-bottom:12px; flex-wrap:wrap; }
+.wx-detail-panel .dp-stat { font-size:12px; }
+.wx-detail-panel .dp-stat strong { font-weight:700; }
+.wx-detail-days { display:grid; gap:6px; }
+.wx-detail-day { display:grid; grid-template-columns:70px 60px 1fr 60px 80px; gap:6px; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.wx-detail-day:last-child { border-bottom:none; }
+.wx-dd-date { font-weight:600; }
+.wx-dd-temp { color:var(--secondary); }
+.wx-dd-cond { color:var(--secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.wx-dd-rain { font-weight:700; }
+.wx-dd-window { font-size:10px; color:var(--primary); }
+
+/* Hourly rain sparkline in detail */
+.wx-sparkline { display:flex; gap:1px; height:24px; align-items:flex-end; margin:4px 0 2px; }
+.wx-spark-bar { flex:1; border-radius:2px; min-height:2px; }
 
 /* ── Budget ──────────────────────────────── */
 .budget-bar { height:24px; border-radius:12px; background:var(--bg2); overflow:hidden; display:flex; margin:12px 0; }
@@ -688,23 +713,20 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 
   <!-- ═══ WEATHER ═══ -->
   <div class="tab-content" id="tab-weather">
-    <div class="wx-hero">
-      <div class="wx-hero-overlay"></div>
-      <div class="wx-hero-content">
-        <div class="wx-score-badge" id="wxScoreBadge">--</div>
-        <div class="wx-hero-text">
-          <div class="wx-hero-label">Weather Intelligence</div>
-          <div class="wx-hero-title" id="wxHeroTitle">Monsoon Season</div>
-          <div class="wx-hero-sub" id="wxHeroSub">Real-time forecasts from Open-Meteo API</div>
-        </div>
-        <div class="wx-hero-right">
-          <div class="wx-alert-count" id="wxAlertCount">--</div>
-          <div class="wx-alert-label">Active Alerts</div>
+    <div class="wx-header">
+      <div class="wx-h-left">
+        <span class="wx-h-icon">🌧️</span>
+        <div class="wx-h-text">
+          <div class="wx-h-title">Weather Intelligence</div>
+          <div class="wx-h-sub" id="wxHeroSub">Loading…</div>
         </div>
       </div>
+      <div class="wx-h-right">
+        <div class="wx-h-score" id="wxScoreBadge">--</div>
+        <div class="wx-h-alerts"><span id="wxAlertCount">--</span> alerts</div>
+      </div>
     </div>
-    <div class="stats-grid" id="weatherStats"></div>
-    <div id="weatherGrid"></div>
+    <div id="weatherContent"></div>
   </div>
 
   <!-- ═══ BUDGET ═══ -->
@@ -1073,135 +1095,189 @@ async function loadWeather() {
   const w = await loadData('weather');
   if (!w) return;
 
-  // Hero
+  const cities = w.cities || {};
+  const cityNames = Object.keys(cities);
+  const tripDates = ['Jun 28','Jun 29','Jun 30','Jul 1','Jul 2','Jul 3','Jul 4','Jul 5','Jul 6','Jul 7','Jul 8','Jul 9','Jul 10'];
+  const tripDateFull = ['2026-06-28','2026-06-29','2026-06-30','2026-07-01','2026-07-02','2026-07-03','2026-07-04','2026-07-05','2026-07-06','2026-07-07','2026-07-08','2026-07-09','2026-07-10'];
+  const cityEmojis = { 'HCMC':'🏙️','Phu Quoc':'🏝️','Hanoi':'🌆','Sapa':'⛰️','Halong Bay':'🚢' };
+
+  // Compact header
   const score = w.score || 0;
   const scoreColor = score > 60 ? '#2F6B52' : score > 30 ? '#E8A33D' : '#E85D5D';
-  const sb = document.getElementById('wxScoreBadge');
-  if (sb) { sb.textContent = score; sb.style.background = scoreColor; }
-  const ac = document.getElementById('wxAlertCount');
-  if (ac) ac.textContent = (w.alerts?.length || 0);
-  const ht = document.getElementById('wxHeroTitle');
-  if (ht) ht.textContent = score > 60 ? 'Good Conditions' : score > 30 ? 'Mixed Weather' : 'Monsoon Season';
-  const hs = document.getElementById('wxHeroSub');
-  if (hs) hs.textContent = `Updated ${new Date(w.timestamp).toLocaleString()} · Open-Meteo API`;
+  document.getElementById('wxScoreBadge').style.background = scoreColor;
+  document.getElementById('wxScoreBadge').textContent = score;
+  document.getElementById('wxAlertCount').textContent = (w.alerts?.length || 0);
+  document.getElementById('wxHeroSub').textContent = `Updated ${new Date(w.timestamp).toLocaleString()} · Open-Meteo`;
 
-  // Stats
-  const cities = w.cities || {};
-  const cityCount = Object.keys(cities).length;
-  const allForecasts = Object.values(cities).flatMap(c => c.forecasts || []);
-  const avgRain = allForecasts.length ? Math.round(allForecasts.reduce((a,f) => a + (f.rain_prob||0), 0) / allForecasts.length) : 0;
-  const highRiskDays = allForecasts.filter(f => f.risk === 'high').length;
-  const totalDays = allForecasts.length;
+  const content = document.getElementById('weatherContent');
 
-  document.getElementById('weatherStats').innerHTML = `
-    <div class="stat ${score>60?'accent':score>30?'warn':'danger'}"><div class="label">Weather Score</div><div class="value">${score}/100</div><div class="sub">${score>30?'Monsoon active':'Poor conditions'}</div></div>
-    <div class="stat warn"><div class="label">Avg Rain Risk</div><div class="value">${avgRain}%</div><div class="sub">Across ${cityCount} cities</div></div>
-    <div class="stat danger"><div class="label">High Risk Days</div><div class="value">${highRiskDays}</div><div class="sub">of ${totalDays} forecast days</div></div>
-    <div class="stat"><div class="label">Active Alerts</div><div class="value">${w.alerts?.length||0}</div><div class="sub">Needs attention</div></div>
-  `;
+  // ── SECTION 2: COMPARISON MATRIX ──
+  let matrixHtml = `<div class="wx-matrix-wrap"><table class="wx-matrix"><thead><tr><th></th>`;
+  tripDates.forEach(d => { matrixHtml += `<th>${d}</th>`; });
+  matrixHtml += `</tr></thead><tbody>`;
 
-  // City cards
-  const grid = document.getElementById('weatherGrid');
-  const cityEmojis = { 'HCMC':'🏙️', 'Phu Quoc':'🏝️', 'Hanoi':'🌆', 'Sapa':'⛰️', 'Halong Bay':'🚢' };
-
-  grid.innerHTML = Object.entries(cities).map(([key, city]) => {
-    if (city.error) return `<div class="wx-city-card"><div class="wx-city-name">${cityEmojis[key]||'📍'} ${key}</div><div style="color:var(--danger)">Error: ${city.error}</div></div>`;
-
+  cityNames.forEach(cityKey => {
+    const city = cities[cityKey];
     const forecasts = city.forecasts || [];
-    const current = city.current || {};
-    const bestWindows = city.best_windows || {};
-    const hourlyByDate = city.hourly_by_date || {};
+    matrixHtml += `<tr><td class="city-label">${cityEmojis[cityKey]||'📍'} ${cityKey}</td>`;
+    const fMap = {};
+    forecasts.forEach(f => { fMap[f.date] = f; });
 
-    // Current weather
-    const curTemp = current.temp ? Math.round(current.temp) : '--';
-    const curCond = forecasts[0]?.condition || 'Unknown';
-
-    // City avg rain
-    const cityAvgRain = forecasts.length ? Math.round(forecasts.reduce((a,f) => a + (f.rain_prob||0), 0) / forecasts.length) : 0;
-    const cityHighRisk = forecasts.filter(f => f.risk === 'high').length;
-
-    // Trip day forecasts only (Jun 28 - Jul 10)
-    const tripForecasts = forecasts.filter(f => {
-      const d = f.date;
-      return d >= '2026-06-28' && d <= '2026-07-10';
+    tripDateFull.forEach(date => {
+      const f = fMap[date];
+      const rain = f ? (f.rain_prob || 0) : 0;
+      let cls = 'wx-cell-low', icon = '🟢';
+      if (rain > 60) { cls = 'wx-cell-high'; icon = '🔴'; }
+      else if (rain > 40) { cls = 'wx-cell-med'; icon = '🟠'; }
+      const cond = f ? (f.condition || '') : '';
+      const temp = f ? `${f.high||'--'}°/${f.low||'--'}°` : '';
+      matrixHtml += `<td class="${cls}">${icon}<div class="wx-tooltip">${rain}% rain<br>${cond}<br>${temp}</div></td>`;
     });
+    matrixHtml += `</tr>`;
+  });
+  matrixHtml += `</tbody></table></div>`;
 
-    // Day rows with rain bars
-    const dayRows = tripForecasts.map(f => {
-      const rainPct = f.rain_prob || 0;
-      const rainColor = rainPct > 60 ? '#E85D5D' : rainPct > 40 ? '#E8A33D' : '#2F6B52';
-      const riskClass = f.risk === 'high' ? 'wx-risk-high' : f.risk === 'medium' ? 'wx-risk-med' : 'wx-risk-low';
-      const riskLabel = f.risk === 'high' ? 'HIGH' : f.risk === 'medium' ? 'MED' : 'LOW';
+  // ── SECTION 3: CITY SUMMARY ROW ──
+  let summaryHtml = `<div class="wx-summary" id="wxSummary">`;
+  cityNames.forEach(cityKey => {
+    const city = cities[cityKey];
+    const forecasts = city.forecasts || [];
+    const avgRain = forecasts.length ? Math.round(forecasts.reduce((a,f) => a + (f.rain_prob||0), 0) / forecasts.length) : 0;
+    const highDays = forecasts.filter(f => f.risk === 'high').length;
+    let riskCls = 'wx-risk-low', riskTxt = 'LOW', riskColor = '#2F6B52';
+    if (highDays > 5 || avgRain > 70) { riskCls = 'wx-risk-high'; riskTxt = 'HIGH RISK'; riskColor = '#E85D5D'; }
+    else if (avgRain > 50) { riskCls = 'wx-risk-med'; riskTxt = 'MEDIUM'; riskColor = '#E8A33D'; }
 
-      // Best window for this day
-      const bw = bestWindows[f.date];
-      let windowHtml = '';
-      if (bw && bw.start) {
-        windowHtml = `<div class="wx-best-window">🌤️ <strong>Best window:</strong> ${bw.start}–${bw.end} (${bw.hours}h clear)</div>`;
-      }
-
-      // Hourly rain bars (first 12 hours = daytime)
-      const hourly = hourlyByDate[f.date] || [];
-      const dayHours = hourly.filter(h => h.hour >= 6 && h.hour <= 20).slice(0, 12);
-      const timelineBars = dayHours.map(h => {
-        const hRain = h.rain_prob || 0;
-        const hColor = hRain > 60 ? '#E85D5D' : hRain > 40 ? '#E8A33D' : hRain > 20 ? '#7BA68C' : '#2F6B52';
-        const hHeight = Math.max(4, hRain * 0.35);
-        return `<div class="wx-timeline-bar" style="background:${hColor};height:${hHeight}px;opacity:${0.4 + hRain/200};" title="${h.hour}:00 — ${hRain}% rain, ${h.temp}°"></div>`;
-      }).join('');
-      const timelineLabels = dayHours.length > 0 ? dayHours.filter((_,i) => i % 3 === 0).map(h => `<div class="wx-timeline-label">${h.hour}h</div>`).join('') : '';
-
-      const dateLabel = new Date(f.date).toLocaleDateString('en', { month:'short', day:'numeric', weekday:'short' });
-
-      return `<div class="wx-day-row">
-        <div class="wx-day-date">${dateLabel.split(',')[0]}</div>
-        <div class="wx-day-temp">${f.high||'--'}° / ${f.low||'--'}°</div>
-        <div class="wx-day-cond">${f.condition}</div>
-        <div class="wx-day-rain" style="color:${rainColor};">🌧️ ${rainPct}%</div>
-        <div class="wx-day-risk"><span class="wx-risk-pill ${riskClass}">${riskLabel}</span></div>
-      </div>
-      ${timelineBars ? `<div class="wx-timeline">${timelineBars}</div>` : ''}
-      ${windowHtml}`;
-    }).join('');
-
-    // AI insight
-    let insight = '';
-    if (cityHighRisk > 5) {
-      insight = `<div class="wx-ai-insight">🤖 <strong>AI Insight:</strong> ${key} has ${cityHighRisk} high-risk rain days. Plan indoor activities for afternoons. Outdoor activities before 10 AM only. Check <a href="#" onclick="document.querySelector('[data-tab=backup]')?.click();return false;">Backup Plans</a> for alternatives.</div>`;
-    } else if (cityAvgRain > 50) {
-      insight = `<div class="wx-ai-insight">🤖 <strong>AI Insight:</strong> ${key} averages ${cityAvgRain}% rain. Mornings are drier — schedule outdoor activities before noon. Pack rain jacket + poncho daily.</div>`;
-    } else {
-      insight = `<div class="wx-ai-insight">🤖 <strong>AI Insight:</strong> ${key} looks manageable with ${cityAvgRain}% avg rain. Best windows available most days. Keep flexible timing for outdoor activities.</div>`;
+    // Best window across all days
+    const bw = city.best_windows || {};
+    const bwKeys = Object.keys(bw);
+    let bestWinTxt = '';
+    if (bwKeys.length) {
+      const firstBw = bw[bwKeys[0]];
+      if (firstBw && firstBw.start) bestWinTxt = `🌤️ ${firstBw.start}–${firstBw.end}`;
     }
 
-    return `<div class="wx-city-card">
-      <div class="wx-city-header">
-        <div class="wx-city-name">${cityEmojis[key]||'📍'} ${key}</div>
-        <span class="wx-risk-pill ${cityHighRisk > 5 ? 'wx-risk-high' : cityAvgRain > 50 ? 'wx-risk-med' : 'wx-risk-low'}">${cityHighRisk > 5 ? 'HIGH RISK' : cityAvgRain > 50 ? 'MEDIUM' : 'LOW'}</span>
-      </div>
-      <div class="wx-city-current">
-        <div class="wx-city-temp">${curTemp}°</div>
-        <div>
-          <div class="wx-city-cond">${curCond}</div>
-          <div class="wx-city-rain"><span class="wx-rain-icon">🌧️</span> ${cityAvgRain}% avg rain · ${tripForecasts.length} trip days</div>
-        </div>
-      </div>
-      ${dayRows || '<div style="color:var(--secondary);padding:20px 0;">No forecast data</div>'}
-      ${insight}
-    </div>`;
-  }).join('');
+    // AI one-liner
+    let aiLine = 'Standard conditions';
+    if (cityKey === 'Sapa' && avgRain > 70) aiLine = 'Avoid trekking. Fog risk high.';
+    else if (cityKey === 'Halong Bay' && avgRain > 60) aiLine = 'Check visibility before cruise.';
+    else if (cityKey === 'HCMC') aiLine = avgRain > 60 ? 'Outdoor before 10AM best.' : 'Manageable rain windows.';
+    else if (cityKey === 'Phu Quoc') aiLine = avgRain > 60 ? 'Island mornings clearer.' : 'Can tour with rain gear.';
+    else if (cityKey === 'Hanoi') aiLine = avgRain > 60 ? 'PM storms likely. Plan indoor afternoons.' : 'Mix of clear and rainy.';
 
-  // AI adjustments feed
-  if (w.adjustments && w.adjustments.length) {
-    const adjHtml = w.adjustments.map(a => {
-      const isHigh = a.includes('High rain');
-      return `<div class="wx-ai-insight" style="border-color:${isHigh?'rgba(232,93,93,0.2)':'rgba(232,163,61,0.2)'}">${isHigh ? '⚠️' : '📋'} ${a}</div>`;
-    }).join('');
-    grid.innerHTML += `<div class="wx-city-card wx-adjustments">
-      <div class="wx-city-name">📋 AI Weather Adjustments</div>
-      ${adjHtml}
+    summaryHtml += `<div class="wx-summary-card" onclick="toggleCityDetail('${cityKey}')" data-city="${cityKey}">
+      <div class="sc-city">${cityEmojis[cityKey]||'📍'} ${cityKey}</div>
+      <div class="sc-rain">${avgRain}% <span class="wx-risk-pill ${riskCls}" style="font-size:9px;">${riskTxt}</span></div>
+      <div class="sc-window">${bestWinTxt}</div>
+      <div class="sc-ai" style="color:${riskColor};">${aiLine}</div>
     </div>`;
+  });
+  summaryHtml += `</div>`;
+
+  // ── SECTION 4: AI INSIGHTS ──
+  let insightHtml = `<div class="wx-insights">`;
+  const allForecasts = Object.values(cities).flatMap(c => c.forecasts || []);
+  const highRiskByCity = {};
+  cityNames.forEach(c => { highRiskByCity[c] = (cities[c].forecasts||[]).filter(f => f.risk === 'high').length; });
+
+  const insights = [];
+  if (highRiskByCity['Sapa'] > 3) insights.push({icon:'⚠️', text:'Sapa trekking not recommended — high rain days. Consider indoor activities or city swap.', source:'Weather Agent', cls:'danger'});
+  if (cities['Halong Bay']) {
+    const hf = cities['Halong Bay'].forecasts || [];
+    const badHalong = hf.filter(f => (f.rain_prob||0) > 60 && f.date >= '2026-07-03' && f.date <= '2026-07-04');
+    if (badHalong.length) insights.push({icon:'⚠️', text:'Halong Bay visibility poor Jul 3-4. Check windy.com 3 days before.', source:'Weather Agent', cls:'danger'});
   }
+  insights.push({icon:'✅', text:'HCMC outdoor activities best before 10AM daily. Afternoon storms predictable.', source:'Weather Agent', cls:'success'});
+  if (highRiskByCity['Hanoi'] > 3) insights.push({icon:'⚠️', text:'Hanoi PM storms likely Jul 3-8. Schedule museums/cafes for afternoons.', source:'Weather Agent', cls:'warning'});
+  if (cities['Phu Quoc']) {
+    const pf = cities['Phu Quoc'].forecasts || [];
+    const lowRainPQ = pf.filter(f => (f.rain_prob||0) < 50 && f.date >= '2026-06-30' && f.date <= '2026-07-03');
+    if (lowRainPQ.length > 1) insights.push({icon:'✅', text:'Phu Quoc mornings generally clear. Early 4-island tour recommended.', source:'Weather Agent', cls:'success'});
+  }
+
+  insights.forEach(in => {
+    insightHtml += `<div class="wx-insight-card ${in.cls}"><span class="ici-icon">${in.icon}</span><div><div class="ici-text">${in.text}</div><div class="ici-source">${in.source}</div></div></div>`;
+  });
+  insightHtml += `</div>`;
+
+  // ── SECTION 5: EXPANDABLE DETAILS ──
+  let detailHtml = `<div class="wx-detail-wrap"><div class="wx-detail-toggle" id="wxDetailToggle">`;
+  cityNames.forEach(c => {
+    detailHtml += `<button class="wx-detail-btn" onclick="showCityDetail('${c}')" data-city="${c}">${cityEmojis[c]||'📍'} ${c}</button>`;
+  });
+  detailHtml += `</div>`;
+  // Panels (hidden by default)
+  cityNames.forEach(cityKey => {
+    const city = cities[cityKey];
+    const forecasts = city.forecasts || [];
+    const bw = city.best_windows || {};
+    const hourlyByDate = city.hourly_by_date || {};
+    const tripForecasts = forecasts.filter(f => f.date >= '2026-06-28' && f.date <= '2026-07-10');
+
+    detailHtml += `<div class="wx-detail-panel" id="wxDetail-${cityKey}">
+      <div class="dp-header"><h3>${cityEmojis[cityKey]||'📍'} ${cityKey} — Full Forecast</h3></div>
+      <div class="dp-stats">`;
+    const avgR = tripForecasts.length ? Math.round(tripForecasts.reduce((a,f) => a + (f.rain_prob||0), 0) / tripForecasts.length) : 0;
+    const highR = tripForecasts.filter(f => f.risk === 'high').length;
+    detailHtml += `<span class="dp-stat"><strong>Avg Rain:</strong> ${avgR}%</span><span class="dp-stat"><strong>High Risk Days:</strong> ${highR}</span><span class="dp-stat"><strong>Forecasts:</strong> ${tripForecasts.length} trip days</span>`;
+    detailHtml += `</div><div class="wx-detail-days">`;
+
+    tripForecasts.forEach(f => {
+      const rainPct = f.rain_prob || 0;
+      const rainColor = rainPct > 60 ? '#E85D5D' : rainPct > 40 ? '#E8A33D' : '#2F6B52';
+      const dateLabel = new Date(f.date).toLocaleDateString('en', { month:'short', day:'numeric', weekday:'short' });
+      const bwDay = bw[f.date];
+      const winHtml = (bwDay && bwDay.start) ? `<span class="wx-dd-window">🌤️ ${bwDay.start}-${bwDay.end}</span>` : '';
+
+      // Hourly sparkline
+      const hourly = hourlyByDate[f.date] || [];
+      const dayHours = hourly.filter(h => h.hour >= 6 && h.hour <= 20).slice(0,12);
+      let sparkHtml = '';
+      if (dayHours.length) {
+        sparkHtml = '<div class="wx-sparkline">';
+        dayHours.forEach(h => {
+          const hRain = h.rain_prob || 0;
+          const hColor = hRain > 60 ? '#E85D5D' : hRain > 40 ? '#E8A33D' : hRain > 20 ? '#7BA68C' : '#2F6B52';
+          const hH = Math.max(3, hRain * 0.3);
+          sparkHtml += `<div class="wx-spark-bar" style="background:${hColor};height:${hH}px;" title="${h.hour}:00 — ${hRain}% rain"></div>`;
+        });
+        sparkHtml += '</div>';
+      }
+
+      detailHtml += `<div class="wx-detail-day">
+        <div class="wx-dd-date">${dateLabel.split(',')[0]}</div>
+        <div class="wx-dd-temp">${f.high||'--'}°/${f.low||'--'}°</div>
+        <div class="wx-dd-cond">${f.condition}${sparkHtml}</div>
+        <div class="wx-dd-rain" style="color:${rainColor};">🌧️ ${rainPct}%</div>
+        ${winHtml}
+      </div>`;
+    });
+    detailHtml += `</div></div>`;
+  });
+  detailHtml += `</div>`;
+
+  content.innerHTML = matrixHtml + summaryHtml + insightHtml + detailHtml;
+}
+
+// City detail toggle
+let activeCityDetail = '';
+function toggleCityDetail(cityKey) {
+  const btn = document.querySelector(`.wx-detail-btn[data-city="${cityKey}"]`);
+  if (btn) btn.click();
+  // Scroll to details
+  document.getElementById('wxDetailToggle').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showCityDetail(cityKey) {
+  // Toggle buttons
+  document.querySelectorAll('.wx-detail-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.wx-detail-btn[data-city="${cityKey}"]`);
+  if (btn) btn.classList.add('active');
+
+  // Toggle panels
+  document.querySelectorAll('.wx-detail-panel').forEach(p => p.classList.remove('open'));
+  const panel = document.getElementById('wxDetail-' + cityKey);
+  if (panel) panel.classList.add('open');
 }
 
 // ═══════════════════════════════════════════
