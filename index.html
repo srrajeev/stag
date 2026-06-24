@@ -421,16 +421,133 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 .scam-avoid { font-size:12px; color:var(--warn); line-height:1.5; }
 .scam-action { font-size:12px; color:var(--accent); margin-top:4px; line-height:1.5; }
 
-/* ── Food ────────────────────────────────── */
-.food-card { display:flex; gap:14px; padding:14px 16px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:10px; box-shadow:var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
-.food-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
-.food-emoji { font-size:26px; }
-.food-info { flex:1; min-width:0; }
-.food-dish { font-size:15px; font-weight:700; font-family:var(--font-head); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.food-where { font-size:12px; color:var(--muted); margin-top:2px; }
-.food-meta { display:flex; gap:12px; font-size:12px; margin-top:6px; }
-.food-price { color:var(--accent); font-weight:600; }
-.food-rating { color:var(--gold); font-weight:600; }
+/* ── Food (Premium Concierge) ────────────── */
+.fd-hero { display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:10px; }
+.fd-h-left { display:flex; align-items:center; gap:12px; }
+.fd-h-icon { font-size:26px; }
+.fd-h-title { font-family:var(--font-head); font-size:18px; font-weight:800; }
+.fd-h-sub { font-size:11px; color:var(--secondary); margin-top:1px; }
+.fd-h-right { text-align:center; }
+.fd-h-score { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:800; color:#fff; margin:0 auto; }
+.fd-h-score-label { font-size:9px; color:var(--secondary); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+.fd-ai-summary { font-size:13px; padding:10px 14px; background:rgba(212,180,131,0.08); border:1px solid rgba(212,180,131,0.2); border-radius:var(--radius); margin-bottom:14px; line-height:1.5; }
+.fd-section-title { font-family:var(--font-head); font-size:16px; font-weight:800; margin:18px 0 10px; display:flex; align-items:center; gap:6px; }
+
+/* Section 2: Bucket List */
+.fd-bucket-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.fd-bucket-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px; transition:all .2s; }
+.fd-bucket-card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+.fd-bc-top { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.fd-bc-emoji { font-size:28px; }
+.fd-bc-name { font-family:var(--font-head); font-size:17px; font-weight:800; }
+.fd-bc-stars { font-size:12px; margin-top:1px; }
+.fd-bc-type { font-size:11px; color:var(--secondary); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.fd-bc-meta { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:6px; }
+.fd-bc-tag { font-size:10px; padding:2px 8px; border-radius:10px; background:rgba(47,107,82,0.08); color:var(--primary); font-weight:600; }
+.fd-tag-warn { background:rgba(232,163,61,0.1); color:var(--warning); }
+.fd-bc-must { font-size:12px; color:var(--secondary); margin-top:4px; }
+
+/* Section 3: City Tabs */
+.fd-dest-tabs { display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap; }
+.fd-dest-tab { padding:6px 14px; border-radius:20px; border:1px solid var(--border); background:var(--card); font-size:12px; font-weight:600; cursor:pointer; font-family:var(--font-body); transition:all .15s; }
+.fd-dest-tab:hover { border-color:var(--primary); color:var(--primary); }
+.fd-dest-tab.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+.fd-city-panel { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px; margin-bottom:14px; }
+.fd-city-stats { display:flex; gap:16px; margin-bottom:10px; }
+.fd-city-stat { font-size:13px; }
+.fd-city-sub { font-size:13px; font-weight:700; margin:8px 0 6px; color:var(--primary); }
+.fd-city-dish { display:flex; gap:8px; padding:5px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.fd-city-dish:last-child { border-bottom:none; }
+.fd-city-meals { display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:12px; margin-top:6px; padding:8px; background:var(--bg2); border-radius:8px; }
+
+/* Section 4: What To Eat Today */
+.fd-today-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px; }
+.fd-today-card { display:flex; gap:10px; padding:10px 12px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); transition:all .2s; align-items:flex-start; }
+.fd-today-card:hover { transform:translateY(-2px); }
+.fd-tc-emoji { font-size:22px; }
+.fd-tc-info { flex:1; }
+.fd-tc-dish { font-size:13px; font-weight:700; }
+.fd-tc-where { font-size:11px; color:var(--secondary); }
+.fd-tc-meta { display:flex; gap:8px; font-size:11px; margin-top:3px; }
+.fd-tc-price { font-weight:600; color:var(--primary); }
+
+/* Section 5: Areas */
+.fd-areas-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px; }
+.fd-area-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; }
+.fd-area-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.fd-area-icon { font-size:24px; }
+.fd-area-name { font-size:14px; font-weight:700; font-family:var(--font-head); }
+.fd-area-stars { font-size:11px; }
+.fd-area-best { font-size:12px; margin-bottom:4px; }
+.fd-area-desc { font-size:11px; color:var(--secondary); line-height:1.4; }
+
+/* Sections 6-7: Insights */
+.fd-insight { display:flex; gap:10px; padding:8px 12px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:6px; font-size:13px; align-items:flex-start; }
+.fd-insight-danger { border-left:3px solid var(--danger); }
+.fd-insight-warning { border-left:3px solid var(--warning); }
+
+.fd-safe-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.fd-safe-card { display:flex; gap:8px; padding:10px 12px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); font-size:12px; align-items:flex-start; }
+.fd-safe-icon { font-size:16px; }
+.fd-primary { border-left:3px solid var(--primary); }
+
+/* Section 8: Vegetarian */
+.fd-veg-banner { font-size:13px; font-weight:600; padding:8px 14px; background:rgba(47,107,82,0.08); border:1px solid rgba(47,107,82,0.2); border-radius:var(--radius); margin-bottom:8px; }
+.fd-veg-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:14px; }
+.fd-veg-card { font-size:12px; padding:8px 10px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); }
+
+/* Section 9: Etiquette */
+.fd-eti-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.fd-eti-card { display:flex; gap:8px; padding:10px 12px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); font-size:13px; }
+
+/* Section 10: Budget */
+.fd-budget-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px; }
+.fd-budget-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:14px; }
+.fd-border-primary { border-left:3px solid var(--primary); }
+.fd-border-warning { border-left:3px solid var(--warning); }
+.fd-border-danger { border-left:3px solid var(--danger); }
+.fd-bc-head { font-size:14px; font-weight:700; font-family:var(--font-head); margin-bottom:4px; }
+.fd-bc-daily { font-size:22px; font-weight:300; font-family:var(--font-head); padding:6px 10px; border-radius:8px; margin:6px 0; }
+.fd-bc-breakdown { font-size:11px; display:grid; grid-template-columns:1fr 1fr; gap:4px; }
+.fd-bc-breakdown span { padding:2px 0; }
+
+/* Section 11: AI Recs */
+.fd-recs-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.fd-rec-card { display:flex; gap:10px; padding:12px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); transition:all .2s; }
+.fd-rec-card:hover { transform:translateY(-2px); }
+.fd-rec-icon { font-size:24px; }
+.fd-rec-title { font-size:14px; font-weight:700; font-family:var(--font-head); }
+.fd-rec-desc { font-size:12px; color:var(--secondary); }
+.fd-rec-meta { display:flex; gap:12px; font-size:11px; margin-top:3px; }
+
+/* Section 12: Restaurant Directory */
+.fd-rest-grid { display:grid; gap:8px; margin-bottom:14px; }
+.fd-rest-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:12px 14px; transition:all .2s; }
+.fd-rest-card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+.fd-rest-head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.fd-rest-emoji { font-size:22px; }
+.fd-rest-name { font-size:14px; font-weight:700; }
+.fd-rest-where { font-size:11px; color:var(--secondary); }
+.fd-rest-city { font-size:10px; padding:2px 8px; border-radius:10px; background:var(--bg2); font-weight:600; text-transform:uppercase; }
+.fd-rest-meta { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:4px; }
+.fd-rest-note { font-size:12px; color:var(--secondary); margin-top:4px; }
+.fd-tag { font-size:10px; padding:2px 8px; border-radius:10px; font-weight:600; }
+.fd-tag-green { background:rgba(47,107,82,0.1); color:var(--primary); }
+.fd-tag-gold { background:rgba(232,163,61,0.1); color:var(--warning); }
+.fd-tag-danger { background:rgba(232,93,93,0.1); color:var(--danger); }
+
+/* Responsive food */
+@media (max-width:900px) {
+  .fd-bucket-grid { grid-template-columns:1fr; }
+  .fd-today-grid { grid-template-columns:1fr; }
+  .fd-areas-grid { grid-template-columns:1fr; }
+  .fd-safe-grid { grid-template-columns:1fr; }
+  .fd-veg-grid { grid-template-columns:1fr; }
+  .fd-eti-grid { grid-template-columns:1fr; }
+  .fd-budget-grid { grid-template-columns:1fr; }
+  .fd-recs-grid { grid-template-columns:1fr; }
+  .fd-city-meals { grid-template-columns:1fr; }
+}
 
 /* ── Content ─────────────────────────────── */
 .content-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; box-shadow:var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
@@ -758,13 +875,7 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 
   <!-- ═══ FOOD ═══ -->
   <div class="tab-content" id="tab-food">
-    <div class="section-title"><span class="icon">🍜</span> Food Intelligence</div>
-    <div class="section-title"><span class="icon">⭐</span> Must-Try Foods</div>
-    <div id="foodList"></div>
-    <div class="section-title"><span class="icon">📍</span> City Meal Plans</div>
-    <div id="cityMeals"></div>
-    <div class="section-title"><span class="icon">🥗</span> Vegetarian Options</div>
-    <div id="vegOptions"></div>
+    <div id="foodContent"></div>
   </div>
 
   <!-- ═══ CONTENT ═══ -->
@@ -1369,40 +1480,273 @@ async function loadFood() {
   const f = await loadData('food');
   if (!f) return;
 
-  const emojis = ['🍜','🦀','🥖','🦪','🍷','🐟','🥘','🔥','🐠','🦞'];
-  document.getElementById('foodList').innerHTML = (f.must_try || []).map((food, i) => 
-    `<div class="food-card">
-      <div class="food-emoji">${emojis[i]||'🍽️'}</div>
-      <div class="food-info">
-        <div class="food-dish">${food.dish}</div>
-        <div class="food-where">📍 ${food.where} • ${food.city}</div>
-        <div class="food-meta">
-          <span class="food-price">${food.price}</span>
-          ${food.rating ? `<span class="food-rating">⭐ ${food.rating}</span>` : ''}
-        </div>
-        ${food.note ? `<div style="font-size:12px;color:var(--muted);margin-top:4px;">${food.note}</div>` : ''}
-      </div>
-    </div>`
-  ).join('');
+  const content = document.getElementById('foodContent');
+  if (!content) return;
 
-  // City meals
+  const mustTry = f.must_try || [];
   const cities = f.by_city || {};
-  document.getElementById('cityMeals').innerHTML = Object.entries(cities).map(([city, meals]) => 
-    `<div class="card">
-      <div class="card-title">📍 ${city}</div>
-      <div style="font-size:13px;line-height:2;">
-        🌅 <strong>Breakfast:</strong> ${meals.breakfast}<br>
-        🌞 <strong>Lunch:</strong> ${meals.lunch}<br>
-        🌙 <strong>Dinner:</strong> ${meals.dinner}<br>
-        ☕ <strong>Cafe:</strong> ${meals.cafe}
-      </div>
-    </div>`
-  ).join('');
+  const veg = f.veg_options || [];
+  const emojis = ['🍜','🦀','🥖','🥚','🍷','🐟','🥘','🔥','🐠','🦞'];
 
-  // Veg options
-  document.getElementById('vegOptions').innerHTML = (f.veg_options || []).map(v => 
-    `<div class="action-item"><span class="ai-icon">🥗</span><span>${v}</span></div>`
-  ).join('');
+  // ── SECTION 1: HERO ──
+  let html = `<div class="fd-hero">
+    <div class="fd-h-left">
+      <span class="fd-h-icon">🍜</span>
+      <div class="fd-h-text">
+        <div class="fd-h-title">Vietnam Food Intelligence</div>
+        <div class="fd-h-sub">${mustTry.length} must-try dishes · ${Object.keys(cities).length} cities · ${veg.length} veg options</div>
+      </div>
+    </div>
+    <div class="fd-h-right">
+      <div class="fd-h-score" style="background:var(--primary)">92</div>
+      <div class="fd-h-score-label">Food Score</div>
+    </div>
+  </div>
+  <div class="fd-ai-summary">🤖 Vietnam is one of the world's strongest street food destinations. Focus on <strong>Pho, Bun Cha, Banh Mi, Egg Coffee, seafood</strong> and local markets. Avoid restaurants directly in major tourist areas — walk 2 blocks for better prices and authentic food.</div>`;
+
+  // ── SECTION 2: BUCKET LIST ──
+  const bucketDishes = [
+    {name:'Pho', rating:5, type:'National Dish', city:'Hanoi', time:'Breakfast', cost:'40k–80k VND', mustTry:'Pho Thin, Pho Gia Truyen', emoji:'🍜'},
+    {name:'Bun Cha', rating:5, type:'Hanoi Special', city:'Hanoi', time:'Lunch', cost:'50k–120k VND', mustTry:'Bun Cha Huong Lien (Obama\'s spot)', emoji:'🥩'},
+    {name:'Banh Mi', rating:5, type:'Street Icon', city:'HCMC', time:'Any Time', cost:'25k–60k VND', mustTry:'Banh Mi Huynh Hoa', emoji:'🥖'},
+    {name:'Egg Coffee', rating:5, type:'Must Experience', city:'Hanoi', time:'Morning', cost:'25k–50k VND', mustTry:'Cafe Giang, Train Street', emoji:'☕'},
+  ];
+  html += `<div class="fd-section-title">⭐ Food Bucket List</div>
+  <div class="fd-bucket-grid">`;
+  bucketDishes.forEach(d => {
+    html += `<div class="fd-bucket-card">
+      <div class="fd-bc-top">
+        <span class="fd-bc-emoji">${d.emoji}</span>
+        <div class="fd-bc-info">
+          <div class="fd-bc-name">${d.name}</div>
+          <div class="fd-bc-stars">${'⭐'.repeat(d.rating)}</div>
+        </div>
+      </div>
+      <div class="fd-bc-type">${d.type}</div>
+      <div class="fd-bc-meta">
+        <span class="fd-bc-tag">📍 ${d.city}</span>
+        <span class="fd-bc-tag">⏰ ${d.time}</span>
+        <span class="fd-bc-tag fd-tag-warn">💰 ${d.cost}</span>
+      </div>
+      <div class="fd-bc-must">Must Try: <strong>${d.mustTry}</strong></div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 3: BY DESTINATION ──
+  const cityKeys = ['HCMC', 'Hanoi', 'Phu Quoc', 'Sapa', 'Halong Bay'];
+  html += `<div class="fd-section-title">📍 Food By Destination</div>
+  <div class="fd-dest-tabs" id="fdDestTabs">`;
+  cityKeys.forEach((c,i) => {
+    html += `<button class="fd-dest-tab ${i===0?'active':''}" onclick="showFdCity('${c}')" data-city="${c}">${['🏙️','🌆','🏝️','⛰️','🚢'][i]} ${c}</button>`;
+  });
+  html += `</div><div id="fdDestContent">`;
+
+  // Build city panel data
+  cityKeys.forEach(cityKey => {
+    const cityFoods = mustTry.filter(f => f.city === cityKey || (cityKey === 'Halong Bay' && f.city === 'Halong'));
+    const cityMealData = cities[cityKey] || {};
+    const display = (i===0) ? 'block' : 'none';
+    html += `<div class="fd-city-panel" data-city="${cityKey}" style="display:${display}">
+      <div class="fd-city-stats">
+        <span class="fd-city-stat"><strong>${cityFoods.length}</strong> dishes</span>
+        <span class="fd-city-stat"><strong>${cityMealData.breakfast ? 'Meals available' : 'Limited data'}</strong></span>
+      </div>
+      <div class="fd-city-sub">Must-Eat Dishes</div>`;
+    if (cityFoods.length) {
+      cityFoods.forEach(fd => {
+        html += `<div class="fd-city-dish"><span>${emojis[mustTry.indexOf(fd)%emojis.length]||'🍽️'}</span><span><strong>${fd.dish}</strong> at ${fd.where}${fd.price?` · ${fd.price}`:''}${fd.rating?` · ⭐${fd.rating}`:''}</span></div>`;
+      });
+    } else {
+      html += `<div class="fd-city-dish">🍽️ <strong>Explore local markets and street food — ask hotel staff for hidden gems.</strong></div>`;
+    }
+    if (cityMealData.breakfast) {
+      html += `<div class="fd-city-sub">Meal Plan</div>
+      <div class="fd-city-meals">
+        <span>🌅 Breakfast: ${cityMealData.breakfast}</span>
+        <span>🌞 Lunch: ${cityMealData.lunch}</span>
+        <span>🌙 Dinner: ${cityMealData.dinner}</span>
+        <span>☕ Cafe: ${cityMealData.cafe}</span>
+      </div>`;
+    }
+    html += `</div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 4: WHAT TO EAT TODAY ──
+  // Use first city from itinerary
+  const today = new Date();
+  const todayStr = today.toLocaleDateString('en', { month:'short', day:'numeric' });
+  const dayData = ITINERARY.find(d => d.date === todayStr);
+  const todayCity = dayData ? dayData.city : 'HCMC';
+  const todayFoods = mustTry.filter(f => f.city === todayCity || (todayCity === 'HCMC' && f.city === 'HCMC')).slice(0,3);
+
+  html += `<div class="fd-section-title">🍽️ What To Eat ${dayData ? 'Today' : 'In ' + todayCity}</div>
+  <div class="fd-today-grid">`;
+  if (todayFoods.length) {
+    todayFoods.forEach(fd => {
+      const idx = mustTry.indexOf(fd);
+      html += `<div class="fd-today-card">
+        <span class="fd-tc-emoji">${emojis[idx%emojis.length]||'🍽️'}</span>
+        <div class="fd-tc-info">
+          <div class="fd-tc-dish">${fd.dish}</div>
+          <div class="fd-tc-where">📍 ${fd.where} · ~5 min</div>
+          <div class="fd-tc-meta"><span class="fd-tc-price">${fd.price||'Local price'}</span>${fd.rating?`<span>⭐ ${fd.rating}</span>`:''}</div>
+        </div>
+      </div>`;
+    });
+  } else {
+    html += `<div class="fd-today-card">🍽️ <div class="fd-tc-info"><div class="fd-tc-dish">Ask local host for recommendations</div><div class="fd-tc-where">Street food is everywhere!</div></div></div>`;
+  }
+  html += `</div>`;
+
+  // ── SECTION 5: LOCAL FOOD AREAS ──
+  const areas = [
+    {icon:'🌆', name:"Hanoi's Old Quarter", rating:5, bestFor:'Pho, Bun Cha, Egg Coffee, Street Food', desc:'Every street has a specialty. Beer Corner for nightlife. Night market weekends.'},
+    {icon:'🏙️', name:"HCMC District 1", rating:5, bestFor:'Banh Mi, Coffee, Nightlife Food', desc:'Bui Vien Walking Street for street food. Nguyen Hue walking street for cafes.'},
+    {icon:'🏝️', name:'Phu Quoc Night Market', rating:4, bestFor:'Seafood, Sim Wine, Fish Sauce', desc:'Duong Dong market. Grilled seafood with local fish sauce. Best after sunset.'},
+  ];
+  html += `<div class="fd-section-title">🏘️ Local Food Areas</div>
+  <div class="fd-areas-grid">`;
+  areas.forEach(a => {
+    html += `<div class="fd-area-card">
+      <div class="fd-area-head">
+        <span class="fd-area-icon">${a.icon}</span>
+        <div class="fd-area-info">
+          <div class="fd-area-name">${a.name}</div>
+          <div class="fd-area-stars">${'⭐'.repeat(a.rating)}</div>
+        </div>
+      </div>
+      <div class="fd-area-best">Best For: <strong>${a.bestFor}</strong></div>
+      <div class="fd-area-desc">${a.desc}</div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 6: TOURIST TRAP DETECTOR ──
+  html += `<div class="fd-section-title">⚠️ Tourist Trap Detector</div>`;
+  const traps = [
+    {icon:'⚠️', text:'Restaurants with menu photos in 10 languages', desc:'Usually overpriced. Walk 2 blocks away for half price.', cls:'danger'},
+    {icon:'⚠️', text:'Seafood restaurants without displayed prices', desc:'They will charge 2-3x market rate. Always ask before ordering.', cls:'danger'},
+    {icon:'⚠️', text:'Restaurants next to major attractions', desc:'Typically 2x more expensive. Same food quality further away.', cls:'warning'},
+    {icon:'✔️', text:'Cyclo drivers who recommend restaurants', desc:'They get commission. Prices are inflated 50%. Decline politely.', cls:'warning'},
+  ];
+  traps.forEach(t => {
+    html += `<div class="fd-insight fd-insight-${t.cls}"><span>${t.icon}</span><div><strong>${t.text}</strong><br><span style="font-size:12px;color:var(--secondary)">${t.desc}</span></div></div>`;
+  });
+
+  // ── SECTION 7: FOOD SAFETY ──
+  html += `<div class="fd-section-title">✅ Food Safety Intelligence</div><div class="fd-safe-grid">`;
+  const safe = [
+    {icon:'✅', text:'Busy stalls with queues', desc:'High turnover = fresh ingredients. Best sign of quality.', cls:'primary'},
+    {icon:'✅', text:'Fresh cooking in front of you', desc:'If you can see them cook it, it\'s safe. Avoid pre-made food.', cls:'primary'},
+    {icon:'❌', text:'Pre-cut fruit sitting outside uncovered', desc:'Flies + heat = food poisoning risk. Choose freshly cut fruit.', cls:'danger'},
+    {icon:'❌', text:'Empty restaurants at meal times', desc:'Locals know. If it\'s empty at lunch, there\'s a reason.', cls:'danger'},
+  ];
+  safe.forEach(s => {
+    html += `<div class="fd-safe-card fd-${s.cls}"><span class="fd-safe-icon">${s.icon}</span><div><strong>${s.text}</strong><br><span style="font-size:11px">${s.desc}</span></div></div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 8: VEGETARIAN GUIDE ──
+  html += `<div class="fd-section-title">🥗 Vegetarian Guide</div>
+  <div class="fd-veg-banner">"Tôi ăn chay" = "I am vegetarian" · Show this phrase!</div>
+  <div class="fd-veg-grid">`;
+  veg.forEach(v => {
+    html += `<div class="fd-veg-card">🥗 ${v}</div>`;
+  });
+  html += `<div class="fd-veg-card">💬 Say "Tôi ăn chay" to confirm vegetarian</div>
+  <div class="fd-veg-card">💬 "Không thịt, không cá" = No meat, no fish</div>
+  <div class="fd-veg-card">💬 "Không bột ngọt" = No MSG</div>
+  </div>`;
+
+  // ── SECTION 9: ETIQUETTE ──
+  html += `<div class="fd-section-title">🍽️ Local Food Etiquette</div><div class="fd-eti-grid">`;
+  const eti = [
+    {icon:'🥢', text:'Chopstick Rules', desc:'Don\'t stick chopsticks upright in rice bowl — it resembles incense at funerals.'},
+    {icon:'💵', text:'Paying', desc:'Cash is king at street stalls. Cards accepted at restaurants. No tipping expected.'},
+    {icon:'🪑', text:'Street Seating', desc:'Tiny plastic stools are normal. Sit wherever there\'s space. Don\'t expect a menu.'},
+    {icon:'📱', text:'Ordering', desc:'Point at what others are eating. Use Google Translate for menus. Most stalls have pictures.'},
+  ];
+  eti.forEach(e => {
+    html += `<div class="fd-eti-card"><span class="fd-eti-icon">${e.icon}</span><div><strong>${e.text}</strong><br><span style="font-size:12px;color:var(--secondary)">${e.desc}</span></div></div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 10: BUDGET ──
+  html += `<div class="fd-section-title">💰 Food Budget Planner</div><div class="fd-budget-grid">`;
+  const budgetTiers = [
+    {name:'🥪 Budget', label:'Street food focus', daily:'₹500/day', breakfast:'₹100-150', lunch:'₹150-200', dinner:'₹200-250', snacks:'₹50', beer:'₹50', cls:'primary'},
+    {name:'🍜 Mid Range', label:'Mix street + restaurant', daily:'₹1,200/day', breakfast:'₹150-250', lunch:'₹250-400', dinner:'₹400-600', snacks:'₹100', beer:'₹100', cls:'warning'},
+    {name:'🍽️ Foodie Mode', label:'Best restaurants + experiences', daily:'₹2,500/day', breakfast:'₹300-500', lunch:'₹500-800', dinner:'₹800-1,200', snacks:'₹200', beer:'₹200', cls:'danger'},
+  ];
+  budgetTiers.forEach(t => {
+    html += `<div class="fd-budget-card fd-border-${t.cls}">
+      <div class="fd-bc-head" style="color:var(--${t.cls})">${t.name} <span style="font-size:12px;color:var(--secondary)">— ${t.label}</span></div>
+      <div class="fd-bc-daily" style="background:rgba(47,107,82,0.08)">${t.daily}</div>
+      <div class="fd-bc-breakdown">
+        <span>🌅 Breakfast ${t.breakfast}</span>
+        <span>🌞 Lunch ${t.lunch}</span>
+        <span>🌙 Dinner ${t.dinner}</span>
+        <span>🍿 Snacks ${t.snacks}</span>
+        <span>🍺 Beer ${t.beer}</span>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 11: AI RECOMMENDATIONS ──
+  html += `<div class="fd-section-title">🤖 AI Food Recommendations</div><div class="fd-recs-grid">`;
+  const recs = [
+    {icon:'🌅', title:'Best Breakfast', desc:'Pho Thin, Hanoi', time:'6–9 AM', cost:'₹150'},
+    {icon:'☕', title:'Best Coffee', desc:'Train Street Egg Coffee', time:'Morning (before crowds)', cost:'₹100'},
+    {icon:'🦐', title:'Best Seafood', desc:'Phu Quoc Night Market', time:'After sunset', cost:'₹300-500'},
+    {icon:'🍺', title:'Best Nightlife Food', desc:'Bui Vien Street, HCMC', time:'9 PM – Late', cost:'₹50-100'},
+  ];
+  recs.forEach(r => {
+    html += `<div class="fd-rec-card">
+      <div class="fd-rec-icon">${r.icon}</div>
+      <div class="fd-rec-info">
+        <div class="fd-rec-title">${r.title}</div>
+        <div class="fd-rec-desc">${r.desc}</div>
+        <div class="fd-rec-meta"><span>⏰ ${r.time}</span><span>💰 ${r.cost}</span></div>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // ── SECTION 12: RESTAURANT CARDS ──
+  html += `<div class="fd-section-title">🍽️ Restaurant Directory</div><div class="fd-rest-grid">`;
+  mustTry.forEach((fd, i) => {
+    const e = emojis[i%emojis.length];
+    html += `<div class="fd-rest-card">
+      <div class="fd-rest-head">
+        <span class="fd-rest-emoji">${e}</span>
+        <div>
+          <div class="fd-rest-name">${fd.dish}</div>
+          <div class="fd-rest-where">📍 ${fd.where}</div>
+        </div>
+        <span class="fd-rest-city">${fd.city}</span>
+      </div>
+      <div class="fd-rest-meta">
+        <span class="fd-tag fd-tag-green">💰 ${fd.price||'Market price'}</span>
+        ${fd.rating ? `<span class="fd-tag fd-tag-gold">⭐ ${fd.rating}</span>` : ''}
+        <span class="fd-tag fd-tag-green">✅ Authentic</span>
+      </div>
+      ${fd.note ? `<div class="fd-rest-note">${fd.note}</div>` : ''}
+    </div>`;
+  });
+  html += `</div>`;
+
+  content.innerHTML = html;
+}
+
+function showFdCity(cityKey) {
+  document.querySelectorAll('.fd-dest-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.fd-dest-tab[data-city="${cityKey}"]`).classList.add('active');
+  document.querySelectorAll('.fd-city-panel').forEach(p => p.style.display = 'none');
+  const panel = document.querySelector(`.fd-city-panel[data-city="${cityKey}"]`);
+  if (panel) panel.style.display = 'block';
 }
 
 // ═══════════════════════════════════════════
