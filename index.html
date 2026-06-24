@@ -2354,8 +2354,7 @@ function _dpRoute(day){
 
   const mapHtml = `<div class="dp-route-map-wrap">
     <div class="dp-route-map-header">
-      <div class="dp-route-map-title">🗺️ Route Map · ${tl.length} stops in ${day.city}</div>
-      <button class="dp-minimap-toggle" onclick="document.querySelector('.dp-route-scroll')?.scrollIntoView({behavior:'smooth'})">List →</button>
+      <div class="dp-route-map-title">🗺️ Route · ${tl.length} stops</div>
     </div>
     <div class="dp-route-map-container" id="${mapId}" data-points="${data}"></div>
   </div>`;
