@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <style>
 /* ═══════════════════════════════════════════
    ATOS — Premium Travel Dashboard
@@ -689,6 +691,15 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 .dp-hero-stat-lbl { font-size:10.5px; opacity:.8; text-transform:uppercase; letter-spacing:.6px; margin-top:1px; }
 .dp-hero-wx { font-size:12.5px; opacity:.92; padding:7px 12px; background:rgba(255,255,255,.14); border-radius:999px; align-self:flex-start; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
 
+/* Route map */
+.dp-route-map-wrap { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px 18px 14px; box-shadow:var(--shadow); margin-bottom:16px; }
+.dp-route-map-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.dp-route-map-title { font-family:var(--font-head); font-size:13px; font-weight:700; color:var(--text); }
+.dp-route-map-container { width:100%; height:220px; border-radius:var(--radius); overflow:hidden; }
+.dp-route-map-container .leaflet-popup-content-wrapper { border-radius:10px; font-family:Inter,sans-serif; font-size:12px; line-height:1.4; }
+.dp-route-map-container .leaflet-popup-content { margin:10px 12px; }
+.dp-route-map-container .leaflet-popup-content strong { display:block; font-size:13px; margin-bottom:2px; }
+
 /* Route flow */
 .dp-route-scroll { overflow-x:auto; padding:6px 2px 10px; }
 .dp-route { display:flex; align-items:stretch; gap:0; min-width:max-content; }
@@ -834,6 +845,7 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
   .dp-food-grid, .dp-scam-grid { grid-template-columns:1fr 1fr; }
   .dp-alt-grid { grid-template-columns:1fr 1fr; }
   .dp-em-card { grid-template-columns:1fr; }
+  .dp-route-map-container { height:160px; }
   .dp-hero-title { font-size:28px; }
   .dp-hero { height:300px; }
   .dp-section-h { font-size:19px; }
@@ -2184,7 +2196,93 @@ function _dpHero(day){
 
 function _dpRoute(day){
   const tl = day.timeline || [];
-  if(!tl.length) return _dpSection('route','🗺️','ROUTE FLOW','How your day moves', '<div class="dp-empty">No stops scheduled.</div>');
+  if(!tl.length) return _dpSection('route','🗺️','ROUTE MAP','Your day\'s stops on the map', '<div class="dp-empty">No stops scheduled.</div>');
+
+  // City approximate coords for Vietnam cities
+  const cityCoords = {
+    'HCMC': [10.8231, 106.6297],
+    'Ho Chi Minh': [10.8231, 106.6297],
+    'Phu Quoc': [10.2898, 103.9841],
+    'Hanoi': [21.0278, 105.8342],
+    'Sapa': [22.3351, 103.8265],
+    'Halong Bay': [20.9101, 107.1839],
+    'Halong': [20.9101, 107.1839],
+    'Da Nang': [16.0544, 108.2022],
+    'Hoi An': [15.8801, 108.3380],
+    'Nha Trang': [12.2388, 109.1967],
+    'Dalat': [11.9465, 108.4419],
+    'Hue': [16.4637, 107.5909],
+    'Mui Ne': [10.9494, 108.2871],
+    'Con Dao': [8.6894, 106.6322],
+    'Quy Nhon': [13.7694, 109.2301],
+    'Ha Giang': [22.8355, 104.9915]
+  };
+  const city = cityCoords[day.city] || [16.0, 108.0];
+
+  // Generate pseudo-offsets for each stop
+  const steps = tl.map((t,i)=>{
+    const offsetLat = (i - (tl.length-1)/2) * 0.008;
+    const offsetLng = (i % 2 === 0 ? 0.005 : -0.005);
+    return {
+      idx: i+1,
+      activity: t.activity,
+      time: t.time,
+      cost: t.cost || '',
+      category: t.category,
+      lat: city[0] + offsetLat + (Math.random()-0.5)*0.002,
+      lng: city[1] + offsetLng + (Math.random()-0.5)*0.002,
+      transit: t.transit_to_next || null
+    };
+  });
+
+  // Build map HTML with unique ID
+  const mapId = 'daymap_' + Date.now();
+  const pointsJson = JSON.stringify(steps);
+
+  const mapHtml = `<div class="dp-route-map-wrap">
+    <div class="dp-route-map-header">
+      <div class="dp-route-map-title">🗺️ Route Map · ${tl.length} stops in ${day.city}</div>
+      <button class="dp-minimap-toggle" onclick="document.querySelector('.dp-route-scroll')?.scrollIntoView({behavior:'smooth'})">Stops →</button>
+    </div>
+    <div class="dp-route-map-container" id="${mapId}"></div>
+  </div>
+  <script>
+    (function(){
+      setTimeout(function(){
+        var el = document.getElementById('${mapId}');
+        if(!el || el._mapLoaded) return;
+        el._mapLoaded = true;
+        var points = ${pointsJson};
+        if(points.length<1) return;
+        var map = L.map(el, { zoomControl:true, attributionControl:false });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:18 }).addTo(map);
+        var markers = [];
+        var catColors = {breakfast:'#2F6B52',lunch:'#2F6B52',dinner:'#2F6B52',food:'#E8A33D',attraction:'#6B5B95',museum:'#6B5B95',sightseeing:'#6B5B95',transport:'#4A90D9',shopping:'#D4B483',nightlife:'#E85D5D',nature:'#4CAF50',adventure:'#FF6B35',relax:'#7FC7C7',airport:'#7a8294'};
+        var catIcons = {breakfast:'🍳',lunch:'🍜',dinner:'🍽️',food:'🍴',attraction:'🏛️',museum:'🎨',sightseeing:'📷',transport:'🚌',shopping:'🛍️',nightlife:'🌙',nature:'🌿',adventure:'🧗',relax:'🧘',airport:'✈️'};
+        points.forEach(function(p,i){
+          var color = catColors[p.category]||'#2F6B52';
+          var icon = catIcons[p.category]||'📍';
+          var divIcon = L.divIcon({
+            className:'dp-map-marker',
+            html:'<div style="width:30px;height:30px;border-radius:50%;background:'+color+';color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;">'+(i+1)+'</div>',
+            iconSize:[30,30],
+            iconAnchor:[15,15]
+          });
+          var popup = '<strong>'+i+1+'. '+p.activity.replace(/'/g,"\\\\'")+'</strong>🕒 '+p.time+(p.cost?' · '+p.cost:'')+'<br><span style="color:#6B7280;font-size:11px;">'+p.category+(p.transit?' → '+p.transit.mode:'')+'</span>';
+          var m = L.marker([p.lat,p.lng], {icon:divIcon}).addTo(map).bindPopup(popup);
+          markers.push(m);
+        });
+        if(points.length>1){
+          var latlngs = points.map(function(p){return [p.lat,p.lng];});
+          L.polyline(latlngs, {color:'#2F6B52',weight:2.5,opacity:.6,dashArray:'6,8'}).addTo(map);
+        }
+        var group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.25));
+      }, 200);
+    })();
+  </script>`;
+
+  // Horizontal route flow below
   const nodes = tl.map((t,i)=>{
     const cc = DP_CAT_COLORS[t.category]||'#7a8294';
     const ci = DP_CAT_ICONS[t.category]||'📌';
@@ -2200,7 +2298,8 @@ function _dpRoute(day){
       </div>`:(i<tl.length-1?'<div class="dp-route-leg"><span class="dp-route-leg-meta">—</span></div>':'')}
     </div>`;
   }).join('');
-  return _dpSection('route','🗺️','ROUTE FLOW','How your day moves — stop by stop', `<div class="dp-route-scroll"><div class="dp-route">${nodes}</div></div>`);
+
+  return _dpSection('route','🗺️','ROUTE MAP','Stops visualized on OpenStreetMap', `${mapHtml}<div class="dp-route-scroll"><div class="dp-route">${nodes}</div></div>`);
 }
 
 function _dpSnapshot(day){
