@@ -327,16 +327,50 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 .plan-cost { font-size:11px; color:var(--muted); margin-top:3px; }
 .plan-cat { font-size:9px; padding:3px 8px; border-radius:20px; background:var(--bg2); color:var(--muted); text-transform:uppercase; white-space:nowrap; font-weight:600; align-self:flex-start; }
 
-/* ── Weather ─────────────────────────────── */
-.weather-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:14px; }
-.weather-city { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow); }
-.weather-city h3 { font-family:var(--font-head); font-size:14px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
-.forecast-row { display:grid; grid-template-columns:34px 60px 1fr 48px 46px; gap:6px; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); font-size:12px; }
-.forecast-row:last-child { border-bottom:none; }
-.forecast-date { font-weight:600; font-size:12px; }
-.forecast-temp { color:var(--muted); font-size:11px; }
-.forecast-cond { font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.forecast-rain { font-weight:600; text-align:right; font-size:11px; }
+/* ── Weather (Premium) ───────────────────── */
+.wx-hero { position:relative; border-radius:var(--radius-lg); overflow:hidden; margin-bottom:16px; min-height:180px; background:linear-gradient(135deg,#1a2a3a,#0d1520); display:flex; align-items:center; }
+.wx-hero-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,15,25,0.85) 0%,rgba(10,15,25,0.5) 60%,rgba(10,15,25,0.85) 100%); }
+.wx-hero-content { position:relative; display:flex; align-items:center; gap:24px; padding:24px 28px; width:100%; }
+.wx-score-badge { width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:800; font-family:var(--font-head); color:#fff; flex-shrink:0; border:3px solid rgba(255,255,255,0.3); }
+.wx-hero-text { flex:1; }
+.wx-hero-label { font-size:12px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.6); margin-bottom:2px; }
+.wx-hero-title { font-family:var(--font-head); font-size:28px; font-weight:800; color:#fff; }
+.wx-hero-sub { font-size:13px; color:rgba(255,255,255,0.65); margin-top:2px; }
+.wx-hero-right { text-align:center; flex-shrink:0; }
+.wx-alert-count { font-size:36px; font-weight:800; font-family:var(--font-head); color:#E85D5D; line-height:1; }
+.wx-alert-label { font-size:11px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+
+.wx-city-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:20px 22px; box-shadow:var(--shadow); margin-bottom:14px; transition:all .2s; }
+.wx-city-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.06); }
+.wx-city-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.wx-city-name { font-family:var(--font-head); font-size:20px; font-weight:700; display:flex; align-items:center; gap:8px; }
+.wx-city-current { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+.wx-city-temp { font-family:var(--font-head); font-size:42px; font-weight:300; line-height:1; }
+.wx-city-cond { font-size:14px; color:var(--secondary); }
+.wx-city-rain { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; }
+.wx-rain-icon { font-size:18px; }
+.wx-timeline { display:flex; gap:2px; height:40px; border-radius:8px; overflow:hidden; margin-bottom:12px; background:var(--bg2); }
+.wx-timeline-bar { flex:1; display:flex; flex-direction:column; justify-content:flex-end; border-radius:2px; transition:all .2s; cursor:pointer; position:relative; }
+.wx-timeline-bar:hover { transform:scaleY(1.1); }
+.wx-timeline-labels { display:flex; gap:2px; margin-bottom:12px; }
+.wx-timeline-label { flex:1; text-align:center; font-size:9px; color:var(--secondary); }
+.wx-day-row { display:grid; grid-template-columns:50px 56px 1fr 60px 80px; gap:8px; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); }
+.wx-day-row:last-child { border-bottom:none; }
+.wx-day-date { font-size:13px; font-weight:600; }
+.wx-day-temp { font-size:12px; color:var(--secondary); }
+.wx-day-cond { font-size:12px; color:var(--secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.wx-day-rain { display:flex; align-items:center; gap:4px; font-size:13px; font-weight:700; }
+.wx-day-risk { text-align:center; }
+.wx-risk-pill { font-size:10px; padding:2px 10px; border-radius:12px; font-weight:700; text-transform:uppercase; }
+.wx-risk-low { background:rgba(47,107,82,0.12); color:var(--primary); }
+.wx-risk-med { background:rgba(232,163,61,0.12); color:var(--warning); }
+.wx-risk-high { background:rgba(232,93,93,0.12); color:var(--danger); }
+.wx-rain-bar { height:6px; border-radius:3px; background:var(--bg2); overflow:hidden; margin:2px 0; }
+.wx-rain-fill { height:100%; border-radius:3px; transition:width .4s ease; }
+.wx-best-window { background:rgba(47,107,82,0.08); border:1px solid rgba(47,107,82,0.2); border-radius:10px; padding:8px 12px; font-size:12px; margin:8px 0; display:flex; align-items:center; gap:8px; }
+.wx-ai-insight { background:rgba(212,180,131,0.08); border:1px solid rgba(212,180,131,0.2); border-radius:10px; padding:10px 14px; font-size:13px; margin-top:8px; line-height:1.5; }
+.wx-ai-insight strong { color:var(--primary); }
+.wx-adjustments { margin-top:16px; }
 
 /* ── Budget ──────────────────────────────── */
 .budget-bar { height:24px; border-radius:12px; background:var(--bg2); overflow:hidden; display:flex; margin:12px 0; }
@@ -457,7 +491,7 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
   .agent-grid { grid-template-columns:1fr; }
   .quick-actions { grid-template-columns:repeat(2,1fr); }
   .intel-feed { grid-template-columns:1fr; }
-  .weather-grid { grid-template-columns:1fr; }
+  .wx-hero-content { flex-direction:column; text-align:center; gap:12px; }
   .packing-grid { grid-template-columns:1fr; }
   .hero { height:auto; min-height:440px; }
   .hero-content { flex-direction:column; align-items:flex-start; padding:24px; }
@@ -654,11 +688,23 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 
   <!-- ═══ WEATHER ═══ -->
   <div class="tab-content" id="tab-weather">
-    <div class="section-title"><span class="icon">🌧️</span> Weather Intelligence — Live Forecast</div>
-    <div class="stats-grid" id="weatherStats"></div>
-    <div class="weather-grid" id="weatherGrid">
-      <div class="loading"><div class="spinner"></div>Fetching forecasts…</div>
+    <div class="wx-hero">
+      <div class="wx-hero-overlay"></div>
+      <div class="wx-hero-content">
+        <div class="wx-score-badge" id="wxScoreBadge">--</div>
+        <div class="wx-hero-text">
+          <div class="wx-hero-label">Weather Intelligence</div>
+          <div class="wx-hero-title" id="wxHeroTitle">Monsoon Season</div>
+          <div class="wx-hero-sub" id="wxHeroSub">Real-time forecasts from Open-Meteo API</div>
+        </div>
+        <div class="wx-hero-right">
+          <div class="wx-alert-count" id="wxAlertCount">--</div>
+          <div class="wx-alert-label">Active Alerts</div>
+        </div>
+      </div>
     </div>
+    <div class="stats-grid" id="weatherStats"></div>
+    <div id="weatherGrid"></div>
   </div>
 
   <!-- ═══ BUDGET ═══ -->
@@ -1027,43 +1073,134 @@ async function loadWeather() {
   const w = await loadData('weather');
   if (!w) return;
 
+  // Hero
+  const score = w.score || 0;
+  const scoreColor = score > 60 ? '#2F6B52' : score > 30 ? '#E8A33D' : '#E85D5D';
+  const sb = document.getElementById('wxScoreBadge');
+  if (sb) { sb.textContent = score; sb.style.background = scoreColor; }
+  const ac = document.getElementById('wxAlertCount');
+  if (ac) ac.textContent = (w.alerts?.length || 0);
+  const ht = document.getElementById('wxHeroTitle');
+  if (ht) ht.textContent = score > 60 ? 'Good Conditions' : score > 30 ? 'Mixed Weather' : 'Monsoon Season';
+  const hs = document.getElementById('wxHeroSub');
+  if (hs) hs.textContent = `Updated ${new Date(w.timestamp).toLocaleString()} · Open-Meteo API`;
+
+  // Stats
+  const cities = w.cities || {};
+  const cityCount = Object.keys(cities).length;
+  const allForecasts = Object.values(cities).flatMap(c => c.forecasts || []);
+  const avgRain = allForecasts.length ? Math.round(allForecasts.reduce((a,f) => a + (f.rain_prob||0), 0) / allForecasts.length) : 0;
+  const highRiskDays = allForecasts.filter(f => f.risk === 'high').length;
+  const totalDays = allForecasts.length;
+
   document.getElementById('weatherStats').innerHTML = `
-    <div class="stat ${w.score>60?'accent':w.score>30?'warn':'danger'}"><div class="label">Weather Score</div><div class="value">${w.score}/100</div></div>
-    <div class="stat warn"><div class="label">Alerts</div><div class="value">${w.alerts?.length||0}</div></div>
-    <div class="stat"><div class="label">Source</div><div class="value" style="font-size:14px;">Open-Meteo</div><div class="sub">Real-time API</div></div>
-    <div class="stat"><div class="label">Last Update</div><div class="value" style="font-size:14px;">${new Date(w.timestamp).toLocaleTimeString()}</div></div>
+    <div class="stat ${score>60?'accent':score>30?'warn':'danger'}"><div class="label">Weather Score</div><div class="value">${score}/100</div><div class="sub">${score>30?'Monsoon active':'Poor conditions'}</div></div>
+    <div class="stat warn"><div class="label">Avg Rain Risk</div><div class="value">${avgRain}%</div><div class="sub">Across ${cityCount} cities</div></div>
+    <div class="stat danger"><div class="label">High Risk Days</div><div class="value">${highRiskDays}</div><div class="sub">of ${totalDays} forecast days</div></div>
+    <div class="stat"><div class="label">Active Alerts</div><div class="value">${w.alerts?.length||0}</div><div class="sub">Needs attention</div></div>
   `;
 
+  // City cards
   const grid = document.getElementById('weatherGrid');
-  const cities = w.cities || {};
+  const cityEmojis = { 'HCMC':'🏙️', 'Phu Quoc':'🏝️', 'Hanoi':'🌆', 'Sapa':'⛰️', 'Halong Bay':'🚢' };
+
   grid.innerHTML = Object.entries(cities).map(([key, city]) => {
-    if (city.error) return `<div class="weather-city"><h3>📍 ${key}</h3><div style="color:var(--danger)">Error: ${city.error}</div></div>`;
+    if (city.error) return `<div class="wx-city-card"><div class="wx-city-name">${cityEmojis[key]||'📍'} ${key}</div><div style="color:var(--danger)">Error: ${city.error}</div></div>`;
+
     const forecasts = city.forecasts || [];
-    const rows = forecasts.map(f => {
-      const riskClass = f.risk === 'high' ? 'risk-high' : f.risk === 'medium' ? 'risk-medium' : 'risk-low';
-      const riskBadge = f.risk !== 'low' ? `<span class="scam-risk ${riskClass}" style="font-size:9px;">${f.risk}</span>` : '<span style="font-size:10px;color:var(--accent);">✓</span>';
-      const rainColor = f.rain_prob>60?'var(--danger)':f.rain_prob>40?'var(--warn)':'var(--accent)';
-      return `<div class="forecast-row">
-        <span class="forecast-date">${f.day}</span>
-        <span class="forecast-temp">${f.high||'--'}°/${f.low||'--'}°</span>
-        <span class="forecast-cond">${f.condition}</span>
-        <span class="forecast-rain" style="color:${rainColor};">🌧️ ${f.rain_prob}%</span>
-        <span style="text-align:center;">${riskBadge}</span>
-      </div>`;
-    }).join('');
-    return `<div class="weather-city">
-      <h3>📍 ${key} <span style="font-size:10px;color:var(--muted);margin-left:auto;">${forecasts.length} days</span></h3>
-      <div class="forecast-row" style="border-bottom:2px solid var(--border);font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;">
-        <span>Day</span><span>Temp</span><span>Condition</span><span style="text-align:right;">Rain</span><span style="text-align:center;">Risk</span>
+    const current = city.current || {};
+    const bestWindows = city.best_windows || {};
+    const hourlyByDate = city.hourly_by_date || {};
+
+    // Current weather
+    const curTemp = current.temp ? Math.round(current.temp) : '--';
+    const curCond = forecasts[0]?.condition || 'Unknown';
+
+    // City avg rain
+    const cityAvgRain = forecasts.length ? Math.round(forecasts.reduce((a,f) => a + (f.rain_prob||0), 0) / forecasts.length) : 0;
+    const cityHighRisk = forecasts.filter(f => f.risk === 'high').length;
+
+    // Trip day forecasts only (Jun 28 - Jul 10)
+    const tripForecasts = forecasts.filter(f => {
+      const d = f.date;
+      return d >= '2026-06-28' && d <= '2026-07-10';
+    });
+
+    // Day rows with rain bars
+    const dayRows = tripForecasts.map(f => {
+      const rainPct = f.rain_prob || 0;
+      const rainColor = rainPct > 60 ? '#E85D5D' : rainPct > 40 ? '#E8A33D' : '#2F6B52';
+      const riskClass = f.risk === 'high' ? 'wx-risk-high' : f.risk === 'medium' ? 'wx-risk-med' : 'wx-risk-low';
+      const riskLabel = f.risk === 'high' ? 'HIGH' : f.risk === 'medium' ? 'MED' : 'LOW';
+
+      // Best window for this day
+      const bw = bestWindows[f.date];
+      let windowHtml = '';
+      if (bw && bw.start) {
+        windowHtml = `<div class="wx-best-window">🌤️ <strong>Best window:</strong> ${bw.start}–${bw.end} (${bw.hours}h clear)</div>`;
+      }
+
+      // Hourly rain bars (first 12 hours = daytime)
+      const hourly = hourlyByDate[f.date] || [];
+      const dayHours = hourly.filter(h => h.hour >= 6 && h.hour <= 20).slice(0, 12);
+      const timelineBars = dayHours.map(h => {
+        const hRain = h.rain_prob || 0;
+        const hColor = hRain > 60 ? '#E85D5D' : hRain > 40 ? '#E8A33D' : hRain > 20 ? '#7BA68C' : '#2F6B52';
+        const hHeight = Math.max(4, hRain * 0.35);
+        return `<div class="wx-timeline-bar" style="background:${hColor};height:${hHeight}px;opacity:${0.4 + hRain/200};" title="${h.hour}:00 — ${hRain}% rain, ${h.temp}°"></div>`;
+      }).join('');
+      const timelineLabels = dayHours.length > 0 ? dayHours.filter((_,i) => i % 3 === 0).map(h => `<div class="wx-timeline-label">${h.hour}h</div>`).join('') : '';
+
+      const dateLabel = new Date(f.date).toLocaleDateString('en', { month:'short', day:'numeric', weekday:'short' });
+
+      return `<div class="wx-day-row">
+        <div class="wx-day-date">${dateLabel.split(',')[0]}</div>
+        <div class="wx-day-temp">${f.high||'--'}° / ${f.low||'--'}°</div>
+        <div class="wx-day-cond">${f.condition}</div>
+        <div class="wx-day-rain" style="color:${rainColor};">🌧️ ${rainPct}%</div>
+        <div class="wx-day-risk"><span class="wx-risk-pill ${riskClass}">${riskLabel}</span></div>
       </div>
-      ${rows || '<div style="color:var(--muted);padding:10px;">No forecast data</div>'}
+      ${timelineBars ? `<div class="wx-timeline">${timelineBars}</div>` : ''}
+      ${windowHtml}`;
+    }).join('');
+
+    // AI insight
+    let insight = '';
+    if (cityHighRisk > 5) {
+      insight = `<div class="wx-ai-insight">🤖 <strong>AI Insight:</strong> ${key} has ${cityHighRisk} high-risk rain days. Plan indoor activities for afternoons. Outdoor activities before 10 AM only. Check <a href="#" onclick="document.querySelector('[data-tab=backup]')?.click();return false;">Backup Plans</a> for alternatives.</div>`;
+    } else if (cityAvgRain > 50) {
+      insight = `<div class="wx-ai-insight">🤖 <strong>AI Insight:</strong> ${key} averages ${cityAvgRain}% rain. Mornings are drier — schedule outdoor activities before noon. Pack rain jacket + poncho daily.</div>`;
+    } else {
+      insight = `<div class="wx-ai-insight">🤖 <strong>AI Insight:</strong> ${key} looks manageable with ${cityAvgRain}% avg rain. Best windows available most days. Keep flexible timing for outdoor activities.</div>`;
+    }
+
+    return `<div class="wx-city-card">
+      <div class="wx-city-header">
+        <div class="wx-city-name">${cityEmojis[key]||'📍'} ${key}</div>
+        <span class="wx-risk-pill ${cityHighRisk > 5 ? 'wx-risk-high' : cityAvgRain > 50 ? 'wx-risk-med' : 'wx-risk-low'}">${cityHighRisk > 5 ? 'HIGH RISK' : cityAvgRain > 50 ? 'MEDIUM' : 'LOW'}</span>
+      </div>
+      <div class="wx-city-current">
+        <div class="wx-city-temp">${curTemp}°</div>
+        <div>
+          <div class="wx-city-cond">${curCond}</div>
+          <div class="wx-city-rain"><span class="wx-rain-icon">🌧️</span> ${cityAvgRain}% avg rain · ${tripForecasts.length} trip days</div>
+        </div>
+      </div>
+      ${dayRows || '<div style="color:var(--secondary);padding:20px 0;">No forecast data</div>'}
+      ${insight}
     </div>`;
   }).join('');
 
-  // Adjustments
+  // AI adjustments feed
   if (w.adjustments && w.adjustments.length) {
-    const adjHtml = w.adjustments.map(a => `<div class="alert-item"><span>📋</span><span>${a}</span></div>`).join('');
-    grid.innerHTML += `<div class="weather-city" style="grid-column:1/-1"><h3>📋 Suggested Adjustments</h3>${adjHtml}</div>`;
+    const adjHtml = w.adjustments.map(a => {
+      const isHigh = a.includes('High rain');
+      return `<div class="wx-ai-insight" style="border-color:${isHigh?'rgba(232,93,93,0.2)':'rgba(232,163,61,0.2)'}">${isHigh ? '⚠️' : '📋'} ${a}</div>`;
+    }).join('');
+    grid.innerHTML += `<div class="wx-city-card wx-adjustments">
+      <div class="wx-city-name">📋 AI Weather Adjustments</div>
+      ${adjHtml}
+    </div>`;
   }
 }
 
