@@ -11,7 +11,7 @@ TRIP = {
     "end": "2026-07-10",
     "currency": "INR",
     "inr_to_vnd": 279,
-    "total_budget": 64000,  # INR
+    "total_budget": 180000,  # INR (₹1.8L)
     "solo": True,
     "non_veg": True,
 }
@@ -200,20 +200,20 @@ ITINERARY = [
 
 # === BUDGET BREAKDOWN ===
 BUDGET = {
-    "total_planned": 64000,
+    "total_planned": 180000,
     "categories": {
-        "flights": {"planned": 18000, "spent": 0, "items": ["Delhi-HCMC intl", "HCMC-Phu Quoc", "Phu Quoc-Hanoi", "Hanoi-Delhi intl"]},
-        "hotels": {"planned": 12000, "spent": 0, "items": ["9 nights @ ₹800-1,500"]},
-        "activities": {"planned": 29751, "spent": 0, "items": ["Tours, parks, attractions"]},
-        "food": {"planned": 8000, "spent": 0, "items": ["13 days meals"]},
-        "transport_local": {"planned": 4000, "spent": 0, "items": ["Buses, taxis, Grab"]},
-        "shopping": {"planned": 3000, "spent": 0, "items": ["Souvenirs, gifts"]},
+        "flights": {"planned": 40000, "spent": 0, "items": ["Delhi-HCMC intl", "HCMC-Phu Quoc", "Phu Quoc-Hanoi", "Hanoi-Delhi intl"]},
+        "hotels": {"planned": 35000, "spent": 0, "items": ["9 nights @ ₹1,500-2,500/night"]},
+        "activities": {"planned": 60000, "spent": 0, "items": ["Tours, parks, attractions, premium experiences"]},
+        "food": {"planned": 18000, "spent": 0, "items": ["13 days meals — street + restaurant mix"]},
+        "transport_local": {"planned": 12000, "spent": 0, "items": ["Buses, taxis, Grab, bike rentals"]},
+        "shopping": {"planned": 15000, "spent": 0, "items": ["Souvenirs, gifts, fish sauce, coffee"]},
     },
     "by_city": {
-        "HCMC": 2600,
-        "Phu Quoc": 8745,
-        "Sapa": 11190,
-        "Hanoi": 7200,
+        "HCMC": 12000,
+        "Phu Quoc": 25000,
+        "Sapa": 25000,
+        "Hanoi": 46000,
     }
 }
 

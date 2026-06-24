@@ -5,8 +5,8 @@
   "status": "4 days until departure",
   "current_day": null,
   "travel_health_score": 56,
-  "budget_status": "tight",
-  "budget_remaining": 3751,
+  "budget_status": "healthy",
+  "budget_remaining": 35000,
   "risk_status": "HIGH",
   "weather_status": "28/100",
   "weather_alerts": [

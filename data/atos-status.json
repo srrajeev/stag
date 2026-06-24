@@ -5,9 +5,9 @@
   "run_type": "daily",
   "agents_active": 15,
   "trip_phase": "pre_trip",
-  "travel_health": 56,
+  "travel_health": 68,
   "risk_level": "HIGH",
-  "budget_health": "tight",
+  "budget_health": "healthy",
   "weather_score": 28,
   "total_alerts": 12,
   "agent_tiers": {
