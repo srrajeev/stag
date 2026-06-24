@@ -804,7 +804,8 @@ async function loadOps() {
     const actions = briefing.recommended_actions.slice(0, 3).map(a => 
       `<div style="font-size:13px;padding:3px 0;">${a}</div>`
     ).join('');
-    document.getElementById('heroActions').innerHTML = actions;
+    const ha = document.getElementById('heroActions');
+    if (ha) ha.innerHTML = actions;
   }
 
   // Stats
