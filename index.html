@@ -652,6 +652,199 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
   .hero-countdown .num { font-size:26px; }
   .main { padding:14px 14px 70px; }
 }
+
+/* ═══════════════════════════════════════════
+   DAY PLAN — Premium Travel Concierge (dp-*)
+   Apple / Airbnb / Linear inspired · light luxury
+   ═══════════════════════════════════════════ */
+.dp-root { display:flex; flex-direction:column; gap:28px; max-width:1100px; margin:0 auto; }
+.dp-section-head { margin-bottom:14px; }
+.dp-section-eyebrow { font-family:var(--font-head); font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; display:flex; align-items:center; gap:6px; }
+.dp-sec-ico { font-size:13px; }
+.dp-section-h { font-family:var(--font-head); font-size:22px; font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-top:3px; }
+
+/* Day selector */
+.dp-day-selector { display:flex; gap:10px; overflow-x:auto; padding:6px 2px 14px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+.dp-day-selector::-webkit-scrollbar { height:6px; }
+.dp-day-selector::-webkit-scrollbar-thumb { background:var(--border); border-radius:6px; }
+.dp-day-pill { flex:0 0 auto; min-width:124px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:12px 14px; cursor:pointer; transition:all .18s ease; box-shadow:var(--shadow); text-align:left; font-family:var(--font-body); scroll-snap-align:start; }
+.dp-day-pill:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--accent); }
+.dp-day-pill.active { background:var(--accent); border-color:var(--accent); box-shadow:0 8px 24px rgba(47,107,82,.25); }
+.dp-day-pill.active .dp-pill-num, .dp-day-pill.active .dp-pill-city, .dp-day-pill.active .dp-pill-date { color:#fff; }
+.dp-pill-num { font-family:var(--font-head); font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.5px; }
+.dp-pill-city { font-size:14px; font-weight:700; color:var(--text); margin-top:3px; white-space:nowrap; }
+.dp-pill-date { font-size:11px; color:var(--muted); margin-top:2px; }
+
+/* Hero */
+.dp-hero { position:relative; height:320px; border-radius:var(--radius-lg); overflow:hidden; background-size:cover; background-position:center; box-shadow:var(--shadow-md); }
+.dp-hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.55) 65%, rgba(0,0,0,.8) 100%); }
+.dp-hero-content { position:relative; z-index:2; height:100%; padding:26px 30px; display:flex; flex-direction:column; justify-content:flex-end; color:#fff; }
+.dp-hero-top { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:auto; }
+.dp-hero-chip { font-family:var(--font-head); font-size:11px; font-weight:700; letter-spacing:.8px; padding:6px 11px; border-radius:999px; background:rgba(255,255,255,.18); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.25); }
+.dp-hero-cityline { font-family:var(--font-head); font-size:15px; font-weight:600; opacity:.92; letter-spacing:.3px; }
+.dp-hero-title { font-family:var(--font-head); font-size:38px; font-weight:800; line-height:1.05; letter-spacing:-0.03em; margin:2px 0 10px; text-shadow:0 2px 12px rgba(0,0,0,.3); }
+.dp-hero-summary { font-size:13.5px; line-height:1.5; opacity:.94; max-width:680px; margin-bottom:14px; }
+.dp-hero-stats { display:flex; gap:22px; flex-wrap:wrap; margin-bottom:12px; }
+.dp-hero-stat-val { font-family:var(--font-head); font-size:20px; font-weight:800; color:#fff; letter-spacing:-0.01em; }
+.dp-hero-stat-lbl { font-size:10.5px; opacity:.8; text-transform:uppercase; letter-spacing:.6px; margin-top:1px; }
+.dp-hero-wx { font-size:12.5px; opacity:.92; padding:7px 12px; background:rgba(255,255,255,.14); border-radius:999px; align-self:flex-start; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+
+/* Route flow */
+.dp-route-scroll { overflow-x:auto; padding:6px 2px 10px; }
+.dp-route { display:flex; align-items:stretch; gap:0; min-width:max-content; }
+.dp-route-stop { flex:0 0 auto; min-width:140px; max-width:180px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; padding:0 6px; }
+.dp-route-dot { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff; box-shadow:0 4px 12px rgba(0,0,0,.15); z-index:2; }
+.dp-route-stop:not(:last-child)::after { content:''; position:absolute; top:21px; left:calc(50% + 26px); right:calc(-50% + 26px); height:3px; background:linear-gradient(90deg,var(--border),var(--accent-dim)); z-index:1; }
+.dp-route-time { font-family:var(--font-head); font-size:12px; font-weight:700; color:var(--accent); margin-top:10px; }
+.dp-route-name { font-size:12.5px; font-weight:600; color:var(--text); line-height:1.3; margin-top:3px; }
+.dp-route-cost { font-size:11px; color:var(--gold); font-weight:600; margin-top:3px; }
+.dp-route-leg { margin-top:8px; font-size:10.5px; line-height:1.4; color:var(--muted); display:flex; flex-direction:column; align-items:center; gap:1px; }
+.dp-route-leg-mode { font-weight:700; color:var(--text); }
+
+/* Snapshot */
+.dp-snap-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.dp-snap-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease; }
+.dp-snap-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.dp-snap-icon { font-size:24px; }
+.dp-snap-val { font-family:var(--font-head); font-size:26px; font-weight:800; margin-top:6px; letter-spacing:-0.02em; }
+.dp-snap-lbl { font-size:12px; font-weight:600; color:var(--text); margin-top:2px; }
+.dp-snap-desc { font-size:11.5px; color:var(--muted); margin-top:4px; line-height:1.4; }
+
+/* Timeline */
+.dp-tl-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.dp-tl-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow); border-left:4px solid var(--cat,var(--accent)); transition:transform .16s ease, box-shadow .16s ease; }
+.dp-tl-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.dp-tl-top { display:flex; gap:11px; align-items:flex-start; }
+.dp-tl-ico { font-size:22px; flex-shrink:0; margin-top:1px; }
+.dp-tl-main { flex:1; min-width:0; }
+.dp-tl-name { font-family:var(--font-head); font-size:14.5px; font-weight:700; color:var(--text); line-height:1.3; }
+.dp-tl-meta { display:flex; flex-wrap:wrap; gap:7px 10px; margin-top:5px; font-size:11.5px; color:var(--muted); align-items:center; }
+.dp-tl-cost { color:var(--gold); font-weight:600; }
+.dp-tl-rate { color:var(--warn); font-weight:600; }
+.dp-tl-cat { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; padding:2px 7px; border-radius:5px; background:var(--accent-dim); color:var(--accent); }
+.dp-tl-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; }
+.dp-tl-tag { font-size:10.5px; padding:2px 8px; border-radius:6px; font-weight:600; }
+.dp-tl-rain-hi { background:var(--danger-dim); color:var(--danger); }
+.dp-tl-rain-md { background:var(--warn-dim); color:var(--warn); }
+.dp-tl-rain-lo { background:var(--accent-dim); color:var(--accent); }
+.dp-tl-link { background:var(--blue-dim); color:var(--blue); text-decoration:none; }
+.dp-tl-venue { font-size:11.5px; color:var(--muted); margin-top:7px; line-height:1.45; padding-top:7px; border-top:1px dashed var(--border); }
+.dp-tl-transit { margin-top:9px; padding:8px 11px; background:var(--bg2); border-radius:10px; font-size:11px; line-height:1.5; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; }
+.dp-tl-tr-mode { font-weight:700; color:var(--text); }
+.dp-tl-tr-dir { color:var(--accent); text-decoration:none; font-weight:600; }
+.dp-tl-tr-rec { flex-basis:100%; color:var(--muted); }
+
+/* Insights */
+.dp-insight-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.dp-insight { background:var(--card); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow); }
+.dp-insight-head { display:flex; align-items:center; gap:8px; }
+.dp-insight-ico { font-size:17px; }
+.dp-insight-type { font-family:var(--font-head); font-size:10.5px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; }
+.dp-insight-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--text); margin-top:6px; }
+.dp-insight-body { font-size:12.5px; color:var(--muted); line-height:1.55; margin-top:5px; }
+
+/* Weather */
+.dp-wx-head { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:10px; font-family:var(--font-head); }
+.dp-wx-cond { font-size:16px; font-weight:700; color:var(--text); }
+.dp-wx-hi { color:var(--danger); font-weight:700; }
+.dp-wx-lo { color:var(--blue); font-weight:700; }
+.dp-wx-risk { font-size:10.5px; font-weight:800; padding:3px 9px; border-radius:6px; letter-spacing:.5px; }
+.dp-wx-high { background:var(--danger-dim); color:var(--danger); }
+.dp-wx-medium { background:var(--warn-dim); color:var(--warn); }
+.dp-wx-low { background:var(--accent-dim); color:var(--accent); }
+.dp-wx-window { font-size:12.5px; color:var(--text); background:var(--accent-dim); padding:8px 12px; border-radius:10px; margin-bottom:12px; }
+.dp-wx-bars { display:flex; gap:4px; align-items:flex-end; overflow-x:auto; padding:12px 10px 6px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); min-height:112px; }
+.dp-wx-bar { flex:0 0 34px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:96px; }
+.dp-wx-bar-rain { width:100%; border-radius:5px 5px 0 0; min-height:8px; transition:height .3s ease; }
+.dp-wx-bar-temp { font-size:10px; font-weight:700; color:var(--text); margin-top:4px; }
+.dp-wx-bar-hour { font-size:9.5px; color:var(--muted); }
+.dp-wx-summary { font-size:13px; color:var(--text); padding:14px; }
+
+/* Food */
+.dp-food-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.dp-food-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); transition:transform .16s ease; }
+.dp-food-card:hover { transform:translateY(-3px); }
+.dp-food-name { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--text); }
+.dp-food-where { font-size:11.5px; color:var(--muted); margin-top:4px; }
+.dp-food-meta { display:flex; gap:10px; margin-top:8px; font-size:12px; font-weight:600; }
+.dp-food-price { color:var(--gold); }
+.dp-food-rate { color:var(--warn); }
+.dp-food-note { font-size:11px; color:var(--muted); margin-top:6px; font-style:italic; line-height:1.4; }
+
+/* Scams */
+.dp-scam-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.dp-scam-card { background:var(--card); border:1px solid var(--border); border-left:4px solid var(--danger); border-radius:var(--radius); padding:15px 16px; box-shadow:var(--shadow); }
+.dp-scam-top { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.dp-scam-type { font-family:var(--font-head); font-size:14px; font-weight:700; color:var(--text); }
+.dp-scam-risk { font-size:10px; font-weight:800; padding:3px 8px; border-radius:5px; letter-spacing:.4px; white-space:nowrap; }
+.dp-scam-desc { font-size:12px; color:var(--text); margin-top:7px; line-height:1.45; }
+.dp-scam-avoid { font-size:11.5px; color:var(--danger); margin-top:7px; line-height:1.4; }
+.dp-scam-action { font-size:11.5px; color:var(--accent); margin-top:4px; line-height:1.4; }
+
+/* Photography */
+.dp-photo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.dp-photo-main { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow); }
+.dp-photo-row { display:flex; justify-content:space-between; gap:12px; font-size:12.5px; padding:7px 0; border-bottom:1px solid var(--border); }
+.dp-photo-row:last-of-type { border-bottom:none; }
+.dp-photo-row span { color:var(--muted); }
+.dp-photo-row strong { color:var(--text); font-weight:600; text-align:right; }
+.dp-photo-score { font-family:var(--font-head); font-size:14px; font-weight:700; margin-top:10px; }
+.dp-photo-spots { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow); }
+.dp-photo-spots-h { font-family:var(--font-head); font-size:13px; font-weight:700; margin-bottom:8px; }
+.dp-photo-list { list-style:none; }
+.dp-photo-spot { display:flex; align-items:center; gap:8px; font-size:12px; padding:6px 0; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.dp-photo-spot:last-child { border-bottom:none; }
+.dp-photo-spot-name { font-weight:600; color:var(--text); flex:1; min-width:120px; }
+.dp-photo-spot-time { font-size:11px; color:var(--muted); }
+
+/* Cost */
+.dp-cost-row { display:grid; grid-template-columns:140px 1fr 90px; gap:12px; align-items:center; padding:9px 0; }
+.dp-cost-lbl { font-size:12.5px; font-weight:600; color:var(--text); }
+.dp-cost-track { height:10px; background:var(--bg2); border-radius:6px; overflow:hidden; }
+.dp-cost-fill { height:100%; border-radius:6px; transition:width .4s ease; }
+.dp-cost-val { font-size:12.5px; font-weight:700; color:var(--text); text-align:right; font-family:var(--font-head); }
+.dp-cost-total { display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding:14px 18px; background:var(--accent); border-radius:var(--radius); color:#fff; }
+.dp-cost-total span { font-size:13px; font-weight:600; opacity:.9; }
+.dp-cost-total strong { font-family:var(--font-head); font-size:20px; font-weight:800; }
+
+/* Emergency */
+.dp-em-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:8px; box-shadow:var(--shadow); display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.dp-em-row { display:flex; align-items:center; gap:10px; padding:11px 14px; border-radius:12px; background:var(--bg2); text-decoration:none; transition:background .16s ease; }
+.dp-em-row:hover { background:var(--accent-dim); }
+.dp-em-ico { font-size:18px; }
+.dp-em-lbl { font-size:12px; color:var(--muted); flex:1; min-width:0; }
+.dp-em-val { font-family:var(--font-head); font-size:13px; font-weight:700; color:var(--text); }
+.dp-em-call { font-size:10px; font-weight:700; color:var(--accent); background:#fff; padding:3px 8px; border-radius:6px; border:1px solid var(--border); }
+
+/* Alternatives */
+.dp-alt-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.dp-alt-card { background:var(--card); border:1px solid var(--border); border-top:4px solid var(--alt,var(--accent)); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); cursor:pointer; text-align:left; font-family:var(--font-body); transition:transform .16s ease, box-shadow .16s ease; }
+.dp-alt-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.dp-alt-head { display:flex; flex-direction:column; gap:6px; }
+.dp-alt-ico { font-size:22px; }
+.dp-alt-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--text); }
+.dp-alt-tag { align-self:flex-start; font-size:10px; font-weight:800; padding:3px 8px; border-radius:6px; letter-spacing:.4px; }
+.dp-alt-desc { font-size:11.5px; color:var(--muted); line-height:1.5; margin-top:9px; }
+.dp-alt-hint { display:block; font-size:10px; color:var(--muted); margin-top:8px; opacity:.7; }
+.dp-empty { font-size:13px; color:var(--muted); padding:18px; background:var(--bg2); border-radius:var(--radius); text-align:center; }
+
+@media (max-width:860px){
+  .dp-snap-grid { grid-template-columns:repeat(2,1fr); }
+  .dp-tl-grid, .dp-insight-grid, .dp-photo-grid { grid-template-columns:1fr; }
+  .dp-food-grid, .dp-scam-grid { grid-template-columns:1fr 1fr; }
+  .dp-alt-grid { grid-template-columns:1fr 1fr; }
+  .dp-em-card { grid-template-columns:1fr; }
+  .dp-hero-title { font-size:28px; }
+  .dp-hero { height:300px; }
+  .dp-section-h { font-size:19px; }
+}
+@media (max-width:520px){
+  .dp-snap-grid, .dp-food-grid, .dp-scam-grid, .dp-alt-grid { grid-template-columns:1fr; }
+  .dp-cost-row { grid-template-columns:104px 1fr 72px; }
+  .dp-hero-stats { gap:16px; }
+  .dp-hero-content { padding:20px; }
+  .dp-hero-stat-val { font-size:17px; }
+}
 </style>
 </head>
 <body>
@@ -801,10 +994,8 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 
   <!-- ═══ DETAILED DAY PLAN ═══ -->
   <div class="tab-content" id="tab-detailed">
-    <div class="section-title"><span class="icon">📍</span> Detailed Day Plans — Granular Route & Timing</div>
-    <div class="tip-box accent">Realistic timing with walk times, distances, transport costs, and area guides. No back-and-forth travel.</div>
-    <div id="detailedPlanList">
-      <div class="loading"><div class="spinner"></div>Loading detailed plans…</div>
+    <div id="dpRoot">
+      <div class="loading"><div class="spinner"></div>Loading your travel concierge…</div>
     </div>
   </div>
 
@@ -1306,8 +1497,8 @@ async function loadWeather() {
     if (lowRainPQ.length > 1) insights.push({icon:'✅', text:'Phu Quoc mornings generally clear. Early 4-island tour recommended.', source:'Weather Agent', cls:'success'});
   }
 
-  insights.forEach(in => {
-    insightHtml += `<div class="wx-insight-card ${in.cls}"><span class="ici-icon">${in.icon}</span><div><div class="ici-text">${in.text}</div><div class="ici-source">${in.source}</div></div></div>`;
+  insights.forEach(i => {
+    insightHtml += `<div class="wx-insight-card ${i.cls}"><span class="ici-icon">${i.icon}</span><div><div class="ici-text">${i.text}</div><div class="ici-source">${i.source}</div></div></div>`;
   });
   insightHtml += `</div>`;
 
@@ -1846,139 +2037,436 @@ async function loadEmergency() {
 // ═══════════════════════════════════════════
 // DETAILED DAY PLAN
 // ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// DETAILED DAY PLAN — Premium Travel Concierge
+// 12-section per-day view, day selectable.
+// ═══════════════════════════════════════════
+const DP_CITIES = {
+  'HCMC':       { emoji:'🏙️', img:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&q=80' },
+  'Phu Quoc':   { emoji:'🏝️', img:'https://images.unsplash.com/photo-1591042189868-5b4f5b1f9e3c?w=1600&q=80' },
+  'Hanoi':      { emoji:'🌆', img:'https://images.unsplash.com/photo-1509030450996-dd1a26dda341?w=1600&q=80' },
+  'Sapa':       { emoji:'⛰️', img:'https://images.unsplash.com/photo-1592068804410-6840f0c93029?w=1600&q=80' },
+  'Halong Bay': { emoji:'🚢', img:'https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80' }
+};
+const DP_MONTHS = {Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
+const DP_CAT_ICONS  = {food:'🍜',activity:'🎯',transit:'✈️',hotel:'🏨',nightlife:'🍺',cafe:'☕',shopping:'🛍️'};
+const DP_CAT_COLORS = {food:'#00d4aa',activity:'#42a5f5',transit:'#ab47bc',hotel:'#ffd54f',nightlife:'#ffa726',cafe:'#26c6da',shopping:'#66bb6a'};
+
+let _dpState = { plans:[], weather:null, scams:null, food:null, emergency:null, budget:null, selectedDay:0 };
+
+function _dpISO(dateStr){
+  const m = (dateStr||'').match(/([A-Za-z]{3})\s+(\d+)/);
+  if(!m || !DP_MONTHS[m[1]]) return null;
+  return `2026-${DP_MONTHS[m[1]]}-${m[2].padStart(2,'0')}`;
+}
+function _dpForecast(city, dateStr){
+  const w = _dpState.weather; if(!w || !w.cities[city]) return null;
+  const iso = _dpISO(dateStr); if(!iso) return null;
+  return (w.cities[city].forecasts||[]).find(f=>f.date===iso) || null;
+}
+function _dpHourly(city, dateStr){
+  const w = _dpState.weather; if(!w || !w.cities[city]) return [];
+  const iso = _dpISO(dateStr); if(!iso) return [];
+  return w.cities[city].hourly_by_date[iso] || [];
+}
+function _dpCostNum(str){
+  if(!str) return 0;
+  const m = String(str).match(/(\d[\d,]*)/);
+  return m ? parseInt(m[1].replace(/,/g,''),10) : 0;
+}
+function _dpDur(min){
+  if(!min) return '—';
+  const h=Math.floor(min/60), m=min%60;
+  return h>0 ? `${h}h${m>0?' '+m+'m':''}` : `${m}m`;
+}
+function _dpEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function _dpSection(id, icon, eyebrow, title, inner){
+  return `<section class="dp-section" id="dp-${id}">
+    <div class="dp-section-head">
+      <div class="dp-section-eyebrow"><span class="dp-sec-ico">${icon}</span> ${eyebrow}</div>
+      <h2 class="dp-section-h">${title}</h2>
+    </div>
+    <div class="dp-section-body">${inner}</div>
+  </section>`;
+}
+
 async function loadDetailedPlan() {
-  const d = await loadData('detailed-plan');
-  if (!d) return;
+  const root = document.getElementById('dpRoot');
+  if(!root) return;
+  const [d, weather, scams, food, emergency, budget] = await Promise.all([
+    loadData('detailed-plan'), loadData('weather'), loadData('scams'),
+    loadData('food'), loadData('emergency'), loadData('budget')
+  ]);
+  if(!d){ root.innerHTML = '<div class="tip-box">Unable to load day plan data.</div>'; return; }
+  _dpState = { plans:d.detailed_plans||[], weather, scams, food, emergency, budget, selectedDay:0 };
+  _dpRender();
+}
 
-  const plans = d.detailed_plans || [];
-  const list = document.getElementById('detailedPlanList');
-  
-  // Category icons and colors
-  const catIcons = {food:'🍜',activity:'🎯',transit:'✈️',hotel:'🏨',nightlife:'🍺',cafe:'☕',shopping:'🛍️'};
-  const catColors = {food:'#00d4aa',activity:'#42a5f5',transit:'#ab47bc',hotel:'#ffd54f',nightlife:'#ffa726',cafe:'#00d4aa',shopping:'#42a5f5'};
-  
-  list.innerHTML = plans.map(day => {
-    const ag = day.area_guide || {};
-    
-    // Compact area guide — grid layout, no empty space
-    let areaHtml = '';
-    if (ag.stay_area) {
-      let transportHtml = '';
-      if (ag.airport_to_hotel) {
-        const t = ag.airport_to_hotel;
-        transportHtml += `<div style="background:var(--bg2);border-radius:8px;padding:8px 10px;font-size:11px;">
-          <span style="color:var(--accent);font-weight:700;">✈️ Airport → Hotel</span><br>
-          ${t.mode} · ${t.time} · ${t.distance} · <span style="color:var(--accent);">${t.cost}</span><br>
-          <span style="color:var(--muted);">📌 ${t.note || ''}</span>
-        </div>`;
-      }
-      if (ag.bus_to_hotel) {
-        const t = ag.bus_to_hotel;
-        transportHtml += `<div style="background:var(--bg2);border-radius:8px;padding:8px 10px;font-size:11px;">
-          <span style="color:var(--accent);font-weight:700;">🚌 Bus → Hotel</span><br>
-          ${t.mode} · ${t.time} · ${t.distance} · <span style="color:var(--accent);">${t.cost}</span><br>
-          <span style="color:var(--muted);">📌 ${t.note || ''}</span>
-        </div>`;
-      }
-      if (ag.bus_to_cruise) {
-        const t = ag.bus_to_cruise;
-        transportHtml += `<div style="background:var(--bg2);border-radius:8px;padding:8px 10px;font-size:11px;">
-          <span style="color:var(--accent);font-weight:700;">🚢 Bus → Cruise</span><br>
-          ${t.mode} · ${t.time} · ${t.distance} · <span style="color:var(--accent);">${t.cost}</span><br>
-          <span style="color:var(--muted);">📌 ${t.note || ''}</span>
-        </div>`;
-      }
-      
-      areaHtml = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;">
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;">
-          <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;">🏨 Stay Area</div>
-          <div style="font-size:12px;font-weight:600;">${ag.stay_area}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px;">${ag.why || ''}</div>
-        </div>
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;">
-          <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;">💰 Hotel & Transport</div>
-          <div style="font-size:11px;">💵 ${ag.hotel_price || '—'}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">🚶 ${ag.walk_radius || '—'}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">🚌 ${ag.get_around ? ag.get_around.substring(0,60)+'...' : '—'}</div>
-        </div>
-      </div>
-      ${transportHtml ? `<div style="margin:8px 0;">${transportHtml}</div>` : ''}`;
-    }
+function _dpSelectDay(i){
+  _dpState.selectedDay = i;
+  _dpRender();
+  const root = document.getElementById('dpRoot');
+  if(root) root.scrollIntoView({behavior:'smooth', block:'start'});
+}
+window._dpSelectDay = _dpSelectDay;
 
-    // Timeline — denser, richer cards
-    const timelineHtml = (day.timeline || []).map((t, i) => {
-      const cc = catColors[t.category] || '#7a8294';
-      const ci = catIcons[t.category] || '📌';
-      const durHrs = Math.floor(t.duration_min / 60);
-      const durMin = t.duration_min % 60;
-      const durStr = durHrs > 0 ? `${durHrs}h${durMin > 0 ? ' '+durMin+'m' : ''}` : `${durMin}m`;
-      
-      // Transit block — bolder, more visible
-      let transitHtml = '';
-      if (t.transit_to_next) {
-        const tn = t.transit_to_next;
-        const hasDirs = tn.directions && tn.directions.length > 0;
-        transitHtml = `<div style="margin:2px 0 2px 16px;padding:8px 12px;background:var(--bg2);border-radius:8px;border-left:4px solid var(--accent);display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;">
-          <div style="font-size:12px;font-weight:700;white-space:nowrap;">${tn.mode} → ${tn.time}</div>
-          <div style="font-size:11px;color:var(--muted);white-space:nowrap;">${tn.distance}${tn.cost ? ' · ' + tn.cost : ''}</div>
-          ${hasDirs ? `<a href="${tn.directions}" target="_blank" style="font-size:10px;color:var(--accent);white-space:nowrap;">📍 Directions →</a>` : ''}
-          ${tn.recommendation ? `<div style="font-size:11px;color:var(--muted);width:100%;line-height:1.4;margin-top:2px;">💡 ${tn.recommendation}</div>` : ''}
-        </div>`;
-      }
-      
-      return `<div style="display:flex;gap:0;margin-bottom:2px;">
-        <div style="width:60px;flex-shrink:0;text-align:right;padding:10px 8px 0 0;">
-          <div style="font-size:12px;font-weight:700;color:${cc};">${t.time}</div>
-        </div>
-        <div style="width:3px;background:${cc};border-radius:2px;flex-shrink:0;margin-top:10px;margin-bottom:10px;"></div>
-        <div style="flex:1;padding:8px 12px;">
-          <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;">
-            <div style="display:flex;gap:10px;align-items:flex-start;">
-              <div style="font-size:22px;flex-shrink:0;">${ci}</div>
-              <div style="flex:1;min-width:0;">
-                <div style="font-size:14px;font-weight:700;line-height:1.3;">${t.activity}</div>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;align-items:center;">
-                  <span style="font-size:11px;color:var(--muted);">⏱️ ${durStr}</span>
-                  ${t.cost ? `<span style="font-size:11px;color:var(--accent);font-weight:600;">💰 ${t.cost}</span>` : ''}
-                  ${t.venue?.rating ? `<span style="font-size:11px;color:var(--gold);">⭐ ${t.venue.rating}</span>` : ''}
-                  <span style="font-size:10px;padding:1px 6px;border-radius:4px;background:${cc}20;color:${cc};font-weight:600;text-transform:uppercase;">${t.category}</span>
-                  ${t.maps ? `<a href="${t.maps}" target="_blank" style="font-size:10px;color:var(--blue);">📍 Maps</a>` : ''}
-                </div>
-                ${t.venue ? `
-                <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">
-                  ${t.venue.highlight ? `<div style="font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:4px;">📌 ${t.venue.highlight}</div>` : ''}
-                  ${t.venue.order ? `<div style="font-size:12px;color:var(--accent);font-weight:600;line-height:1.4;margin-bottom:4px;">🍽️ <strong>Order:</strong> ${t.venue.order}</div>` : ''}
-                  ${t.venue.tip ? `<div style="font-size:11px;color:var(--warn);line-height:1.4;">💡 ${t.venue.tip}</div>` : ''}
-                </div>` : ''}
-              </div>
-            </div>
-          </div>
-          ${transitHtml}
-        </div>
-      </div>`;
-    }).join('');
+function _dpRender(){
+  const root = document.getElementById('dpRoot');
+  const { plans, selectedDay } = _dpState;
+  if(!plans.length){ root.innerHTML = '<div class="tip-box">No day plans available.</div>'; return; }
+  const day = plans[selectedDay] || plans[0];
+  root.innerHTML = `<div class="dp-root">
+    ${_dpDaySelector(plans, selectedDay)}
+    ${_dpHero(day)}
+    ${_dpRoute(day)}
+    ${_dpSnapshot(day)}
+    ${_dpTimeline(day)}
+    ${_dpInsights(day)}
+    ${_dpWeather(day)}
+    ${_dpFood(day)}
+    ${_dpScams(day)}
+    ${_dpPhoto(day)}
+    ${_dpCost(day)}
+    ${_dpEmergency(day)}
+    ${_dpAlternatives(day)}
+  </div>`;
+  // keep selected pill visible
+  const active = root.querySelector('.dp-day-pill.active');
+  if(active && active.scrollIntoView) active.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+}
 
-    return `<div class="day-card" style="margin-bottom:12px;">
-      <div class="day-header" onclick="this.nextElementSibling.classList.toggle('open')" style="cursor:pointer;">
-        <div class="day-num">${day.icon}</div>
-        <div class="day-info">
-          <div class="day-city">Day ${day.day+1} • ${day.date} ${day.dow} — ${day.city}</div>
-          <div class="day-label">${day.label}</div>
-        </div>
-        <div class="day-meta">
-          <span class="badge badge-accent">${day.total_activities} stops</span>
-          <span class="badge badge-warn">₹${day.estimated_cost}</span>
-        </div>
+function _dpDaySelector(plans, sel){
+  const pills = plans.map((p,i)=>{
+    const c = DP_CITIES[p.city] || {emoji:'📍'};
+    const active = i===sel;
+    return `<button class="dp-day-pill${active?' active':''}" onclick="_dpSelectDay(${i})">
+      <span class="dp-pill-num">Day ${p.day+1}</span>
+      <span class="dp-pill-city">${c.emoji} ${_dpEsc(p.city)}</span>
+      <span class="dp-pill-date">${_dpEsc(p.date)} · ${_dpEsc(p.dow)}</span>
+    </button>`;
+  }).join('');
+  return `<div class="dp-section-head"><div class="dp-section-eyebrow">🗓️ 13-DAY JOURNEY</div><h2 class="dp-section-h">Choose a day to explore</h2></div>
+  <div class="dp-day-selector">${pills}</div>`;
+}
+
+function _dpHero(day){
+  const c = DP_CITIES[day.city] || {emoji:'📍', img:''};
+  const f = _dpForecast(day.city, day.date);
+  const ag = day.area_guide || {};
+  const rainPct = f ? f.rain_prob : 0;
+  const hiRisk = f ? (f.high_risk_hours||0) : 0;
+  const score = Math.max(42, Math.min(97, Math.round(96 - rainPct*0.28 - hiRisk*1.2)));
+  const scoreColor = score>=80?'#7FE3B8':score>=60?'#FFD27A':'#FF9E9E';
+  const wxSummary = f ? `${f.condition} · ${f.high}°/${f.low}° · ${f.rain_prob}% rain` : 'Forecast unavailable for this date';
+  const walkM = (ag.walk_radius||'').match(/[\d.]+\s*(?:km|m)/i);
+  const walk = walkM ? walkM[0] : '—';
+  return `<section class="dp-hero" style="background-image:url('${c.img}');">
+    <div class="dp-hero-overlay"></div>
+    <div class="dp-hero-content">
+      <div class="dp-hero-top">
+        <span class="dp-hero-chip">DAY ${day.day+1} / 13</span>
+        <span class="dp-hero-chip">${_dpEsc(day.date)} · ${_dpEsc(day.dow)}</span>
       </div>
-      <div class="day-body open">
-        <div class="tip-box accent" style="font-size:12px;padding:8px 12px;">💡 ${day.tip}</div>
-        ${areaHtml}
-        <div style="font-size:12px;font-weight:700;margin:10px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">📋 Timeline</div>
-        ${timelineHtml}
+      <div class="dp-hero-cityline">${c.emoji} ${_dpEsc(day.city)}</div>
+      <h1 class="dp-hero-title">${_dpEsc(day.label)}</h1>
+      <p class="dp-hero-summary">${_dpEsc(day.tip)}${ag.why?' '+_dpEsc(ag.why):''}</p>
+      <div class="dp-hero-stats">
+        <div class="dp-hero-stat"><div class="dp-hero-stat-val" style="color:${scoreColor}">${score}<span style="font-size:12px;opacity:.7">/100</span></div><div class="dp-hero-stat-lbl">Travel Score</div></div>
+        <div class="dp-hero-stat"><div class="dp-hero-stat-val">☔ ${rainPct}%</div><div class="dp-hero-stat-lbl">Rain Risk</div></div>
+        <div class="dp-hero-stat"><div class="dp-hero-stat-val">₹${day.estimated_cost}</div><div class="dp-hero-stat-lbl">Day Budget</div></div>
+        <div class="dp-hero-stat"><div class="dp-hero-stat-val">🚶 ${_dpEsc(walk)}</div><div class="dp-hero-stat-lbl">Walk Radius</div></div>
+        <div class="dp-hero-stat"><div class="dp-hero-stat-val">${day.total_activities}</div><div class="dp-hero-stat-lbl">Stops</div></div>
       </div>
+      <div class="dp-hero-wx">🌤️ ${_dpEsc(wxSummary)}</div>
+    </div>
+  </section>`;
+}
+
+function _dpRoute(day){
+  const tl = day.timeline || [];
+  if(!tl.length) return _dpSection('route','🗺️','ROUTE FLOW','How your day moves', '<div class="dp-empty">No stops scheduled.</div>');
+  const nodes = tl.map((t,i)=>{
+    const cc = DP_CAT_COLORS[t.category]||'#7a8294';
+    const ci = DP_CAT_ICONS[t.category]||'📌';
+    const tn = t.transit_to_next;
+    return `<div class="dp-route-stop">
+      <div class="dp-route-dot" style="background:${cc}">${ci}</div>
+      <div class="dp-route-time">${_dpEsc(t.time)}</div>
+      <div class="dp-route-name">${_dpEsc(t.activity)}</div>
+      ${t.cost?`<div class="dp-route-cost">${_dpEsc(t.cost)}</div>`:''}
+      ${tn?`<div class="dp-route-leg">
+        <span class="dp-route-leg-mode">${_dpEsc(tn.mode)}</span>
+        <span class="dp-route-leg-meta">${_dpEsc(tn.time)} · ${_dpEsc(tn.distance||'')}${tn.cost?' · '+_dpEsc(tn.cost):''}</span>
+      </div>`:(i<tl.length-1?'<div class="dp-route-leg"><span class="dp-route-leg-meta">—</span></div>':'')}
     </div>`;
   }).join('');
+  return _dpSection('route','🗺️','ROUTE FLOW','How your day moves — stop by stop', `<div class="dp-route-scroll"><div class="dp-route">${nodes}</div></div>`);
 }
+
+function _dpSnapshot(day){
+  const f = _dpForecast(day.city, day.date);
+  const rainPct = f? f.rain_prob : 0;
+  const spend = day.estimated_cost || 0;
+  const dailyRef = _dpState.budget ? Math.round((_dpState.budget.total_budget||180000)/13) : 13846;
+  const budgetPct = Math.min(160, Math.round(spend/dailyRef*100));
+  const budgetColor = budgetPct<=100?'var(--accent)':budgetPct<=130?'var(--warn)':'var(--danger)';
+  const cityScams = ((_dpState.scams&&_dpState.scams.scams)||[]).filter(s=>s.city===day.city||s.city==='All');
+  const highRisk = cityScams.filter(s=>s.risk==='high').length;
+  const safetyScore = Math.max(38, Math.round(96 - highRisk*12 - Math.max(0,cityScams.length-1)*4));
+  const safetyColor = safetyScore>=80?'var(--accent)':safetyScore>=60?'var(--warn)':'var(--danger)';
+  const cats = (day.timeline||[]).map(t=>t.category);
+  let crowd='Medium', crowdIcon='👥';
+  if(cats.includes('nightlife')){crowd='High';crowdIcon='🕺';}
+  else if((day.timeline||[]).length>=6){crowd='High';crowdIcon='🕺';}
+  else if((day.timeline||[]).length<=3){crowd='Low';crowdIcon='🧘';}
+  const crowdColor = crowd==='High'?'var(--danger)':crowd==='Medium'?'var(--warn)':'var(--accent)';
+  const cards = [
+    {icon:'☔', val:`${rainPct}%`, lbl:'Weather Impact', desc: f? `${f.condition}, ${f.precip_mm}mm expected`:'No forecast for date', color: rainPct>=60?'var(--danger)':rainPct>=30?'var(--warn)':'var(--accent)'},
+    {icon:'💰', val:`₹${spend}`, lbl:'Budget Status', desc:`of ₹${dailyRef.toLocaleString('en-IN')} daily · ${budgetPct}%`, color:budgetColor},
+    {icon:'🛡️', val:`${safetyScore}/100`, lbl:'Safety Score', desc:`${cityScams.length} known risks in ${_dpEsc(day.city)}`, color:safetyColor},
+    {icon:crowdIcon, val:crowd, lbl:'Crowd Level', desc:`${(day.timeline||[]).length} stops scheduled`, color:crowdColor}
+  ].map(c=>`<div class="dp-snap-card"><div class="dp-snap-icon" style="color:${c.color}">${c.icon}</div><div class="dp-snap-val" style="color:${c.color}">${c.val}</div><div class="dp-snap-lbl">${c.lbl}</div><div class="dp-snap-desc">${_dpEsc(c.desc)}</div></div>`).join('');
+  return _dpSection('snapshot','📊','DAY SNAPSHOT','At a glance', `<div class="dp-snap-grid">${cards}</div>`);
+}
+
+function _dpTimeline(day){
+  const tl = day.timeline||[];
+  if(!tl.length) return _dpSection('timeline','⏱️','SMART TIMELINE',"Today's plan", '<div class="dp-empty">No activities scheduled.</div>');
+  const f = _dpForecast(day.city, day.date);
+  const rainPct = f? f.rain_prob : 0;
+  const hourData = _dpHourly(day.city, day.date);
+  function rainForTime(timeStr){
+    const m = (timeStr||'').match(/(\d+):(\d+)\s*(AM|PM)?/i);
+    if(!m || !hourData.length) return rainPct;
+    let h = parseInt(m[1],10);
+    const ap = (m[3]||'').toUpperCase();
+    if(ap==='PM'&&h!==12) h+=12; if(ap==='AM'&&h===12) h=0;
+    const hr = hourData.find(x=>x.hour===h);
+    return hr? hr.rain_prob : rainPct;
+  }
+  const cards = tl.map((t)=>{
+    const cc = DP_CAT_COLORS[t.category]||'#7a8294';
+    const ci = DP_CAT_ICONS[t.category]||'📌';
+    const tn = t.transit_to_next;
+    const r = rainForTime(t.time);
+    const rainTag = r>=60?`<span class="dp-tl-tag dp-tl-rain-hi">☔ ${r}%</span>`:r>=30?`<span class="dp-tl-tag dp-tl-rain-md">☔ ${r}%</span>`:`<span class="dp-tl-tag dp-tl-rain-lo">☔ ${r}%</span>`;
+    const mapsTag = t.maps?`<a class="dp-tl-tag dp-tl-link" href="${t.maps}" target="_blank" rel="noopener">📍 Maps</a>`:'';
+    const v = t.venue||{};
+    return `<div class="dp-tl-card" style="--cat:${cc}">
+      <div class="dp-tl-top">
+        <span class="dp-tl-ico">${ci}</span>
+        <div class="dp-tl-main">
+          <div class="dp-tl-name">${_dpEsc(t.activity)}</div>
+          <div class="dp-tl-meta">
+            <span class="dp-tl-time">🕒 ${_dpEsc(t.time)}</span>
+            <span class="dp-tl-dur">⏱️ ${_dpDur(t.duration_min)}</span>
+            ${t.cost?`<span class="dp-tl-cost">💰 ${_dpEsc(t.cost)}</span>`:''}
+            ${v.rating?`<span class="dp-tl-rate">⭐ ${_dpEsc(v.rating)}</span>`:''}
+            <span class="dp-tl-cat">${_dpEsc(t.category)}</span>
+          </div>
+          <div class="dp-tl-tags">${rainTag}${mapsTag}</div>
+          ${(v.order||v.tip)?`<div class="dp-tl-venue">${v.order?'🍽️ '+_dpEsc(v.order):''}${v.order&&v.tip?' · ':''}${v.tip?'💡 '+_dpEsc(v.tip):''}</div>`:''}
+        </div>
+      </div>
+      ${tn?`<div class="dp-tl-transit">
+        <span class="dp-tl-tr-mode">${_dpEsc(tn.mode)} → ${_dpEsc(tn.time)}</span>
+        <span class="dp-tl-tr-meta">${_dpEsc(tn.distance||'')}${tn.cost?' · '+_dpEsc(tn.cost):''}</span>
+        ${tn.directions?`<a class="dp-tl-tr-dir" href="${tn.directions}" target="_blank" rel="noopener">Directions →</a>`:''}
+        ${tn.recommendation?`<span class="dp-tl-tr-rec">💡 ${_dpEsc(tn.recommendation)}</span>`:''}
+      </div>`:''}
+    </div>`;
+  }).join('');
+  return _dpSection('timeline','⏱️','SMART TIMELINE',`${tl.length} stops · rain-aware`, `<div class="dp-tl-grid">${cards}</div>`);
+}
+
+function _dpInsights(day){
+  const ag = day.area_guide||{};
+  const tl = day.timeline||[];
+  const cityScams = ((_dpState.scams&&_dpState.scams.scams)||[]).filter(s=>s.city===day.city||s.city==='All');
+  const topScam = cityScams.find(s=>s.risk==='high')||cityScams[0];
+  const foodVenue = tl.find(t=>t.category==='food'&&t.venue&&t.venue.order);
+  const foodTip = foodVenue? foodVenue.venue.order : ((_dpState.food&&(_dpState.food.tips||[]))[0]||'');
+  const moneyTip = (_dpState.budget&&(_dpState.budget.savings_opportunities||[]))[0] || `Day budget ₹${day.estimated_cost}. Use Grab over taxis to save 30-40%.`;
+  const insights = [
+    {type:'Local Tip', color:'#2F6B52', icon:'🧭', title:`Staying in ${_dpEsc(ag.stay_area||day.city)}`, body: day.tip || (ag.why||'Walkable base for the day\'s activities.')},
+    {type:'Food Insight', color:'#E8A33D', icon:'🍜', title: foodVenue? 'Order like a local' : 'Eat smart', body: foodTip || 'Street food is safer than tourist restaurants in Vietnam.'},
+    {type:'Safety Insight', color:'#E85D5D', icon:'🛡️', title: topScam? `${topScam.type} risk` : 'Stay alert', body: topScam? `${topScam.scam}. ${topScam.avoid||''}` : 'Keep valuables secure and use Grab for transport.'},
+    {type:'Money Insight', color:'#D4B483', icon:'💰', title:'Save today', body: moneyTip}
+  ];
+  const cards = insights.map(ins=>`<div class="dp-insight" style="border-left-color:${ins.color}">
+    <div class="dp-insight-head"><span class="dp-insight-ico">${ins.icon}</span><span class="dp-insight-type" style="color:${ins.color}">${ins.type}</span></div>
+    <div class="dp-insight-title">${_dpEsc(ins.title)}</div>
+    <div class="dp-insight-body">${_dpEsc(ins.body)}</div>
+  </div>`).join('');
+  return _dpSection('insights','🧠','AI TRAVEL INTELLIGENCE','What you should know', `<div class="dp-insight-grid">${cards}</div>`);
+}
+
+function _dpWeather(day){
+  const f = _dpForecast(day.city, day.date);
+  const hours = _dpHourly(day.city, day.date);
+  let bars = '';
+  if(hours.length){
+    const dayHours = hours.filter(h=>h.hour>=5 && h.hour<=23);
+    const show = (dayHours.length?dayHours:hours).slice(0, 19);
+    bars = show.map(h=>{
+      const r = h.rain_prob||0;
+      const risk = h.risk || (r>=60?'high':r>=30?'medium':'low');
+      const col = risk==='high'?'var(--danger)':risk==='medium'?'var(--warn)':'var(--accent)';
+      const barH = Math.max(8, Math.round(r*0.7));
+      return `<div class="dp-wx-bar" title="${r}% rain · ${h.condition}">
+        <div class="dp-wx-bar-rain" style="height:${barH}px;background:${col}"></div>
+        <div class="dp-wx-bar-temp">${h.temp}°</div>
+        <div class="dp-wx-bar-hour">${String(h.hour).padStart(2,'0')}</div>
+      </div>`;
+    }).join('');
+  } else if(f){
+    bars = `<div class="dp-wx-summary">${f.condition} · High ${f.high}° / Low ${f.low}° · ${f.rain_prob}% rain · ${f.precip_mm}mm · wind ${f.wind_kmh}km/h · UV ${f.uv}</div>`;
+  } else {
+    bars = `<div class="dp-empty">No hourly weather data for ${_dpEsc(day.city)} on ${_dpEsc(day.date)}.</div>`;
+  }
+  const head = f? `<div class="dp-wx-head"><span class="dp-wx-cond">${_dpEsc(f.condition)}</span><span class="dp-wx-risk dp-wx-${f.risk}">${_dpEsc((f.risk||'').toUpperCase())} RISK</span><span class="dp-wx-hi">↑${f.high}°</span><span class="dp-wx-lo">↓${f.low}°</span></div>`:'';
+  const bw = (f && f.best_window)? `<div class="dp-wx-window">🌤️ Best window: <strong>${f.best_window.start}–${f.best_window.end}</strong> (${f.best_window.hours}h, max ${f.best_window.max_rain_in_window}% rain)</div>`:'';
+  return _dpSection('weather','🌦️','WEATHER INTELLIGENCE','Hour-by-hour rain risk', head+bw+`<div class="dp-wx-bars">${bars}</div>`);
+}
+
+function _dpFood(day){
+  const all = (_dpState.food&&_dpState.food.must_try)||[];
+  const items = all.filter(m=>m.city===day.city);
+  let cards = '';
+  if(items.length){
+    cards = items.map(m=>`<div class="dp-food-card">
+      <div class="dp-food-name">${_dpEsc(m.dish)}</div>
+      <div class="dp-food-where">📍 ${_dpEsc(m.where||m.city)}</div>
+      <div class="dp-food-meta">
+        <span class="dp-food-price">${_dpEsc(m.price||'—')}</span>
+        ${m.rating?`<span class="dp-food-rate">⭐ ${_dpEsc(m.rating)}</span>`:''}
+      </div>
+      ${m.note?`<div class="dp-food-note">${_dpEsc(m.note)}</div>`:''}
+    </div>`).join('');
+  } else {
+    const cityMeals = (_dpState.food&&_dpState.food.by_city&&_dpState.food.by_city[day.city]);
+    if(cityMeals){
+      cards = Object.entries(cityMeals).map(([meal,info])=>`<div class="dp-food-card"><div class="dp-food-name">${_dpEsc(meal.charAt(0).toUpperCase()+meal.slice(1))}</div><div class="dp-food-where">📍 ${_dpEsc(info)}</div></div>`).join('');
+    } else {
+      cards = `<div class="dp-empty">No specific food picks for ${_dpEsc(day.city)}. Try local street food — it's safe and cheap.</div>`;
+    }
+  }
+  return _dpSection('food','🍜','FOOD RECOMMENDATIONS',`Must-try near ${_dpEsc(day.city)}`, `<div class="dp-food-grid">${cards}</div>`);
+}
+
+function _dpScams(day){
+  const all = (_dpState.scams&&_dpState.scams.scams)||[];
+  const items = all.filter(s=>s.city===day.city||s.city==='All');
+  const list = (items.length?items:all.slice(0,3));
+  const cards = list.map(s=>{
+    const col = s.risk==='high'?'var(--danger)':s.risk==='medium'?'var(--warn)':'var(--accent)';
+    return `<div class="dp-scam-card" style="border-left-color:${col}">
+      <div class="dp-scam-top"><span class="dp-scam-type">${_dpEsc(s.type)}</span><span class="dp-scam-risk" style="background:${col}1a;color:${col}">${_dpEsc((s.risk||'').toUpperCase())}</span></div>
+      <div class="dp-scam-desc">${_dpEsc(s.scam)}</div>
+      ${s.avoid?`<div class="dp-scam-avoid">🚫 ${_dpEsc(s.avoid)}</div>`:''}
+      ${s.action?`<div class="dp-scam-action">✅ ${_dpEsc(s.action)}</div>`:''}
+    </div>`;
+  }).join('');
+  return _dpSection('scams','🛡️','SCAM & SAFETY',`Risks to watch in ${_dpEsc(day.city)}`, `<div class="dp-scam-grid">${cards}</div>`);
+}
+
+function _dpPhoto(day){
+  const f = _dpForecast(day.city, day.date);
+  const ghAm = '05:35–06:35', ghPm = '17:50–18:50', blueHr='18:50–19:20';
+  const tl = day.timeline||[];
+  const scenic = tl.filter(t=>t.maps && /bay|peak|view|lake|beach|sun|temple|cable|cruise|street|market|cathedral|opera|palace|ridge|valley|waterfall|island|vinwonders|grand/i.test(t.activity));
+  const spots = (scenic.length?scenic:tl.filter(t=>t.maps)).slice(0,4);
+  const spotHtml = spots.length? spots.map(s=>`<li class="dp-photo-spot"><span class="dp-photo-spot-name">${_dpEsc(s.activity)}</span>${s.maps?`<a class="dp-tl-link" href="${s.maps}" target="_blank" rel="noopener">View →</a>`:''}<span class="dp-photo-spot-time">🕒 ${_dpEsc(s.time)}</span></li>`).join('') : `<li class="dp-empty">No mapped photo spots logged for this day.</li>`;
+  const rainPct = f? f.rain_prob : 50;
+  const photoScore = Math.max(35, Math.min(96, Math.round(95 - rainPct*0.4 + Math.min(spots.length,4)*3)));
+  const droneNote = day.city==='Halong Bay'?'Allowed on cruise deck with permit; restricted near port.' : day.city==='Sapa'?'Permit required; ask Hill-tribe villagers before photographing people.' : 'Restricted in city centres & near government sites. Permit required.';
+  const scoreColor = photoScore>=75?'var(--accent)':photoScore>=55?'var(--warn)':'var(--danger)';
+  const inner = `<div class="dp-photo-grid">
+    <div class="dp-photo-main">
+      <div class="dp-photo-row"><span>🌅 Golden hour (AM)</span><strong>${ghAm}</strong></div>
+      <div class="dp-photo-row"><span>🌇 Golden hour (PM)</span><strong>${ghPm}</strong></div>
+      <div class="dp-photo-row"><span>🌌 Blue hour</span><strong>${blueHr}</strong></div>
+      <div class="dp-photo-row"><span>🚁 Drone</span><strong>${_dpEsc(droneNote)}</strong></div>
+      <div class="dp-photo-score" style="color:${scoreColor}">Photo Score <strong>${photoScore}/100</strong></div>
+    </div>
+    <div class="dp-photo-spots">
+      <div class="dp-photo-spots-h">Best photo spots today</div>
+      <ul class="dp-photo-list">${spotHtml}</ul>
+    </div>
+  </div>`;
+  return _dpSection('photo','📷','PHOTOGRAPHY GUIDE','Light, locations & gear', inner);
+}
+
+function _dpCost(day){
+  const tl = day.timeline||[];
+  const byCat = {};
+  tl.forEach(t=>{
+    const c = _dpCostNum(t.cost);
+    if(c>0){ const k=t.category||'other'; byCat[k]=(byCat[k]||0)+c; }
+  });
+  let cats = Object.entries(byCat);
+  let total = cats.reduce((s,[,v])=>s+v,0);
+  if(!total){
+    const bc = (_dpState.budget&&_dpState.budget.by_category)||{};
+    const dayShare = Math.max(1, day.estimated_cost||0);
+    const totalBC = Object.values(bc).reduce((s,v)=>s+(v||0),0)||1;
+    cats = Object.entries(bc).map(([k,v])=>[k, Math.round(v/totalBC*dayShare)]);
+    total = day.estimated_cost||cats.reduce((s,[,v])=>s+v,0);
+  }
+  const max = Math.max(1, ...cats.map(([,v])=>v));
+  const catIcons = {food:'🍜',activities:'🎯',transit:'✈️',hotel:'🏨',transport:'🚌',shopping:'🛍️',flights:'✈️',hotels:'🏨',cafe:'☕',nightlife:'🍺',other:'💸'};
+  const labels = {food:'Food',activities:'Activities',transit:'Transit',hotel:'Hotel',transport:'Transport',shopping:'Shopping',flights:'Flights',hotels:'Hotels',cafe:'Cafe',nightlife:'Nightlife',other:'Other'};
+  const bars = cats.sort((a,b)=>b[1]-a[1]).map(([k,v])=>{
+    const pct = Math.round(v/max*100);
+    const col = DP_CAT_COLORS[k]||'#9AA3B0';
+    return `<div class="dp-cost-row">
+      <span class="dp-cost-lbl">${catIcons[k]||'💸'} ${labels[k]||_dpEsc(k)}</span>
+      <div class="dp-cost-track"><div class="dp-cost-fill" style="width:${pct}%;background:${col}"></div></div>
+      <span class="dp-cost-val">₹${v.toLocaleString('en-IN')}</span>
+    </div>`;
+  }).join('');
+  return _dpSection('cost','💸','COST BREAKDOWN','Where your money goes', `${bars}<div class="dp-cost-total"><span>Estimated day total</span><strong>₹${(total||day.estimated_cost||0).toLocaleString('en-IN')}</strong></div>`);
+}
+
+function _dpEmergency(day){
+  const e = _dpState.emergency||{};
+  const contacts = e.contacts||{};
+  const hospitals = (e.hospitals||[]).filter(h=>h.city===day.city);
+  const north = (day.city==='Hanoi'||day.city==='Sapa'||day.city==='Halong Bay');
+  const embassy = north ? contacts.india_embassy_hanoi : contacts.india_embassy_hcmc;
+  const touristPolice = (day.city==='Hanoi')?contacts.tourist_police_hanoi:(day.city==='HCMC'?contacts.tourist_police_hcmc:null);
+  const hosp = hospitals[0];
+  const rows = [
+    {icon:'🚓', lbl:'Police', val:contacts.police||'113'},
+    {icon:'🚑', lbl:'Ambulance', val:contacts.ambulance||'115'},
+    {icon:'🔥', lbl:'Fire', val:contacts.fire||'114'},
+    {icon:'🇮🇳', lbl:'Indian Embassy', val:embassy||'—'},
+    ...(touristPolice?[{icon:'👮', lbl:'Tourist Police', val:touristPolice}]:[]),
+    ...(hosp?[{icon:'🏥', lbl:hosp.name+(hosp.english?' (English)':''), val:hosp.phone}]:[])
+  ];
+  const cards = rows.map(r=>`<a class="dp-em-row" href="tel:${_dpEsc(String(r.val).replace(/[^\d+]/g,''))}"><span class="dp-em-ico">${r.icon}</span><span class="dp-em-lbl">${_dpEsc(r.lbl)}</span><span class="dp-em-val">${_dpEsc(r.val)}</span><span class="dp-em-call">Call</span></a>`).join('');
+  return _dpSection('emergency','🆘','EMERGENCY CARD',`Help in ${_dpEsc(day.city)}`, `<div class="dp-em-card">${cards}</div>`);
+}
+
+function _dpAlternatives(day){
+  const f = _dpForecast(day.city, day.date);
+  const rainPct = f? f.rain_prob : 0;
+  const tl = day.timeline||[];
+  const indoor = tl.filter(t=>/museum|cafe|mall|market|spa|massage|restaurant|food|centre|center|cinema/i.test(t.activity));
+  const alts = [
+    {icon:'🌧️', title:'Rain Plan', tag: rainPct>=50?'High risk':'Low risk', color:'#4A90D9', desc: rainPct>=50? `High rain (${rainPct}%) — switch to ${indoor.length?indoor.map(t=>t.activity).slice(0,2).join(', '):'museums, cafés & spas'}. Move outdoor stops to ${f&&f.best_window?f.best_window.start:'early morning'}.` : `Low rain risk — keep current plan. Indoor backup: ${indoor.length?indoor[0].activity:'museums & cafés'}.`},
+    {icon:'💸', title:'Budget Plan', tag:'Save ~30%', color:'#2F6B52', desc:`Trim ₹${Math.round((day.estimated_cost||0)*0.3).toLocaleString('en-IN')} — street food over restaurants, Grab Bike over car, free walking streets. Skip paid tours with free alternatives.`},
+    {icon:'✨', title:'Luxury Plan', tag:'Upgrade', color:'#D4B483', desc:`Add a premium touch in ${_dpEsc(day.city)}: private guide, rooftop dinner, spa session, or upgrade hotel to 4-star (~₹800 extra).`},
+    {icon:'📷', title:'Photography Plan', tag:'Golden hour', color:'#8B7AB8', desc:`Rise early for AM golden hour (~05:35). Hit scenic stops first. Budget +30 min per photo location. Skip harsh midday light.`}
+  ];
+  const cards = alts.map(a=>`<button class="dp-alt-card" style="--alt:${a.color}" onclick="this.classList.toggle('expanded')">
+    <div class="dp-alt-head"><span class="dp-alt-ico">${a.icon}</span><span class="dp-alt-title">${a.title}</span><span class="dp-alt-tag" style="background:${a.color}1a;color:${a.color}">${a.tag}</span></div>
+    <div class="dp-alt-desc">${_dpEsc(a.desc)}</div>
+    <span class="dp-alt-hint">Tap to save ▾</span>
+  </button>`).join('');
+  return _dpSection('alts','🔀','AI ALTERNATIVES','Backup plans, one tap away', `<div class="dp-alt-grid">${cards}</div>`);
+}
+
 
 // ═══════════════════════════════════════════
 // BACKUP PLANS
