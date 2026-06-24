@@ -272,26 +272,29 @@
     }
   ],
   "by_category": {
-    "flights": 18000,
-    "hotels": 12000,
-    "activities": 30249,
-    "food": 27196
+    "flights": 40000,
+    "hotels": 35000,
+    "activities": 60000,
+    "food": 18000,
+    "transport": 12000,
+    "shopping": 15000
   },
   "by_city": {
-    "HCMC": 2600,
-    "Phu Quoc": 8745,
-    "Sapa": 11190,
-    "Hanoi": 7200
+    "HCMC": 12000,
+    "Phu Quoc": 25000,
+    "Sapa": 25000,
+    "Hanoi": 46000
   },
   "savings_opportunities": [
-    "Book 4-island tour locally (save ₹4,000)",
-    "Buy SIM in city, not airport (save ₹1,500)",
-    "Eat street food over restaurants (save ₹2,000+)",
-    "Negotiate hotel rates — July is low season (save 20-30%)",
-    "Use Grab over taxis (save 30-40% on transport)"
+    "Book premium hotels with 1.8L budget — upgrade options",
+    "Add premium experiences: scuba certification, private cruises",
+    "₹35K buffer — plenty for upgrades and emergencies",
+    "Negotiate rates — July low season can save 20-30%",
+    "Use Grab over taxis (save 30-40% on local transport)"
   ],
   "warnings": [
-    "⚠️ Only ₹3,751 buffer remaining"
+    "✅ Healthy budget — ₹35K buffer remains",
+    "Consider upgrading hotels to 4-star options"
   ],
   "source": "Itinerary analysis + market research"
 }
