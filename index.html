@@ -710,44 +710,29 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 .dp-snap-lbl { font-size:12px; font-weight:600; color:var(--text); margin-top:2px; }
 .dp-snap-desc { font-size:11.5px; color:var(--muted); margin-top:4px; line-height:1.4; }
 
-/* Journey Path — vertical connected flow */
-.dp-journey { max-width:900px; margin:0 auto; position:relative; }
-.dp-journey-line { position:absolute; left:32px; top:30px; bottom:30px; width:3px; background:linear-gradient(180deg, var(--accent), var(--accent-dim) 40%, var(--accent-dim) 60%, var(--accent)); border-radius:3px; opacity:.7; }
-.dp-journey-step { position:relative; display:flex; gap:18px; margin-bottom:18px; }
-.dp-journey-step:last-child { margin-bottom:0; }
-.dp-journey-step-start .dp-journey-dot { background:var(--accent); border:3px solid var(--accent-dim); }
-.dp-journey-step-start .dp-journey-num { color:var(--accent); font-weight:900; }
-.dp-journey-step-end .dp-journey-dot { background:var(--gold); border:3px solid var(--gold-dim); }
-.dp-journey-step-end .dp-journey-num { color:var(--gold); font-weight:900; }
-.dp-journey-dot { position:relative; z-index:2; width:60px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:2px; padding-top:10px; }
-.dp-journey-circle { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:#fff; font-family:var(--font-head); box-shadow:0 2px 8px rgba(0,0,0,.1); }
-.dp-journey-num { font-family:var(--font-head); font-size:9px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; }
-.dp-journey-card { flex:1; min-width:0; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:16px 18px 12px; box-shadow:var(--shadow); transition:transform .16s ease, box-shadow .16s ease; }
-.dp-journey-card:hover { transform:translateX(4px); box-shadow:var(--shadow-md); }
-.dp-journey-card-start { border-left:4px solid var(--accent); }
-.dp-journey-card-end { border-left:4px solid var(--gold); }
-.dp-journey-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
-.dp-journey-activity { font-family:var(--font-head); font-size:15.5px; font-weight:700; color:var(--text); }
-.dp-journey-time { font-size:11px; color:var(--muted); font-weight:500; white-space:nowrap; }
-.dp-journey-meta { display:flex; flex-wrap:wrap; gap:4px 12px; margin-top:5px; font-size:11.5px; color:var(--muted); align-items:center; }
-.dp-journey-cost { color:var(--gold); font-weight:600; }
-.dp-journey-rate { color:var(--warn); font-weight:600; }
-.dp-journey-cat { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; padding:2px 7px; border-radius:5px; background:var(--accent-dim); color:var(--accent); }
-.dp-journey-venue { font-size:11.5px; color:var(--muted); margin-top:6px; line-height:1.45; padding-top:6px; border-top:1px dashed var(--border); }
-.dp-journey-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
-.dp-journey-tag { font-size:10px; padding:2px 7px; border-radius:5px; font-weight:600; }
-.dp-journey-rain-hi { background:var(--danger-dim); color:var(--danger); }
-.dp-journey-rain-md { background:var(--warn-dim); color:var(--warn); }
-.dp-journey-rain-lo { background:var(--accent-dim); color:var(--accent); }
-.dp-journey-link { background:var(--blue-dim); color:var(--blue); text-decoration:none; }
-
-/* Transit connector between steps */
-.dp-journey-transit { position:relative; padding-left:78px; margin-top:-8px; margin-bottom:8px; }
-.dp-journey-transit-inner { background:var(--bg2); border-radius:10px; padding:8px 14px; display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px; font-size:11.5px; color:var(--muted); box-shadow:0 1px 3px rgba(0,0,0,.04); }
-.dp-journey-tr-arrow { color:var(--accent); font-weight:700; font-size:12px; }
-.dp-journey-tr-mode { font-weight:700; color:var(--text); }
-.dp-journey-tr-dir { color:var(--accent); text-decoration:none; font-weight:600; }
-.dp-journey-tr-rec { flex-basis:100%; color:var(--muted); font-size:11px; }
+/* Timeline */
+.dp-tl-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.dp-tl-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow); border-left:4px solid var(--cat,var(--accent)); transition:transform .16s ease, box-shadow .16s ease; }
+.dp-tl-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.dp-tl-top { display:flex; gap:11px; align-items:flex-start; }
+.dp-tl-ico { font-size:22px; flex-shrink:0; margin-top:1px; }
+.dp-tl-main { flex:1; min-width:0; }
+.dp-tl-name { font-family:var(--font-head); font-size:14.5px; font-weight:700; color:var(--text); line-height:1.3; }
+.dp-tl-meta { display:flex; flex-wrap:wrap; gap:7px 10px; margin-top:5px; font-size:11.5px; color:var(--muted); align-items:center; }
+.dp-tl-cost { color:var(--gold); font-weight:600; }
+.dp-tl-rate { color:var(--warn); font-weight:600; }
+.dp-tl-cat { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; padding:2px 7px; border-radius:5px; background:var(--accent-dim); color:var(--accent); }
+.dp-tl-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; }
+.dp-tl-tag { font-size:10.5px; padding:2px 8px; border-radius:6px; font-weight:600; }
+.dp-tl-rain-hi { background:var(--danger-dim); color:var(--danger); }
+.dp-tl-rain-md { background:var(--warn-dim); color:var(--warn); }
+.dp-tl-rain-lo { background:var(--accent-dim); color:var(--accent); }
+.dp-tl-link { background:var(--blue-dim); color:var(--blue); text-decoration:none; }
+.dp-tl-venue { font-size:11.5px; color:var(--muted); margin-top:7px; line-height:1.45; padding-top:7px; border-top:1px dashed var(--border); }
+.dp-tl-transit { margin-top:9px; padding:8px 11px; background:var(--bg2); border-radius:10px; font-size:11px; line-height:1.5; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; }
+.dp-tl-tr-mode { font-weight:700; color:var(--text); }
+.dp-tl-tr-dir { color:var(--accent); text-decoration:none; font-weight:600; }
+.dp-tl-tr-rec { flex-basis:100%; color:var(--muted); }
 
 /* Insights */
 .dp-insight-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
@@ -846,12 +831,6 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 @media (max-width:860px){
   .dp-snap-grid { grid-template-columns:repeat(2,1fr); }
   .dp-tl-grid, .dp-insight-grid, .dp-photo-grid { grid-template-columns:1fr; }
-  .dp-journey-line { left:22px; }
-  .dp-journey-dot { width:44px; }
-  .dp-journey-circle { width:28px; height:28px; font-size:11px; }
-  .dp-journey-transit { padding-left:62px; }
-  .dp-journey-card { padding:12px 14px 10px; }
-  .dp-journey-activity { font-size:14px; }
   .dp-food-grid, .dp-scam-grid { grid-template-columns:1fr 1fr; }
   .dp-alt-grid { grid-template-columns:1fr 1fr; }
   .dp-em-card { grid-template-columns:1fr; }
@@ -2221,7 +2200,7 @@ function _dpRoute(day){
       </div>`:(i<tl.length-1?'<div class="dp-route-leg"><span class="dp-route-leg-meta">—</span></div>':'')}
     </div>`;
   }).join('');
-  return _dpSection('route','🗺️','ROUTE FLOW','Stop by stop — connected route', `<div class="dp-route-scroll"><div class="dp-route">${nodes}</div></div>`);
+  return _dpSection('route','🗺️','ROUTE FLOW','How your day moves — stop by stop', `<div class="dp-route-scroll"><div class="dp-route">${nodes}</div></div>`);
 }
 
 function _dpSnapshot(day){
@@ -2252,7 +2231,7 @@ function _dpSnapshot(day){
 
 function _dpTimeline(day){
   const tl = day.timeline||[];
-  if(!tl.length) return _dpSection('timeline','⏱️','JOURNEY PATH',"Your day's route — step by step", '<div class="dp-empty">No activities scheduled.</div>');
+  if(!tl.length) return _dpSection('timeline','⏱️','SMART TIMELINE',"Today's plan", '<div class="dp-empty">No activities scheduled.</div>');
   const f = _dpForecast(day.city, day.date);
   const rainPct = f? f.rain_prob : 0;
   const hourData = _dpHourly(day.city, day.date);
@@ -2265,69 +2244,39 @@ function _dpTimeline(day){
     const hr = hourData.find(x=>x.hour===h);
     return hr? hr.rain_prob : rainPct;
   }
-
-  // Category background colors for circles
-  const catColors = {
-    breakfast:'#2F6B52', lunch:'#2F6B52', dinner:'#2F6B52', food:'#E8A33D',
-    attraction:'#6B5B95', museum:'#6B5B95', sightseeing:'#6B5B95',
-    transport:'#4A90D9', shopping:'#D4B483', nightlife:'#E85D5D',
-    nature:'#4CAF50', adventure:'#FF6B35', relax:'#7FC7C7',
-    airport:'#7a8294'
-  };
-
-  const steps = tl.map((t,i)=>{
-    const cc = catColors[t.category]||DP_CAT_COLORS[t.category]||'#7a8294';
+  const cards = tl.map((t)=>{
+    const cc = DP_CAT_COLORS[t.category]||'#7a8294';
     const ci = DP_CAT_ICONS[t.category]||'📌';
     const tn = t.transit_to_next;
     const r = rainForTime(t.time);
-    const num = i+1;
-    const isStart = i===0;
-    const isEnd = i===tl.length-1;
-
-    const rainTag = r>=60?`<span class="dp-journey-tag dp-journey-rain-hi">☔ ${r}%</span>`:r>=30?`<span class="dp-journey-tag dp-journey-rain-md">☔ ${r}%</span>`:`<span class="dp-journey-tag dp-journey-rain-lo">☔ ${r}%</span>`;
-    const mapsTag = t.maps?`<a class="dp-journey-tag dp-journey-link" href="${t.maps}" target="_blank" rel="noopener">📍 Maps</a>`:'';
+    const rainTag = r>=60?`<span class="dp-tl-tag dp-tl-rain-hi">☔ ${r}%</span>`:r>=30?`<span class="dp-tl-tag dp-tl-rain-md">☔ ${r}%</span>`:`<span class="dp-tl-tag dp-tl-rain-lo">☔ ${r}%</span>`;
+    const mapsTag = t.maps?`<a class="dp-tl-tag dp-tl-link" href="${t.maps}" target="_blank" rel="noopener">📍 Maps</a>`:'';
     const v = t.venue||{};
-
-    // Step number
-    const stepLabel = isStart ? 'START' : isEnd ? 'END' : `STEP ${num}`;
-
-    const step = `<div class="dp-journey-step ${isStart?'dp-journey-step-start':''} ${isEnd?'dp-journey-step-end':''}">
-      <div class="dp-journey-dot">
-        <div class="dp-journey-circle" style="background:${cc}">${ci}</div>
-        <div class="dp-journey-num">${stepLabel}</div>
-      </div>
-      <div class="dp-journey-card ${isStart?'dp-journey-card-start':''} ${isEnd?'dp-journey-card-end':''}">
-        <div class="dp-journey-head">
-          <div class="dp-journey-activity">${_dpEsc(t.activity)}</div>
-          <div class="dp-journey-time">🕒 ${_dpEsc(t.time)}</div>
+    return `<div class="dp-tl-card" style="--cat:${cc}">
+      <div class="dp-tl-top">
+        <span class="dp-tl-ico">${ci}</span>
+        <div class="dp-tl-main">
+          <div class="dp-tl-name">${_dpEsc(t.activity)}</div>
+          <div class="dp-tl-meta">
+            <span class="dp-tl-time">🕒 ${_dpEsc(t.time)}</span>
+            <span class="dp-tl-dur">⏱️ ${_dpDur(t.duration_min)}</span>
+            ${t.cost?`<span class="dp-tl-cost">💰 ${_dpEsc(t.cost)}</span>`:''}
+            ${v.rating?`<span class="dp-tl-rate">⭐ ${_dpEsc(v.rating)}</span>`:''}
+            <span class="dp-tl-cat">${_dpEsc(t.category)}</span>
+          </div>
+          <div class="dp-tl-tags">${rainTag}${mapsTag}</div>
+          ${(v.order||v.tip)?`<div class="dp-tl-venue">${v.order?'🍽️ '+_dpEsc(v.order):''}${v.order&&v.tip?' · ':''}${v.tip?'💡 '+_dpEsc(v.tip):''}</div>`:''}
         </div>
-        <div class="dp-journey-meta">
-          ${t.duration_min?`<span>⏱️ ${_dpDur(t.duration_min)}</span>`:''}
-          ${t.cost?`<span class="dp-journey-cost">💰 ${_dpEsc(t.cost)}</span>`:''}
-          ${v.rating?`<span class="dp-journey-rate">⭐ ${_dpEsc(v.rating)}</span>`:''}
-          <span class="dp-journey-cat">${_dpEsc(t.category)}</span>
-        </div>
-        <div class="dp-journey-tags">${rainTag}${mapsTag}</div>
-        ${(v.order||v.tip)?`<div class="dp-journey-venue">${v.order?'🍽️ '+_dpEsc(v.order):''}${v.order&&v.tip?' · ':''}${v.tip?'💡 '+_dpEsc(v.tip):''}</div>`:''}
       </div>
+      ${tn?`<div class="dp-tl-transit">
+        <span class="dp-tl-tr-mode">${_dpEsc(tn.mode)} → ${_dpEsc(tn.time)}</span>
+        <span class="dp-tl-tr-meta">${_dpEsc(tn.distance||'')}${tn.cost?' · '+_dpEsc(tn.cost):''}</span>
+        ${tn.directions?`<a class="dp-tl-tr-dir" href="${tn.directions}" target="_blank" rel="noopener">Directions →</a>`:''}
+        ${tn.recommendation?`<span class="dp-tl-tr-rec">💡 ${_dpEsc(tn.recommendation)}</span>`:''}
+      </div>`:''}
     </div>`;
-
-    // Transit connector after step (except last)
-    const transit = tn ? `<div class="dp-journey-transit">
-      <div class="dp-journey-transit-inner">
-        <span class="dp-journey-tr-arrow">↓</span>
-        <span class="dp-journey-tr-mode">${_dpEsc(tn.mode)} ${_dpEsc(tn.time||'')}</span>
-        <span>${_dpEsc(tn.distance||'')}${tn.cost?' · '+_dpEsc(tn.cost):''}</span>
-        ${tn.directions?`<a class="dp-journey-tr-dir" href="${tn.directions}" target="_blank" rel="noopener">Directions →</a>`:''}
-        ${tn.recommendation?`<span class="dp-journey-tr-rec">💡 ${_dpEsc(tn.recommendation)}</span>`:''}
-      </div>
-    </div>` : '';
-
-    return step + transit;
   }).join('');
-
-  const totalSteps = tl.length;
-  return _dpSection('timeline','⏱️','JOURNEY PATH',`${totalSteps} stops · connected route`, `<div class="dp-journey"><div class="dp-journey-line"></div>${steps}</div>`);
+  return _dpSection('timeline','⏱️','SMART TIMELINE',`${tl.length} stops · rain-aware`, `<div class="dp-tl-grid">${cards}</div>`);
 }
 
 function _dpInsights(day){
