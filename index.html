@@ -2129,31 +2129,131 @@ window._initRouteMaps = function(){
     el._mapInit = true;
     try {
       var raw = decodeURIComponent(el.getAttribute('data-points'));
-      var points = JSON.parse(raw);
-      if(!points.length) return;
-      var map = L.map(el, { zoomControl:true, attributionControl:false });
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:18 }).addTo(map);
-      var markers = [];
-      var catColors = {breakfast:'#2F6B52',lunch:'#2F6B52',dinner:'#2F6B52',food:'#E8A33D',attraction:'#6B5B95',museum:'#6B5B95',sightseeing:'#6B5B95',transport:'#4A90D9',shopping:'#D4B483',nightlife:'#E85D5D',nature:'#4CAF50',adventure:'#FF6B35',relax:'#7FC7C7',airport:'#7a8294'};
-      points.forEach(function(p){
-        var num = p[0], name = p[1], time = p[2], cost = p[3], cat = p[4], lat = p[5], lng = p[6];
-        var color = catColors[cat]||'#2F6B52';
-        var icon = L.divIcon({
-          className:'',
-          html:'<div style="width:30px;height:30px;border-radius:50%;background:'+color+';color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;">'+num+'</div>',
-          iconSize:[30,30], iconAnchor:[15,15]
-        });
-        var popup = '<strong>'+num+'. '+name+'</strong><br>🕒 '+time+(cost?' · '+cost:'')+'<br><span style="color:#6B7280;font-size:11px;">'+cat+'</span>';
-        var m = L.marker([lat,lng], {icon:icon}).addTo(map).bindPopup(popup);
-        markers.push(m);
-      });
-      if(points.length>1){
-        L.polyline(points.map(function(p){return [p[5],p[6]];}), {color:'#2F6B52',weight:2.5,opacity:.6,dashArray:'6,8'}).addTo(map);
+      var stops = JSON.parse(raw);
+      if(!stops.length) return;
+      if(stops.length === 1){
+        // single stop — just show city center
+        showMap(el, stops, stops[0][5], stops[0][6]);
+        return;
       }
-      map.fitBounds(L.featureGroup(markers).getBounds().pad(0.3));
-    } catch(e){} // silent fail
+      // Try geocoding first
+      geocodeAndShowMap(el, stops, 0, []);
+    } catch(e){}
   });
 };
+
+function geocodeAndShowMap(el, stops, idx, results){
+  if(idx >= stops.length){
+    showMap(el, stops, null, null, results);
+    return;
+  }
+  var stop = stops[idx];
+  var name = stop[1]; // activity name
+  // Extract lat/lng from maps link if available
+  var mapsLink = stop[7] || '';
+  var matchLL = mapsLink.match(/[?&]q=([^&]+)/);
+  if(matchLL){
+    var qry = decodeURIComponent(matchLL[1]);
+    // Check if it's already coordinates
+    var coordMatch = qry.match(/^(-?\d+\.\d+),(-?\d+\.\d+)/);
+    if(coordMatch){
+      results.push({lat:parseFloat(coordMatch[1]), lng:parseFloat(coordMatch[2])});
+      geocodeAndShowMap(el, stops, idx+1, results);
+      return;
+    }
+    // Search by name + city
+    var search = encodeURIComponent(qry + ' ' + (stop[8]||'') + ' Vietnam');
+    geocodeOne(search, function(res){
+      results.push(res);
+      geocodeAndShowMap(el, stops, idx+1, results);
+    });
+  } else {
+    // Use approximate from city center with offset
+    var base = getApproxCoords(stop[8]||'');
+    var lat = base[0] + (Math.random()-0.5)*0.006;
+    var lng = base[1] + (Math.random()-0.5)*0.006;
+    results.push({lat:lat, lng:lng});
+    geocodeAndShowMap(el, stops, idx+1, results);
+  }
+}
+
+var _gcQueue = 0;
+function geocodeOne(query, cb){
+  _gcQueue++;
+  setTimeout(function(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://nominatim.openstreetmap.org/search?q='+query+'&format=json&limit=1&accept-language=en', true);
+    xhr.setRequestHeader('User-Agent', 'ATOS/1.0');
+    xhr.onload = function(){
+      _gcQueue--;
+      try {
+        var data = JSON.parse(xhr.responseText);
+        if(data && data.length){
+          cb({lat:parseFloat(data[0].lat), lng:parseFloat(data[0].lon)});
+          return;
+        }
+      } catch(e){}
+      cb({lat:10.8+Math.random()*0.01, lng:106.7+Math.random()*0.01}); // fallback HCMC area
+    };
+    xhr.onerror = function(){ _gcQueue--; cb({lat:10.8, lng:106.7}); };
+    xhr.send();
+  }, _gcQueue * 350); // rate limit ~350ms between requests
+}
+
+function getApproxCoords(city){
+  var coords = {
+    'HCMC':[10.8231,106.6297],'Ho Chi Minh':[10.8231,106.6297],
+    'Phu Quoc':[10.2898,103.9841],'Hanoi':[21.0278,105.8342],
+    'Sapa':[22.3351,103.8265],'Halong Bay':[20.9101,107.1839],
+    'Halong':[20.9101,107.1839],'Da Nang':[16.0544,108.2022],
+    'Hoi An':[15.8801,108.3380]
+  };
+  return coords[city]||[16.0,108.0];
+}
+
+function showMap(el, stops, singleLat, singleLng, geoResults){
+  try {
+    var map = L.map(el, { zoomControl:true, attributionControl:false });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:18 }).addTo(map);
+    var markers = [];
+    var catColors = {breakfast:'#2F6B52',lunch:'#2F6B52',dinner:'#2F6B52',food:'#E8A33D',attraction:'#6B5B95',museum:'#6B5B95',sightseeing:'#6B5B95',transport:'#4A90D9',shopping:'#D4B483',nightlife:'#E85D5D',nature:'#4CAF50',adventure:'#FF6B35',relax:'#7FC7C7',airport:'#7a8294'};
+    var points = [];
+
+    stops.forEach(function(p,i){
+      var num = p[0], name = p[1], time = p[2], cost = p[3], cat = p[4];
+      // Use geocoded result if available, else approximate coords
+      var lat, lng;
+      if(geoResults && geoResults[i]){
+        lat = geoResults[i].lat;
+        lng = geoResults[i].lng;
+      } else if(singleLat && singleLng){
+        lat = singleLat + (Math.random()-0.5)*0.01;
+        lng = singleLng + (Math.random()-0.5)*0.01;
+      } else {
+        lat = p[5] || (10.8 + Math.random()*0.01);
+        lng = p[6] || (106.7 + Math.random()*0.01);
+      }
+      points.push([lat,lng]);
+      var color = catColors[cat]||'#2F6B52';
+      var icon = L.divIcon({
+        className:'',
+        html:'<div style="width:30px;height:30px;border-radius:50%;background:'+color+';color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.25);border:2px solid #fff;">'+num+'</div>',
+        iconSize:[30,30], iconAnchor:[15,15]
+      });
+      var popup = '<strong>'+num+'. '+name+'</strong><br>🕒 '+time+(cost?' · '+cost:'')+'<br><span style="color:#6B7280;font-size:11px;">'+cat+'</span>';
+      var m = L.marker([lat,lng], {icon:icon}).addTo(map).bindPopup(popup);
+      markers.push(m);
+    });
+
+    if(points.length > 1){
+      L.polyline(points, {color:'#2F6B52',weight:2.5,opacity:.6,dashArray:'6,8'}).addTo(map);
+    }
+    if(points.length > 0){
+      var group = L.featureGroup(markers);
+      map.fitBounds(group.getBounds().pad(0.3));
+    }
+  } catch(e){}
+}
 
 function _dpRender(){
   const root = document.getElementById('dpRoot');
@@ -2246,7 +2346,7 @@ function _dpRoute(day){
   const steps = tl.map((t,i)=>{
     const offLat = (i-(tl.length-1)/2)*0.008;
     const offLng = (i%2===0?0.005:-0.005);
-    return [i+1, _dpEsc(t.activity), _dpEsc(t.time), t.cost||'', t.category||'', base[0]+offLat+((i*0.001)%0.002-0.001), base[1]+offLng+((i*0.0015)%0.002-0.001)];
+    return [i+1, _dpEsc(t.activity), _dpEsc(t.time), t.cost||'', t.category||'', base[0]+offLat+((i*0.001)%0.002-0.001), base[1]+offLng+((i*0.0015)%0.002-0.001), t.maps||'', day.city];
   });
 
   const mapId = 'dp_map_' + (Date.now() % 100000);
