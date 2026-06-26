@@ -1745,7 +1745,7 @@ async function loadFood() {
   html += `</div><div id="fdDestContent">`;
 
   // Build city panel data
-  cityKeys.forEach(cityKey => {
+  cityKeys.forEach((cityKey, i) => {
     const cityFoods = mustTry.filter(f => f.city === cityKey || (cityKey === 'Halong Bay' && f.city === 'Halong'));
     const cityMealData = cities[cityKey] || {};
     const display = (i===0) ? 'block' : 'none';
