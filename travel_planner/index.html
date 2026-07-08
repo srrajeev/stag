@@ -876,7 +876,7 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
   </div>
   <nav class="sidebar-nav">
     <div class="sidebar-section-label">Dashboard</div>
-    <button class="nav-tab active" data-tab="ops"><span class="nav-icon">⚙️</span> Operations</button>
+    <button class="nav-tab active" data-tab="detailed"><span class="nav-icon">📍</span> Day Plan</button>
     <button class="nav-tab" data-tab="briefing"><span class="nav-icon">📋</span> Briefing</button>
     <button class="nav-tab" data-tab="itinerary"><span class="nav-icon">🗺️</span> Itinerary</button>
     <button class="nav-tab" data-tab="detailed"><span class="nav-icon">📍</span> Day Plan</button>
@@ -2109,8 +2109,20 @@ async function loadDetailedPlan() {
     loadData('food'), loadData('emergency'), loadData('budget')
   ]);
   if(!d){ root.innerHTML = '<div class="tip-box">Unable to load day plan data.</div>'; return; }
-  _dpState = { plans:d.detailed_plans||[], weather, scams, food, emergency, budget, selectedDay:0 };
+  // Auto-select today's day
+  const plans = d.detailed_plans||[];
+  const today = new Date();
+  const todayStr = today.toLocaleDateString('en-US', { month:'short', day:'numeric' }).replace(',','');
+  let todayIdx = 0;
+  plans.forEach(function(p,i){
+    if(p.date && p.date.indexOf(todayStr) === 0) todayIdx = i;
+  });
+  _dpState = { plans, weather, scams, food, emergency, budget, selectedDay:todayIdx };
   _dpRender();
+  // Scroll to day plan section after render
+  setTimeout(function(){
+    if(root) root.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
 }
 
 function _dpSelectDay(i){
@@ -2822,7 +2834,7 @@ function loadTab(tab) {
 }
 
 // Init
-loadOps();
+loadDetailedPlan();
 </script>
 <script>
 // ═══════════════════════════════════════════
