@@ -1246,10 +1246,26 @@
           "duration_min": 60,
           "transit_to_next": null,
           "venue": null
+        },
+        {
+          "time": "6PM \ud83c\udf5c",
+          "activity": "Dinner \u2014 B\u00fan Ch\u1ea3 H\u01b0\u01a1ng Li\u00ean (Obama's B\u00fan Ch\u1ea3!)",
+          "category": "food",
+          "cost": "\u20b9200-300",
+          "duration_min": 60,
+          "maps": "https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi",
+          "venue": {
+            "name": "B\u00fan Ch\u1ea3 H\u01b0\u01a1ng Li\u00ean",
+            "address": "24 L\u00ea V\u0103n H\u01b0u, Hai B\u00e0 Tr\u01b0ng, Hanoi",
+            "rating": "4.3",
+            "highlight": "\ud83c\uddfa\ud83c\uddf8 Obama + Anthony Bourdain yahin khaate the! Famous grilled pork + vermicelli!",
+            "order": "B\u00fan Ch\u1ea3 + Nem Cua B\u1ec3 (crab spring rolls) + Tr\u00e0 \u0110\u00e1 (iced tea)",
+            "tip": "Obama's table marked. \u20b9200-300 mein iconic meal!"
+          }
         }
       ],
-      "total_activities": 4,
-      "estimated_cost": 1800
+      "total_activities": 8,
+      "estimated_cost": 2100
     },
     {
       "day": 11,
