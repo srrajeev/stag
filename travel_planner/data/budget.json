@@ -1,0 +1,300 @@
+{
+  "agent": "Budget Controller",
+  "timestamp": "2026-06-23T23:00:58Z",
+  "total_budget": 180000,
+  "projected_spend": 145000,
+  "remaining": 35000,
+  "budget_health": "healthy",
+  "daily_breakdown": [
+    {
+      "day": 0,
+      "date": "Jun 28",
+      "city": "HCMC",
+      "activities_cost": 53,
+      "items": [
+        {
+          "activity": "Bui Vien Walking Street — Sunday peak!",
+          "cost": 53
+        }
+      ]
+    },
+    {
+      "day": 1,
+      "date": "Jun 29",
+      "city": "HCMC",
+      "activities_cost": 1896,
+      "items": [
+        {
+          "activity": "Pho breakfast — Pho Minh (since 1940s)",
+          "cost": 246
+        },
+        {
+          "activity": "Hop-On Hop-Off Bus @ Opera House",
+          "cost": 509
+        },
+        {
+          "activity": "Banh Canh Cua Ba Ba — MICHELIN 2026!",
+          "cost": 158
+        },
+        {
+          "activity": "Van Gogh Metashow — 30+ immersive rooms",
+          "cost": 878
+        },
+        {
+          "activity": "Vinh Khanh Food St — Seafood dinner",
+          "cost": 105
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "Jun 30",
+      "city": "Phu Quoc",
+      "activities_cost": 3000,
+      "items": [
+        {
+          "activity": "Cu Chi Tunnels (morning best)",
+          "cost": 500
+        },
+        {
+          "activity": "Fly HCMC → Phu Quoc (1hr)",
+          "cost": 2500
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "Jul 1",
+      "city": "Phu Quoc",
+      "activities_cost": 4400,
+      "items": [
+        {
+          "activity": "4 Island Tour — Hotel pickup",
+          "cost": 4200
+        },
+        {
+          "activity": "Duong Dong Night Market",
+          "cost": 200
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "Jul 2",
+      "city": "Phu Quoc",
+      "activities_cost": 3910,
+      "items": [
+        {
+          "activity": "VinWonders — Vietnam's largest!",
+          "cost": 3410
+        },
+        {
+          "activity": "Deep Sea Restaurant — aquarium view",
+          "cost": 500
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "Jul 3",
+      "city": "Hanoi",
+      "activities_cost": 3400,
+      "items": [
+        {
+          "activity": "Ham Ninh Fishing Village",
+          "cost": 200
+        },
+        {
+          "activity": "Fly Phu Quoc → Hanoi (2hr)",
+          "cost": 3000
+        },
+        {
+          "activity": "Hanoi Weekend Night Market!",
+          "cost": 200
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "Jul 4",
+      "city": "Sapa",
+      "activities_cost": 1150,
+      "items": [
+        {
+          "activity": "Pho Thin — #1 pho in Hanoi",
+          "cost": 150
+        },
+        {
+          "activity": "Sapa Express Bus (6hrs)",
+          "cost": 700
+        },
+        {
+          "activity": "Dinner — local BBQ",
+          "cost": 300
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "Jul 5",
+      "city": "Sapa",
+      "activities_cost": 1175,
+      "items": [
+        {
+          "activity": "Moana Sapa — photo spot",
+          "cost": 350
+        },
+        {
+          "activity": "Cat Cat Village — waterfall",
+          "cost": 475
+        },
+        {
+          "activity": "Lunch — local Thang Co",
+          "cost": 200
+        },
+        {
+          "activity": "Cafe crawl — The Hill Station",
+          "cost": 150
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "date": "Jul 6",
+      "city": "Sapa",
+      "activities_cost": 1800,
+      "items": [
+        {
+          "activity": "Rong May Tourism Area",
+          "cost": 1400
+        },
+        {
+          "activity": "Dinner + cultural show",
+          "cost": 400
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "date": "Jul 7",
+      "city": "Sapa",
+      "activities_cost": 3800,
+      "items": [
+        {
+          "activity": "Fansipan Cable Car — Indochina's roof!",
+          "cost": 2800
+        },
+        {
+          "activity": "Lunch — summit cafe",
+          "cost": 300
+        },
+        {
+          "activity": "Sapa Express Bus → Hanoi (6hrs)",
+          "cost": 700
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "date": "Jul 8",
+      "city": "Hanoi",
+      "activities_cost": 1725,
+      "items": [
+        {
+          "activity": "Pho Thin — second visit (it's that good)",
+          "cost": 150
+        },
+        {
+          "activity": "Hoan Kiem Lake + Ngoc Son Temple",
+          "cost": 70
+        },
+        {
+          "activity": "Temple of Literature — 1000 years old",
+          "cost": 105
+        },
+        {
+          "activity": "Bun Cha — Obama's spot",
+          "cost": 250
+        },
+        {
+          "activity": "X Space Immersive — 8 zones",
+          "cost": 700
+        },
+        {
+          "activity": "Train Street — iconic photo",
+          "cost": 100
+        },
+        {
+          "activity": "Water Puppet Theatre",
+          "cost": 350
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "date": "Jul 9",
+      "city": "Halong Bay",
+      "activities_cost": 2600,
+      "items": [
+        {
+          "activity": "Limousine bus to Halong Bay (2.5hrs)",
+          "cost": 800
+        },
+        {
+          "activity": "Halong Bay cruise — caves + kayaking",
+          "cost": 1500
+        },
+        {
+          "activity": "Dinner — Hanoi Old Quarter",
+          "cost": 300
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "date": "Jul 10",
+      "city": "Hanoi",
+      "activities_cost": 1340,
+      "items": [
+        {
+          "activity": "Dong Xuan Market — souvenirs",
+          "cost": 500
+        },
+        {
+          "activity": "Last pho — Pho Bat Dan",
+          "cost": 140
+        },
+        {
+          "activity": "Airport taxi — Noi Bai",
+          "cost": 700
+        }
+      ]
+    }
+  ],
+  "by_category": {
+    "flights": 40000,
+    "hotels": 35000,
+    "activities": 60000,
+    "food": 18000,
+    "transport": 12000,
+    "shopping": 15000
+  },
+  "by_city": {
+    "HCMC": 12000,
+    "Phu Quoc": 25000,
+    "Sapa": 25000,
+    "Hanoi": 46000
+  },
+  "savings_opportunities": [
+    "Book premium hotels with 1.8L budget — upgrade options",
+    "Add premium experiences: scuba certification, private cruises",
+    "₹35K buffer — plenty for upgrades and emergencies",
+    "Negotiate rates — July low season can save 20-30%",
+    "Use Grab over taxis (save 30-40% on local transport)"
+  ],
+  "warnings": [
+    "✅ Healthy budget — ₹35K buffer remains",
+    "Consider upgrading hotels to 4-star options"
+  ],
+  "source": "Itinerary analysis + market research"
+}
