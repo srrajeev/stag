@@ -1044,9 +1044,9 @@
       "date": "Jul 8",
       "dow": "WED",
       "city": "Hanoi",
-      "label": "\ud83c\udfd9\ufe0f Hanoi \u2014 Old Quarter + Train Street + Food",
+      "label": "\ud83c\udfd9\ufe0f Hanoi \u2014 Evening Plan (Woke up at 4PM)",
       "icon": "\ud83c\udfd9\ufe0f",
-      "tip": "Sleeper bus se subah 12:30AM arrive. Sone do phir poora day explore!",
+      "tip": "4PM tak hotel mein rest kiya. Abhi Hoan Kiem Lake walk \u2192 Bun Cha Huong Lien (Obama) \u2192 Night Market \u2192 Egg Coffee! Perfect evening! \ud83c\udfaf",
       "area_guide": {
         "stay_area": "Old Quarter \u2014 near Hoan Kiem Lake",
         "why": "Walking to EVERYTHING. Train Street, Water Puppet, night market, Beer Corner.",
@@ -1064,80 +1064,69 @@
       "timeline": [
         {
           "time": "12:30AM \ud83d\udecc",
-          "activity": "Arrive + sleep",
-          "cost": "",
+          "activity": "Arrive from Sapa + sleep",
           "category": "hotel",
-          "maps": "",
-          "duration_min": 480,
-          "transit_to_next": null,
-          "venue": null
+          "cost": "\u20b9\u2014",
+          "duration_min": 480
         },
         {
-          "time": "9AM \ud83e\udd56",
-          "activity": "Breakfast \u2014 Banh Mi + Egg Coffee",
-          "cost": "\u20b9150-250",
-          "category": "food",
-          "maps": "https://maps.google.com/?q=Banh+Mi+25+Hanoi",
-          "duration_min": 60,
-          "transit_to_next": {
-            "mode": "\ud83d\udeb6 Walk",
-            "time": "5 min",
-            "cost": "FREE",
-            "recommendation": "Hoan Kiem Lake is 5 min walk. Morning walk.",
-            "directions": ""
-          },
-          "venue": null
+          "time": "4PM \ud83c\udfd9\ufe0f",
+          "activity": "Woke up + freshen up at hotel",
+          "category": "hotel",
+          "cost": "\u20b9\u2014",
+          "duration_min": 60
         },
         {
-          "time": "10AM \ud83c\udfef",
-          "activity": "Hoan Kiem Lake + Ngoc Son Temple + Train Street \ud83d\ude82",
-          "cost": "FREE - \u20b9100",
+          "time": "5PM \ud83d\udeb6",
+          "activity": "Hoan Kiem Lake evening walk + Ngoc Son Temple",
           "category": "activity",
-          "maps": "https://maps.google.com/?q=Hoan+Kiem+Lake+Hanoi",
-          "duration_min": 120,
-          "transit_to_next": {
-            "mode": "\ud83d\udeb6 Walk",
-            "time": "10 min",
-            "cost": "FREE",
-            "distance": "800 m",
-            "recommendation": "Walk to Train Street. 10 min through Old Quarter.",
-            "directions": ""
-          },
-          "venue": null
+          "cost": "\u20b9FREE",
+          "duration_min": 60,
+          "maps": "https://maps.google.com/?q=Hoan+Kiem+Lake+Hanoi"
         },
         {
-          "time": "1PM \ud83c\udf5c",
-          "activity": "Lunch \u2014 Bun Cha Obama! (Famous)",
+          "time": "6PM \ud83e\udd5f",
+          "activity": "Dinner \u2014 Bun Cha Huong Lien (Obama's spot) \ud83c\udf5c",
+          "category": "food",
           "cost": "\u20b9200-300",
-          "category": "food",
-          "maps": "https://maps.google.com/?q=Bun+Cha+Huong+Lien+Hanoi",
           "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
+          "maps": "https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi",
+          "venue": {
+            "name": "B\u00fan Ch\u1ea3 H\u01b0\u01a1ng Li\u00ean",
+            "address": "24 L\u00ea V\u0103n H\u01b0u, Hai B\u00e0 Tr\u01b0ng, Hanoi",
+            "rating": "4.3",
+            "highlight": "\ud83c\uddfa\ud83c\uddf8 Obama + Anthony Bourdain yahin khaate the! Skip B\u00fan Ch\u1ea3 (pork) \u2014 order Nem Cua B\u1ec3 (crab rolls) instead!",
+            "order": "Nem Cua B\u1ec3 (crab spring rolls) + Ch\u1ea3 Gi\u00f2 (fried rolls) + Tr\u00e0 \u0110\u00e1 (iced tea) \u2014 No pork!",
+            "tip": "Pork mat khao \u2014 Nem Cua B\u1ec3 mang ao!"
+          }
         },
         {
-          "time": "3PM \ud83d\udecd\ufe0f",
-          "activity": "Shopping \u2014 Hang Gai Street (silk, souvenirs, phin coffee)",
-          "cost": "\u20b91,000-2,000",
+          "time": "7:30PM \ud83d\udecd\ufe0f",
+          "activity": "Night Market + Hang Gai Street shopping (silk, souvenirs)",
           "category": "shopping",
-          "maps": "",
-          "duration_min": 120,
-          "transit_to_next": null,
-          "venue": null
+          "cost": "\u20b9500-1,500",
+          "duration_min": 90,
+          "maps": "https://maps.google.com/?q=Hang+Gai+Street+Hanoi"
         },
         {
-          "time": "6PM \ud83c\udfad",
-          "activity": "Water Puppet Show",
-          "cost": "\u20b9400-700",
-          "category": "activity",
-          "maps": "",
-          "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
+          "time": "9PM \ud83c\udf19",
+          "activity": "Egg Coffee at Cafe Giang \u2014 famous Hanoi drink!",
+          "category": "cafe",
+          "cost": "\u20b950-80",
+          "duration_min": 45,
+          "maps": "https://maps.google.com/?q=Cafe+Giang+Hanoi",
+          "venue": {
+            "name": "Cafe Giang",
+            "address": "39 Nguy\u1ec5n H\u1eefu Hu\u00e2n, Ho\u00e0n Ki\u1ebfm, Hanoi",
+            "rating": "4.5",
+            "highlight": "\ud83e\udd5a World famous Egg Coffee! Must try!",
+            "order": "Egg Coffee (C\u00e0 Ph\u00ea Tr\u1ee9ng)",
+            "tip": "Hot ya cold dono try karo! \u20b950-80"
+          }
         }
       ],
-      "total_activities": 5,
-      "estimated_cost": 1800
+      "total_activities": 6,
+      "estimated_cost": 800
     },
     {
       "day": 10,
