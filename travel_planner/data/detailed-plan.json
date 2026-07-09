@@ -1133,278 +1133,173 @@
       "date": "Jul 9",
       "dow": "THU",
       "city": "Hanoi",
-      "label": "\ud83c\udfcd\ufe0f Ninh Binh Day Trip \u2014 Bike Ride!",
-      "icon": "\ud83c\udfcd\ufe0f",
-      "tip": "Ninh Binh 100km (2hr ride). Tam Coc boat + Mua Cave. Wapas 5PM.",
-      "area_guide": {
-        "stay_area": "Old Quarter, Hanoi",
-        "bike_rent": {
-          "price": "\u20b9500-800/day",
-          "where": "Old Quarter hotels arrange. Need license/passport.",
-          "note": "Highway 1A straight to Ninh Binh."
-        },
-        "get_around": "\ud83c\udfcd\ufe0f Bike"
-      },
+      "label": "\u2615 Free Day in Hanoi \u2014 Relax + Explore!",
+      "tip": "Pura din Hanoi explore karo! Morning walk, cafe hopping, street food. Kal Halong Bay!",
+      "total_activities": 5,
+      "estimated_cost": 1000,
+      "icon": "\u2615",
       "timeline": [
         {
-          "time": "6:30AM \ud83c\udfcd\ufe0f",
-          "activity": "Wake up + rent bike + go!",
-          "cost": "\u20b9500-800 (bike)",
-          "category": "transit",
-          "maps": "",
-          "duration_min": 30,
-          "transit_to_next": null,
-          "venue": null
-        },
-        {
-          "time": "7AM-9AM \ud83c\udfcd\ufe0f",
-          "activity": "RIDE: Hanoi \u2192 Ninh Binh (100km, 2hrs)",
-          "cost": "FREE (fuel \u20b9300-400)",
-          "category": "transit",
-          "maps": "https://www.google.com/maps/dir/Old+Quarter+Hanoi/Tam+Coc+Ninh+Binh",
-          "duration_min": 120,
-          "transit_to_next": null,
-          "venue": {
-            "order": "",
-            "highlight": "Highway 1A \u2014 straight road, 2hrs. Beautiful countryside!",
-            "tip": "Fuel up before leaving. Helmet pehno!"
-          }
-        },
-        {
-          "time": "9AM \ud83d\udef6",
-          "activity": "Tam Coc Boat Ride \u2014 3 caves + rice fields!",
-          "cost": "\u20b9500-700",
-          "category": "activity",
-          "maps": "https://maps.google.com/?q=Tam+Coc+Ninh+Binh",
-          "duration_min": 90,
-          "transit_to_next": {
-            "mode": "\ud83c\udfcd\ufe0f Bike",
-            "time": "10 min",
-            "cost": "FREE",
-            "recommendation": "Tam Coc \u2192 Mua Cave viewpoint.",
-            "directions": ""
-          },
-          "venue": {
-            "order": "Boat rowed by local women with feet! Through 3 caves",
-            "highlight": "\ud83d\udef6 Row boat through limestone caves + rice fields! 'Halong on land'!",
-            "rating": "4.7",
-            "tip": "Tip rower \u20b950-100. Go early 9AM. Sunglasses + hat!"
-          }
-        },
-        {
-          "time": "11AM \ud83c\udfd4\ufe0f",
-          "activity": "Mua Cave Viewpoint \u2014 500 steps, valley view!",
-          "cost": "\u20b9200",
-          "category": "activity",
-          "maps": "https://maps.google.com/?q=Mua+Cave+Ninh+Binh",
-          "duration_min": 60,
-          "transit_to_next": null,
-          "venue": {
-            "order": "",
-            "highlight": "\ud83c\udfd4\ufe0f Top se poora Tam Coc valley dikhta hai!",
-            "rating": "4.6",
-            "tip": "500 steps. Water leke jaa. Dragon statue pe best photo!"
-          }
-        },
-        {
-          "time": "12:30PM \ud83c\udf5c",
-          "activity": "Lunch \u2014 Com Chay (crispy rice) ya Goat meat (Ninh Binh special)",
-          "cost": "\u20b9200-400",
+          "time": "9AM \ud83e\udd56",
+          "activity": "Breakfast \u2014 Banh Mi + Egg Coffee at Cafe Giang",
           "category": "food",
-          "maps": "",
+          "cost": "\u20b9100-150",
           "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
+          "maps": "https://maps.google.com/?q=Cafe+Giang+39+Nguyen+Huu+Huan+Hanoi"
         },
         {
-          "time": "2PM \ud83c\udfcd\ufe0f",
-          "activity": "RIDE BACK: Ninh Binh \u2192 Hanoi (100km, 2hrs)",
-          "cost": "FREE",
-          "category": "transit",
-          "maps": "https://www.google.com/maps/dir/Ninh+Binh/Old+Quarter+Hanoi",
+          "time": "10:30AM \ud83d\udeb6",
+          "activity": "Hoan Kiem Lake morning walk + Ngoc Son Temple",
+          "category": "activity",
+          "cost": "\u20b9FREE-100",
+          "duration_min": 90,
+          "maps": "https://maps.google.com/?q=Hoan+Kiem+Lake+Hanoi"
+        },
+        {
+          "time": "12PM \ud83c\udf5c",
+          "activity": "Lunch \u2014 Pho Bo (beef pho) at Pho Thin!",
+          "category": "food",
+          "cost": "\u20b9150-200",
+          "duration_min": 60,
+          "maps": "https://maps.google.com/?q=Pho+Thin+13+Lo+Duc+Hanoi",
+          "venue": {
+            "name": "Pho Thin",
+            "address": "13 L\u00f2 \u0110\u00fac, Hai B\u00e0 Tr\u01b0ng, Hanoi",
+            "rating": "4.5",
+            "highlight": "\ud83e\udd47 Famous beef pho since 1979!",
+            "order": "Pho Bo (beef pho) + Quay (fried bread sticks)",
+            "tip": "\u20b9150-200 mein legendary pho!"
+          }
+        },
+        {
+          "time": "2PM \u2615",
+          "activity": "Cafe hopping \u2014 try Coconut Coffee + Ca Phe Sua Da",
+          "category": "cafe",
+          "cost": "\u20b950-100",
+          "duration_min": 120
+        },
+        {
+          "time": "5PM \ud83d\udecd\ufe0f",
+          "activity": "Shopping \u2014 Dong Xuan Market + Night Market",
+          "category": "shopping",
+          "cost": "\u20b9500-1,000",
           "duration_min": 120,
-          "transit_to_next": null,
-          "venue": null
+          "maps": "https://maps.google.com/?q=Dong+Xuan+Market+Hanoi"
         },
         {
-          "time": "5PM \ud83c\udfd9\ufe0f",
-          "activity": "Back in Hanoi \u2014 rest + freshen up",
-          "cost": "",
-          "category": "hotel",
-          "maps": "",
-          "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
-        },
-        {
-          "time": "6PM \ud83c\udf5c",
-          "activity": "Dinner \u2014 B\u00fan Ch\u1ea3 H\u01b0\u01a1ng Li\u00ean (Obama's B\u00fan Ch\u1ea3!)",
+          "time": "7PM \ud83e\udd5f",
+          "activity": "Dinner \u2014 Bun Cha Huong Lien (Obama spot)!",
           "category": "food",
           "cost": "\u20b9200-300",
           "duration_min": 60,
-          "maps": "https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi",
-          "venue": {
-            "name": "B\u00fan Ch\u1ea3 H\u01b0\u01a1ng Li\u00ean",
-            "address": "24 L\u00ea V\u0103n H\u01b0u, Hai B\u00e0 Tr\u01b0ng, Hanoi",
-            "rating": "4.3",
-            "highlight": "\ud83c\uddfa\ud83c\uddf8 Obama yahin aaya tha! Skip B\u00fan Ch\u1ea3 (pork), order Nem Cua B\u1ec3 instead!",
-            "order": "Nem Cua B\u1ec3 (crab spring rolls) + Ch\u1ea3 Gi\u00f2 (fried rolls) + Tr\u00e0 \u0110\u00e1 (iced tea) \u2014 \ud83d\udeab No pork! B\u00fan Ch\u1ea3 is pork-based, so skip it.",
-            "tip": "B\u00fan Ch\u1ea3 is pork \u2014 avoid it. Try Nem Cua B\u1ec3 (crab rolls) instead. \u20b9150-200 total."
-          }
+          "maps": "https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi"
+        },
+        {
+          "time": "8:30PM \ud83c\udf19",
+          "activity": "Early sleep \u2014 Halong Bay trip kal subah! \ud83d\udea2",
+          "category": "hotel",
+          "cost": "\u20b9\u2014",
+          "duration_min": 60
         }
-      ],
-      "total_activities": 8,
-      "estimated_cost": 2100
+      ]
     },
     {
       "day": 11,
       "date": "Jul 10",
       "dow": "FRI",
-      "city": "Hanoi",
-      "label": "\ud83c\udfd9\ufe0f Hanoi Day 3 \u2014 Chill + Last shopping",
-      "icon": "\u2615",
-      "tip": "Last full day! Relax, walk around, grab final gifts, enjoy Hanoi!",
-      "area_guide": {
-        "stay_area": "Old Quarter \u2014 near Hoan Kiem Lake",
-        "why": "Walking to everything.",
-        "hotel_price": "\u20b9600-1,000/night",
-        "walk_radius": "1 km",
-        "get_around": "Walk everywhere."
-      },
+      "city": "Hanoi \u2192 Halong Bay \ud83d\udea2",
+      "label": "\ud83d\udea4 Halong Bay Day Trip \u2014 Cruise + Kayaking!",
+      "tip": "Hotel se bus pickup. 7AM-8PM. Boat ride, cave visit, kayaking, seafood lunch!",
+      "total_activities": 5,
+      "estimated_cost": 2000,
+      "icon": "\ud83d\udea2",
       "timeline": [
         {
-          "time": "8AM \ud83e\udd56",
-          "activity": "Breakfast \u2014 Banh Mi + Phin coffee",
-          "cost": "\u20b9100-200",
-          "category": "food",
-          "maps": "",
-          "duration_min": 45,
-          "transit_to_next": null,
-          "venue": null
+          "time": "6:30AM \ud83c\udfd9\ufe0f",
+          "activity": "Wake up + ready for pickup",
+          "category": "hotel",
+          "cost": "\u20b9\u2014",
+          "duration_min": 30
         },
         {
-          "time": "10AM \ud83d\udeb6",
-          "activity": "Hoan Kiem Lake morning walk + Ngoc Son Temple",
-          "cost": "FREE",
+          "time": "7AM \ud83d\ude8c",
+          "activity": "Bus pickup from hotel \u2192 Halong Bay (170km, 3.5hr)",
+          "category": "transit",
+          "cost": "\u20b91,500-2,000 (tour)",
+          "duration_min": 210,
+          "maps": "https://maps.google.com/?q=Halong+Bay+Vietnam"
+        },
+        {
+          "time": "10:30AM \ud83d\udea2",
+          "activity": "Board cruise! \u2014 Cave visit + kayaking + swimming \ud83c\udfca",
           "category": "activity",
-          "maps": "",
-          "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
+          "cost": "\u20b9Included in tour",
+          "duration_min": 240
         },
         {
-          "time": "12PM \ud83e\udd5f",
-          "activity": "Lunch \u2014 Pho + Spring Rolls",
-          "cost": "\u20b9200-300",
+          "time": "12:30PM \ud83e\udd90",
+          "activity": "Seafood lunch on boat \ud83e\udd80",
           "category": "food",
-          "maps": "",
-          "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
+          "cost": "\u20b9Included in tour",
+          "duration_min": 60
         },
         {
-          "time": "2PM \ud83d\udecd\ufe0f",
-          "activity": "FINAL gift shopping \u2014 anything missing!",
-          "cost": "\u20b91,000-2,000",
-          "category": "shopping",
-          "maps": "",
-          "duration_min": 120,
-          "transit_to_next": null,
-          "venue": {
-            "order": "Last minute: coffee, silk, handicrafts",
-            "highlight": "LAST SHOPPING CHANCE! Dong Xuan Market ya Hang Gai. Sab kuch lelo."
-          }
+          "time": "3PM \ud83c\udfd6\ufe0f",
+          "activity": "Ti Top Island \u2014 hike to top! Viewpoint \ud83d\udcf8",
+          "category": "activity",
+          "cost": "\u20b9Included",
+          "duration_min": 90,
+          "maps": "https://maps.google.com/?q=Ti+Top+Island+Halong+Bay"
         },
         {
-          "time": "5PM \u2615",
-          "activity": "Final Egg Coffee at Cafe Giang",
-          "cost": "\u20b9100-200",
-          "category": "cafe",
-          "maps": "https://maps.google.com/?q=Cafe+Giang+Hanoi",
-          "duration_min": 45,
-          "transit_to_next": null,
-          "venue": null
+          "time": "4:30PM \ud83d\ude8c",
+          "activity": "Bus back to Hanoi",
+          "category": "transit",
+          "cost": "\u20b9Included",
+          "duration_min": 210
         },
         {
-          "time": "7PM \ud83c\udfad",
-          "activity": "Dinner \u2014 explore Old Quarter street food \ud83c\udf5c",
+          "time": "8PM \ud83c\udfd9\ufe0f",
+          "activity": "Back in Hanoi \u2014 dinner + rest",
+          "category": "hotel",
           "cost": "\u20b9200-400",
-          "category": "food",
-          "maps": "",
-          "duration_min": 60,
-          "transit_to_next": null
+          "duration_min": 60
         }
-      ],
-      "total_activities": 4,
-      "estimated_cost": 1700
+      ]
     },
     {
       "day": 12,
       "date": "Jul 11",
       "dow": "SAT",
       "city": "Hanoi",
-      "label": "\u2708\ufe0f Departure Day \u2014 Goodbye Vietnam! \ud83c\uddfb\ud83c\uddf3",
+      "label": "\u2708\ufe0f Last Day \u2014 Checkout + Flight",
+      "tip": "Last day! Last minute shopping + check-out. Flight timing check karo.",
+      "total_activities": 3,
+      "estimated_cost": 500,
       "icon": "\u2708\ufe0f",
-      "tip": "Morning flight! Grab to airport 45-60 min. Keep \u20b9500-700 for Grab.",
-      "area_guide": {
-        "stay_area": "Old Quarter",
-        "why": "Quick Grab to Noi Bai airport.",
-        "get_around": "Grab to airport."
-      },
       "timeline": [
         {
-          "time": "6AM \ud83d\udce6",
-          "activity": "Pack bags + Check-out",
-          "cost": "",
-          "category": "hotel",
-          "maps": "",
-          "duration_min": 30,
-          "transit_to_next": null,
-          "venue": null
+          "time": "9AM \ud83e\udd56",
+          "activity": "Last Banh Mi + Egg Coffee \u2615",
+          "category": "food",
+          "cost": "\u20b9100-150",
+          "duration_min": 60
         },
         {
-          "time": "7AM \u2615",
-          "activity": "One LAST Egg Coffee at Cafe Giang",
-          "cost": "\u20b9100-200",
-          "category": "cafe",
-          "maps": "https://maps.google.com/?q=Cafe+Giang+Hanoi",
-          "duration_min": 30,
-          "transit_to_next": {
-            "mode": "\ud83d\ude95 Grab",
-            "time": "45 min",
-            "cost": "\u20b9500-700",
-            "recommendation": "Book Grab in advance.",
-            "directions": ""
-          },
-          "venue": null
+          "time": "11AM \ud83d\udecd\ufe0f",
+          "activity": "Last minute gift shopping",
+          "category": "shopping",
+          "cost": "\u20b9300-500",
+          "duration_min": 120
         },
         {
-          "time": "8AM \ud83d\ude95",
-          "activity": "Grab to Noi Bai Airport (27km)",
-          "cost": "\u20b9500-700",
+          "time": "12PM \ud83c\udfe8",
+          "activity": "Checkout \u2014 airport \ud83d\udeeb",
           "category": "transit",
-          "maps": "",
-          "duration_min": 60,
-          "transit_to_next": null,
-          "venue": null
-        },
-        {
-          "time": "9:30AM \u2708\ufe0f",
-          "activity": "FLIGHT \u2014 Goodbye Vietnam! \ud83c\uddfb\ud83c\uddf3 See you next time!",
-          "cost": "",
-          "category": "departure",
-          "maps": "",
-          "duration_min": 0,
-          "transit_to_next": null,
-          "venue": {
-            "order": "",
-            "highlight": "\ud83c\uddfb\ud83c\uddf3 Vietnam trip complete! Sapa, Hanoi, waterfalls, paragliding, Fansipan \u2014 sab kar liya! \ud83c\udf89",
-            "tip": "Airport pe coffee expensive hai \u2014 pee ke jaana."
-          }
+          "cost": "\u20b9200-300",
+          "duration_min": 180
         }
-      ],
-      "total_activities": 2,
-      "estimated_cost": 900
+      ]
     }
   ],
   "total_days": 13,
