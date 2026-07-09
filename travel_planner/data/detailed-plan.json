@@ -1135,7 +1135,7 @@
       "city": "Hanoi",
       "label": "\u2615 Free Day in Hanoi \u2014 Relax + Explore!",
       "tip": "Pura din Hanoi explore karo! Morning walk, cafe hopping, street food. Kal Halong Bay!",
-      "total_activities": 5,
+      "total_activities": 8,
       "estimated_cost": 1000,
       "icon": "\u2615",
       "timeline": [
@@ -1169,6 +1169,22 @@
             "highlight": "\ud83e\udd47 Famous beef pho since 1979!",
             "order": "Pho Bo (beef pho) + Quay (fried bread sticks)",
             "tip": "\u20b9150-200 mein legendary pho!"
+          }
+        },
+        {
+          "time": "1:30PM \ud83e\udd56",
+          "activity": "Banh Mi Mama \u2014 #5 best Banh Mi in Hanoi! \ud83d\udd25",
+          "category": "food",
+          "cost": "\u20b950-150",
+          "duration_min": 30,
+          "maps": "https://maps.google.com/?q=Banh+Mi+Mama+Hanoi",
+          "venue": {
+            "name": "Banh Mi Mama",
+            "address": "Hanoi Old Quarter",
+            "rating": "4.7",
+            "highlight": "\ud83e\udd56 Most crowded Banh Mi shop \u2014 sabse famous! Always a queue!",
+            "order": "Banh Mi Thit (pork) ya Banh Mi Ga (chicken) \ud83d\udeab Pork nahi to chicken le lo!",
+            "tip": "Queue hoti hai but worth it! \u20b950-150 mein best Banh Mi!"
           }
         },
         {
