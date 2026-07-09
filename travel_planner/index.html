@@ -1118,12 +1118,13 @@ hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
 // ATOS Dashboard JavaScript
 // ═══════════════════════════════════════════
 const DATA_BASE = './data/';
+const CACHE_BUST = '?v=2';
 let cache = {};
 
 async function loadData(name) {
   if (cache[name]) return cache[name];
   try {
-    const resp = await fetch(DATA_BASE + name + '.json');
+    const resp = await fetch(DATA_BASE + name + '.json' + CACHE_BUST);
     if (!resp.ok) throw new Error(resp.status);
     const data = await resp.json();
     cache[name] = data;
