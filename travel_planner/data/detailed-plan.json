@@ -1135,8 +1135,8 @@
       "city": "Hanoi",
       "label": "\u2615 Free Day in Hanoi \u2014 Relax + Explore!",
       "tip": "Pura din Hanoi explore karo! Morning walk, cafe hopping, street food. Kal Halong Bay!",
-      "total_activities": 8,
-      "estimated_cost": 1000,
+      "total_activities": 9,
+      "estimated_cost": 1500,
       "icon": "\u2615",
       "timeline": [
         {
@@ -1195,6 +1195,21 @@
           "duration_min": 120
         },
         {
+          "time": "2PM \ud83c\udf5e",
+          "activity": "King Roti \u2014 Chocolate-filled bun! Don't miss! \ud83c\udf6b",
+          "category": "food",
+          "cost": "\u20b950-100",
+          "duration_min": 20,
+          "maps": "https://maps.google.com/?q=King+Roti+Hanoi",
+          "venue": {
+            "name": "King Roti",
+            "rating": "4.6",
+            "highlight": "\ud83c\udf6b Chocolate-filled bun \u2014 legendary! Fresh baked daily!",
+            "order": "Chocolate-filled bun + any pastry",
+            "tip": "Fresh baked, crowded. \u20b950-100!"
+          }
+        },
+        {
           "time": "5PM \ud83d\udecd\ufe0f",
           "activity": "Shopping \u2014 Dong Xuan Market + Night Market",
           "category": "shopping",
@@ -1203,12 +1218,20 @@
           "maps": "https://maps.google.com/?q=Dong+Xuan+Market+Hanoi"
         },
         {
-          "time": "7PM \ud83e\udd5f",
-          "activity": "Dinner \u2014 Bun Cha Huong Lien (Obama spot)!",
+          "time": "7PM \ud83e\udd86",
+          "activity": "Don Duck \u2014 Michelin-starred roast duck & duck noodles! \ud83c\udfc6",
           "category": "food",
-          "cost": "\u20b9200-300",
+          "cost": "\u20b9300-500",
           "duration_min": 60,
-          "maps": "https://maps.google.com/?q=Bun+Cha+Huong+Lien+24+Le+Van+Huu+Hanoi"
+          "maps": "https://maps.google.com/?q=Don+Duck+Hanoi",
+          "venue": {
+            "name": "Don Duck",
+            "address": "Hanoi Old Quarter",
+            "rating": "4.8",
+            "highlight": "\ud83c\udfc6 Michelin-starred roast duck! Best duck in Hanoi!",
+            "order": "Roast duck + duck noodles",
+            "tip": "Michelin star! \u20b9300-500. Worth every rupee!"
+          }
         },
         {
           "time": "8:30PM \ud83c\udf19",
